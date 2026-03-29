@@ -1,0 +1,20 @@
+{
+  "name": "ade-marketplace",
+  "interface": {
+    "displayName": "Agentic Design Engineering"
+  },
+  "plugins": [
+    {
+      "name": "agentic-design-engineering",
+      "source": {
+        "source": "local",
+        "path": "./codex/agentic-design-engineering"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Design"
+    }
+  ]
+}

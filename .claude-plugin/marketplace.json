@@ -1,0 +1,25 @@
+{
+  "name": "ade-marketplace",
+  "owner": {
+    "name": "Akshansh Chaudhary",
+    "url": "https://github.com/akshansh"
+  },
+  "metadata": {
+    "description": "Agentic Design Engineering — design frameworks for Claude Code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "agentic-design-engineering",
+      "description": "Transform generic UIs into intentional, inhabited digital places. Four interconnected frameworks — CLEAR (structure), PLACE (atmosphere), ALIVE (interactivity), VOICE (communication) — with 6 skills and 7 specialized agents.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Akshansh Chaudhary",
+        "url": "https://akshansh.net"
+      },
+      "homepage": "https://github.com/akshansh/agentic-design-engineering",
+      "tags": ["design-engineering", "ui-design", "accessibility", "art-direction", "game-design", "frameworks", "open-source"],
+      "source": "./plugins/agentic-design-engineering"
+    }
+  ]
+}

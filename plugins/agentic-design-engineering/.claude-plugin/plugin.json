@@ -1,0 +1,11 @@
+{
+  "name": "agentic-design-engineering",
+  "version": "0.1.0",
+  "description": "Agentic Design Engineering — Transform generic UIs into intentional, inhabited digital places through CLEAR (structure), PLACE (atmosphere), ALIVE (interactivity), and VOICE (communication) frameworks.",
+  "author": {
+    "name": "Akshansh Chaudhary",
+    "url": "https://akshansh.net"
+  },
+  "repository": "https://github.com/akshansh/agentic-design-engineering",
+  "license": "MIT"
+}

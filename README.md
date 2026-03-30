@@ -12,6 +12,27 @@ This isn't a design system. It's a design *philosophy* with teeth — actionable
 
 ## Installation
 
+Choose the host you want to install into:
+
+```mermaid
+flowchart TD
+    Start["Choose your host"] --> Claude["Claude Code"]
+    Start --> Cursor["Cursor"]
+    Start --> CodexPersonal["Codex personal marketplace"]
+    Start --> CodexRepo["Codex repo-scoped"]
+
+    Claude --> ClaudeInstall["Add marketplace and install plugin"]
+    Cursor --> CursorInstall["Add plugin"]
+    CodexPersonal --> Clone["Clone from GitHub"]
+    Clone --> Script["Run ./scripts/install-codex.sh"]
+    Script --> Restart["Restart Codex"]
+    Restart --> Marketplace["Open plugin marketplace"]
+    Marketplace --> Enable["Install or enable ADE"]
+    CodexRepo --> RepoClone["Clone from GitHub"]
+    RepoClone --> OpenRepo["Open Codex in repo root"]
+    OpenRepo --> RepoEnable["Install or enable from repo marketplace"]
+```
+
 ### Claude Code
 
 ```bash
@@ -27,24 +48,49 @@ Then use slash commands: `/ade:clear`, `/ade:place`, `/ade:alive`, `/ade:voice`,
 /add-plugin agentic-design-engineering
 ```
 
-Then use skills: `/ade:clear`, `/ade:place`, `/ade:alive`, `/ade:voice`, `/ade:audit`, `/ade:transform`
+Then use slash commands: `/ade:clear`, `/ade:place`, `/ade:alive`, `/ade:voice`, `/ade:audit`, `/ade:transform`
 
-### OpenAI Codex (manual install)
+### OpenAI Codex (recommended: personal marketplace)
 
-> Codex's third-party plugin marketplace is not yet public. For now, install manually:
-
-**Option A — Clone into Codex plugins:**
+Codex supports local marketplaces today. The public third-party plugin directory is still limited, so the recommended path is: clone from GitHub, register a personal marketplace entry, then install or enable the plugin from Codex.
 
 ```bash
 git clone https://github.com/akshansh/agentic-design-engineering.git
-cp -R agentic-design-engineering/codex/agentic-design-engineering ~/.codex/plugins/agentic-design-engineering
+cd agentic-design-engineering
+./scripts/install-codex.sh
 ```
 
-**Option B — Repo-scoped (for your project):**
+What `./scripts/install-codex.sh` does:
 
-Clone this repo, and Codex will discover the plugin via `.agents/plugins/marketplace.json` when you work inside the repo.
+- Copies the Codex plugin to `~/.codex/plugins/agentic-design-engineering`
+- Creates or updates `~/.agents/plugins/marketplace.json`
+- Registers the plugin with `source.path: "./.codex/plugins/agentic-design-engineering"`
+
+After the script finishes:
+
+1. Restart Codex.
+2. Open the plugin marketplace.
+3. Install or enable **Agentic Design Engineering** from your personal marketplace.
+
+### OpenAI Codex (repo-scoped: for contributors)
+
+Use this when you are developing the plugin itself and want Codex to discover it from the cloned repository rather than your personal marketplace.
+
+```bash
+git clone https://github.com/akshansh/agentic-design-engineering.git
+cd agentic-design-engineering
+```
+
+Then open Codex in the repository root. Codex can discover the repo marketplace at `.agents/plugins/marketplace.json` and load the Codex plugin source from `./codex/agentic-design-engineering`.
+
+From there:
+
+1. Open the plugin marketplace.
+2. Install or enable **Agentic Design Engineering** from the repo marketplace.
 
 Then use skills: `$ade-clear`, `$ade-place`, `$ade-alive`, `$ade-voice`, `$ade-audit`, `$ade-transform`
+
+Release notes live in `CHANGELOG.md`, so this README stays focused on what the project is and how to install it.
 
 ---
 
@@ -129,28 +175,6 @@ graph TD
 
 ---
 
-## What's New in v2.0
-
-### Step 0: Codebase Comprehension
-Every skill now begins by understanding what the codebase IS — domain, user persona, emotional weight, physical analog — before evaluating or transforming anything. The agent builds a **Product Portrait** that feeds all downstream decisions.
-
-### Autonomous Mode
-Run `/ade:transform` with "surprise me" or `--auto` and the agent makes all decisions independently — including metaphor selection via a 5-criteria scoring rubric. All quality gates still apply.
-
-### Before/After Scoring
-Every framework now runs its auditor at start AND end, producing delta tables that prove the transformation worked. No more "trust me, it's better."
-
-### VOICE Auditor + Full Audit Coverage
-VOICE now has its own auditor agent. `/ade:audit` scores all four frameworks — combined score out of /200.
-
-### Error Recovery
-Gate failures now have a 2-retry cap with per-framework fallback strategies. The agent won't loop forever — it documents what it couldn't fix and moves on.
-
-### Structured Handoffs
-CLEAR→PLACE→ALIVE→VOICE data contracts ensure clean context flow between frameworks.
-
----
-
 ## The Agents
 
 Nine specialized agents power the framework skills:
@@ -178,6 +202,26 @@ Every execution creates a dated decision log in the project's `ade_docs/` direct
 ---
 
 ## Repository Structure
+
+```mermaid
+flowchart TD
+    Root["agentic-design-engineering/"] --> ClaudeCursor["plugins/agentic-design-engineering"]
+    Root --> Codex["codex/agentic-design-engineering"]
+    Root --> RepoMarketplace[".agents/plugins/marketplace.json"]
+    Root --> ClaudeMarketplace[".claude-plugin/marketplace.json"]
+    Root --> CursorMarketplace[".cursor-plugin/marketplace.json"]
+    Root --> Installer["scripts/install-codex.sh"]
+    Root --> Changelog["CHANGELOG.md"]
+
+    ClaudeCursor --> ClaudeManifest[".claude-plugin/plugin.json"]
+    ClaudeCursor --> CursorManifest[".cursor-plugin/plugin.json"]
+    ClaudeCursor --> ClaudeAgents["agents/"]
+    ClaudeCursor --> ClaudeSkills["skills/"]
+
+    Codex --> CodexManifest[".codex-plugin/plugin.json"]
+    Codex --> CodexSkills["skills/"]
+    Codex --> CodexDocs["docs/"]
+```
 
 ```
 agentic-design-engineering/

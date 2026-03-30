@@ -57,9 +57,22 @@ Clean data contracts flow between frameworks: CLEAR passes product type and acce
 
 ## Installation
 
+### Claude Code
+
+```bash
+/plugin marketplace add akshansh/agentic-design-engineering
+/plugin install agentic-design-engineering
 ```
-claude plugin add akshansh/agentic-design-engineering
+
+Then use slash commands: `/ade:clear`, `/ade:place`, `/ade:alive`, `/ade:voice`, `/ade:audit`, `/ade:transform`
+
+### Cursor
+
+```text
+/add-plugin agentic-design-engineering
 ```
+
+Then use slash commands: `/ade:clear`, `/ade:place`, `/ade:alive`, `/ade:voice`, `/ade:audit`, `/ade:transform`
 
 ## Framework Ordering
 

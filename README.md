@@ -15,22 +15,34 @@ This isn't a design system. It's a design *philosophy* with teeth — actionable
 Choose the host you want to install into:
 
 ```mermaid
-flowchart TD
+flowchart LR
     Start["Choose your host"] --> Claude["Claude Code"]
     Start --> Cursor["Cursor"]
-    Start --> CodexPersonal["Codex personal marketplace"]
-    Start --> CodexRepo["Codex repo-scoped"]
+    Start --> CodexPersonal["Codex<br/>Personal marketplace"]
+    Start --> CodexRepo["Codex<br/>Repo-scoped"]
 
-    Claude --> ClaudeInstall["Add marketplace and install plugin"]
+    Claude --> ClaudeInstall["Add marketplace<br/>Install plugin"]
     Cursor --> CursorInstall["Add plugin"]
     CodexPersonal --> Clone["Clone from GitHub"]
     Clone --> Script["Run ./scripts/install-codex.sh"]
-    Script --> Restart["Restart Codex"]
-    Restart --> Marketplace["Open plugin marketplace"]
-    Marketplace --> Enable["Install or enable ADE"]
+    Script --> Enable["Restart Codex<br/>Open marketplace<br/>Install or enable ADE"]
     CodexRepo --> RepoClone["Clone from GitHub"]
     RepoClone --> OpenRepo["Open Codex in repo root"]
-    OpenRepo --> RepoEnable["Install or enable from repo marketplace"]
+    OpenRepo --> RepoEnable["Install or enable<br/>from repo marketplace"]
+
+    style Start fill:#4a3a5c,stroke:#7a6a8c,color:#fff
+    style Claude fill:#2d5a3d,stroke:#4a8c5c,color:#fff
+    style ClaudeInstall fill:#dff3e6,stroke:#4a8c5c,color:#1f3b2b
+    style Cursor fill:#2a4a6b,stroke:#5282ef,color:#fff
+    style CursorInstall fill:#dce8ff,stroke:#5282ef,color:#1e3556
+    style CodexPersonal fill:#8a5d18,stroke:#c9a44a,color:#fff
+    style Clone fill:#f6ecd5,stroke:#c9a44a,color:#5a3b08
+    style Script fill:#f6ecd5,stroke:#c9a44a,color:#5a3b08
+    style Enable fill:#f6ecd5,stroke:#c9a44a,color:#5a3b08
+    style CodexRepo fill:#6e3328,stroke:#a04d3e,color:#fff
+    style RepoClone fill:#f4dfdb,stroke:#a04d3e,color:#5a261e
+    style OpenRepo fill:#f4dfdb,stroke:#a04d3e,color:#5a261e
+    style RepoEnable fill:#f4dfdb,stroke:#a04d3e,color:#5a261e
 ```
 
 ### Claude Code
@@ -205,22 +217,21 @@ Every execution creates a dated decision log in the project's `ade_docs/` direct
 
 ```mermaid
 flowchart TD
-    Root["agentic-design-engineering/"] --> ClaudeCursor["plugins/agentic-design-engineering"]
-    Root --> Codex["codex/agentic-design-engineering"]
-    Root --> RepoMarketplace[".agents/plugins/marketplace.json"]
-    Root --> ClaudeMarketplace[".claude-plugin/marketplace.json"]
-    Root --> CursorMarketplace[".cursor-plugin/marketplace.json"]
-    Root --> Installer["scripts/install-codex.sh"]
-    Root --> Changelog["CHANGELOG.md"]
+    Root["agentic-design-engineering/"] --> ClaudeCursor["Claude + Cursor package<br/>plugins/agentic-design-engineering"]
+    Root --> Codex["Codex package<br/>codex/agentic-design-engineering"]
+    Root --> Marketplace["Marketplace files<br/>.agents / .claude-plugin / .cursor-plugin"]
+    Root --> Support["Docs + installer<br/>CHANGELOG.md / scripts/install-codex.sh"]
 
-    ClaudeCursor --> ClaudeManifest[".claude-plugin/plugin.json"]
-    ClaudeCursor --> CursorManifest[".cursor-plugin/plugin.json"]
-    ClaudeCursor --> ClaudeAgents["agents/"]
-    ClaudeCursor --> ClaudeSkills["skills/"]
+    ClaudeCursor --> ClaudeFiles["agents/<br/>skills/<br/>.claude-plugin/plugin.json<br/>.cursor-plugin/plugin.json"]
+    Codex --> CodexFiles["skills/<br/>docs/<br/>.codex-plugin/plugin.json"]
 
-    Codex --> CodexManifest[".codex-plugin/plugin.json"]
-    Codex --> CodexSkills["skills/"]
-    Codex --> CodexDocs["docs/"]
+    style Root fill:#4a3a5c,stroke:#7a6a8c,color:#fff
+    style ClaudeCursor fill:#2d5a3d,stroke:#4a8c5c,color:#fff
+    style ClaudeFiles fill:#dff3e6,stroke:#4a8c5c,color:#1f3b2b
+    style Codex fill:#8a5d18,stroke:#c9a44a,color:#fff
+    style CodexFiles fill:#f6ecd5,stroke:#c9a44a,color:#5a3b08
+    style Marketplace fill:#6e3328,stroke:#a04d3e,color:#fff
+    style Support fill:#2a4a6b,stroke:#5282ef,color:#fff
 ```
 
 ```

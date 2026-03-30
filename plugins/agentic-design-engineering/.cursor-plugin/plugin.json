@@ -1,0 +1,13 @@
+{
+  "name": "agentic-design-engineering",
+  "version": "0.1.0",
+  "description": "Transform generic UIs into intentional, inhabited digital places — four interconnected design frameworks (CLEAR, PLACE, ALIVE, VOICE) with specialized skills and agents.",
+  "author": {
+    "name": "Akshansh Chaudhary",
+    "email": "akshansh@akshansh.net"
+  },
+  "homepage": "https://github.com/akshansh/agentic-design-engineering",
+  "repository": "https://github.com/akshansh/agentic-design-engineering",
+  "license": "MIT",
+  "keywords": ["design-engineering", "ui-design", "accessibility", "art-direction", "game-design", "frameworks"]
+}

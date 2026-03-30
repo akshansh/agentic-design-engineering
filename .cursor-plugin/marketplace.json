@@ -1,0 +1,17 @@
+{
+  "name": "ade-marketplace",
+  "owner": {
+    "name": "Akshansh Chaudhary",
+    "url": "https://github.com/akshansh"
+  },
+  "metadata": {
+    "description": "Agentic Design Engineering — design frameworks for Cursor",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "agentic-design-engineering",
+      "path": "./plugins/agentic-design-engineering"
+    }
+  ]
+}

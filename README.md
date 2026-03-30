@@ -21,6 +21,14 @@ This isn't a design system. It's a design *philosophy* with teeth — actionable
 
 Then use slash commands: `/ade:clear`, `/ade:place`, `/ade:alive`, `/ade:voice`, `/ade:audit`, `/ade:transform`
 
+### Cursor
+
+```text
+/add-plugin agentic-design-engineering
+```
+
+Then use skills: `/ade:clear`, `/ade:place`, `/ade:alive`, `/ade:voice`, `/ade:audit`, `/ade:transform`
+
 ### OpenAI Codex (manual install)
 
 > Codex's third-party plugin marketplace is not yet public. For now, install manually:
@@ -110,8 +118,8 @@ graph TD
 
 ## Commands Reference
 
-| Action | Claude Code | Codex |
-|--------|-------------|-------|
+| Action | Claude Code / Cursor | Codex |
+|--------|----------------------|-------|
 | Audit + repair UI structure | `/ade:clear` | `$ade-clear` |
 | Transform atmosphere with metaphor | `/ade:place` | `$ade-place` |
 | Inject physics, discovery, easter egg | `/ade:alive` | `$ade-alive` |
@@ -145,7 +153,7 @@ CLEAR→PLACE→ALIVE→VOICE data contracts ensure clean context flow between f
 
 ## The Agents
 
-Ten specialized agents power the framework skills:
+Nine specialized agents power the framework skills:
 
 | Agent | Role |
 |-------|------|
@@ -159,7 +167,7 @@ Ten specialized agents power the framework skills:
 | `vitality-injector` | Scans code for dead spots, produces minimal physics-based patches |
 | `voice-writer` | Reviews UI copy, rewrites generic text with warmth and purpose. Supports custom voice profiles |
 
-In Claude Code, these run as dedicated agents. In Codex, they're converted to skills (e.g., `$clear-auditor`).
+In Claude Code and Cursor, these run as dedicated agents. In Codex, they're converted to skills (e.g., `$clear-auditor`).
 
 ---
 
@@ -174,9 +182,10 @@ Every execution creates a dated decision log in the project's `ade_docs/` direct
 ```
 agentic-design-engineering/
 │
-├── plugins/                              # Claude Code plugin
+├── plugins/                              # Claude Code + Cursor plugin
 │   └── agentic-design-engineering/
 │       ├── .claude-plugin/plugin.json    # Claude Code manifest
+│       ├── .cursor-plugin/plugin.json    # Cursor manifest
 │       ├── AGENTS.md                     # Agent registry + compliance rules
 │       ├── CLAUDE.md                     # Quick reference
 │       ├── README.md                     # Plugin documentation
@@ -193,6 +202,8 @@ agentic-design-engineering/
 │       │   ├── ade-voice/                # + references/voice-framework.md
 │       │   ├── ade-audit/
 │       │   └── ade-transform/
+│       ├── rules/                        # Cursor rules (.mdc)
+│       │   └── ade-conventions.mdc       # Framework ordering + quality gates
 │       └── docs/                         # Decision log template
 │
 ├── codex/                                # OpenAI Codex plugin
@@ -219,6 +230,7 @@ agentic-design-engineering/
 │       └── docs/                         # Decision log template
 │
 ├── .claude-plugin/marketplace.json       # Claude Code marketplace entry
+├── .cursor-plugin/marketplace.json       # Cursor marketplace entry
 ├── .agents/plugins/marketplace.json      # Codex marketplace entry
 ├── .gitignore
 ├── LICENSE                               # MIT

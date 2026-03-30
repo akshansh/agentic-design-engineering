@@ -1,0 +1,26 @@
+---
+description: Agentic Design Engineering framework conventions — ordering, decision logging, and quality gates
+alwaysApply: true
+---
+
+# Agentic Design Engineering Conventions
+
+## Framework Ordering
+Always apply frameworks in this order: **CLEAR** (structure) → **PLACE** (atmosphere) → **ALIVE** (interactivity) → **VOICE** (copy).
+
+- CLEAR must pass before PLACE is applied (can't build atmosphere on a broken layout)
+- PLACE should be established before ALIVE is injected (can't animate without materiality)
+- ALIVE should complete before VOICE (can't write metaphor copy before the metaphor exists)
+- Each framework gates the next — scores must pass 40/50 before proceeding
+
+## Step 0: Codebase Comprehension
+Every skill execution begins with Step 0 — building a Product Portrait that understands the domain, user persona, and emotional weight of the codebase before evaluation or transformation.
+
+## Decision Logging
+Every ADE skill execution MUST log decisions to `ade_docs/YYYY-MM-DD-<context>.md` in the project directory. What gets decided gets documented.
+
+## Quality Gates
+If a framework scores below 40/50, it blocks the next step. After 2 repair attempts, fallback strategies kick in — document what couldn't be fixed and proceed with a warning.
+
+## Easter Egg Requirement
+Every ALIVE transformation MUST include at least one hidden fingerprint — the creator's signature in the work, discoverable but not obvious.

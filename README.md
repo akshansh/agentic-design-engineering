@@ -58,7 +58,7 @@ graph LR
 
 *"Before anything else, the interface must be usable."*
 
-Audits and repairs five dimensions: **C**opy, **L**ayout, **E**mphasis, **A**ccessibility, **R**eward. Accessibility issues are fixed first, always. Score target: 40/50.
+Audits and repairs five dimensions: **C**opy, **L**ayout, **E**mphasis, **A**ccessibility, **R**eward. Accessibility issues are fixed first, always. Score target: 40/50. Context-branched for 8 product types — from emergency medical to educational platforms.
 
 Rooted in: Cognitive Load Theory (Sweller), Gestalt Principles, WCAG 2.1, Flow Theory (Csikszentmihalyi)
 
@@ -82,7 +82,7 @@ Rooted in: Will Wright's MasterClass on Game Design, MDA Framework, Csikszentmih
 
 *"Simplification is kindness. Every unnecessary word is a tiny cruelty."*
 
-Reviews and rewrites UI copy to sound intentional — warm partnership, purpose before action, compassionate errors, metaphor language. Scope: UI copy only.
+Reviews and rewrites UI copy to sound intentional — warm partnership, purpose before action, compassionate errors, metaphor language. Now includes a dedicated auditor for scoring and supports custom voice profiles. Scope: UI copy only.
 
 ---
 
@@ -91,11 +91,13 @@ Reviews and rewrites UI copy to sound intentional — warm partnership, purpose 
 ```mermaid
 graph TD
     subgraph "The Transformation Pipeline"
-        CL["1. CLEAR — Fix structure"] --> PL["2. PLACE — Build atmosphere"]
+        S0["0. COMPREHEND — Understand the codebase"] --> CL["1. CLEAR — Fix structure"]
+        CL --> PL["2. PLACE — Build atmosphere"]
         PL --> AL["3. ALIVE — Inject vitality"]
         AL --> VO["4. VOICE — Polish copy"]
     end
 
+    style S0 fill:#4a3a5c,stroke:#7a6a8c,color:#fff
     style CL fill:#2d5a3d,stroke:#4a8c5c,color:#fff
     style PL fill:#6e3328,stroke:#a04d3e,color:#fff
     style AL fill:#8a5d18,stroke:#c9a44a,color:#fff
@@ -119,19 +121,43 @@ graph TD
 
 ---
 
+## What's New in v2.0
+
+### Step 0: Codebase Comprehension
+Every skill now begins by understanding what the codebase IS — domain, user persona, emotional weight, physical analog — before evaluating or transforming anything. The agent builds a **Product Portrait** that feeds all downstream decisions.
+
+### Autonomous Mode
+Run `/ade:transform` with "surprise me" or `--auto` and the agent makes all decisions independently — including metaphor selection via a 5-criteria scoring rubric. All quality gates still apply.
+
+### Before/After Scoring
+Every framework now runs its auditor at start AND end, producing delta tables that prove the transformation worked. No more "trust me, it's better."
+
+### VOICE Auditor + Full Audit Coverage
+VOICE now has its own auditor agent. `/ade:audit` scores all four frameworks — combined score out of /200.
+
+### Error Recovery
+Gate failures now have a 2-retry cap with per-framework fallback strategies. The agent won't loop forever — it documents what it couldn't fix and moves on.
+
+### Structured Handoffs
+CLEAR→PLACE→ALIVE→VOICE data contracts ensure clean context flow between frameworks.
+
+---
+
 ## The Agents
 
-Seven specialized agents power the framework skills:
+Ten specialized agents power the framework skills:
 
 | Agent | Role |
 |-------|------|
+| `codebase-comprehender` | Scans project structure to build a Product Portrait before any evaluation begins |
 | `clear-auditor` | Evaluates UI against CLEAR, returns scored violations with file:line references |
 | `place-auditor` | Evaluates atmosphere, returns diagnostics + physics profile for ALIVE |
 | `alive-auditor` | Evaluates interactivity, maps dead spots, verifies easter egg exists |
-| `metaphor-discoverer` | Suggests 3-5 physical metaphors from product domain — user picks |
+| `voice-auditor` | Evaluates UI copy against 7 voice principles, returns scored findings |
+| `metaphor-discoverer` | Suggests 3 ranked metaphors with scoring rubric — user picks or delegates |
 | `atmosphere-builder` | Generates scoped CSS atmosphere layers from chosen metaphor + materials |
 | `vitality-injector` | Scans code for dead spots, produces minimal physics-based patches |
-| `akshansh-voice` | Reviews UI copy, rewrites generic text with warmth and purpose |
+| `voice-writer` | Reviews UI copy, rewrites generic text with warmth and purpose. Supports custom voice profiles |
 
 In Claude Code, these run as dedicated agents. In Codex, they're converted to skills (e.g., `$clear-auditor`).
 
@@ -139,7 +165,7 @@ In Claude Code, these run as dedicated agents. In Codex, they're converted to sk
 
 ## Decision Logging
 
-Every execution creates a dated decision log in the project's `ade_docs/` directory. Each log records: metaphor chosen, materials, physics profile, copy rewrites, easter egg planted, scores before and after, files modified. What gets decided gets documented.
+Every execution creates a dated decision log in the project's `ade_docs/` directory. Each log records: Product Portrait, metaphor chosen, materials, physics profile, copy rewrites, easter egg planted, before/after scores with deltas, cross-framework handoff data, gate pass/fail status, and files modified. What gets decided gets documented.
 
 ---
 
@@ -155,10 +181,12 @@ agentic-design-engineering/
 │       ├── CLAUDE.md                     # Quick reference
 │       ├── README.md                     # Plugin documentation
 │       ├── agents/
-│       │   ├── review/                   # 3 auditor agents
+│       │   ├── analysis/                 # 1 comprehension agent
+│       │   ├── review/                   # 4 auditor agents
 │       │   ├── design/                   # 3 builder agents
 │       │   └── voice/                    # 1 voice agent
 │       ├── skills/
+│       │   ├── shared/                   # Step 0 comprehension + handoff schema
 │       │   ├── ade-clear/                # + references/clear-framework.md
 │       │   ├── ade-place/                # + references/place-framework.md
 │       │   ├── ade-alive/                # + references/alive-framework.md
@@ -172,19 +200,22 @@ agentic-design-engineering/
 │       ├── .codex-plugin/plugin.json     # Codex manifest
 │       ├── AGENTS.md                     # Codex project instructions
 │       ├── skills/
+│       │   ├── shared/                   # Step 0 comprehension + handoff schema
 │       │   ├── ade-clear/                # 6 framework skills (adapted)
 │       │   ├── ade-place/                #   + references/
 │       │   ├── ade-alive/
 │       │   ├── ade-voice/
 │       │   ├── ade-audit/
 │       │   ├── ade-transform/
-│       │   ├── clear-auditor/            # 7 specialist skills
+│       │   ├── clear-auditor/            # 9 specialist skills
 │       │   ├── place-auditor/
 │       │   ├── alive-auditor/
+│       │   ├── voice-auditor/            # NEW
+│       │   ├── codebase-comprehender/    # NEW
 │       │   ├── metaphor-discoverer/
 │       │   ├── atmosphere-builder/
 │       │   ├── vitality-injector/
-│       │   └── akshansh-voice/
+│       │   └── akshansh-voice/           # (voice-writer)
 │       └── docs/                         # Decision log template
 │
 ├── .claude-plugin/marketplace.json       # Claude Code marketplace entry

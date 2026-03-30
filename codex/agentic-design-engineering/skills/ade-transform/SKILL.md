@@ -24,6 +24,46 @@ Each framework builds on the last. Skipping or reordering breaks the chain:
 
 ---
 
+## Operational Modes
+
+### Standard Mode (default)
+The agent asks for user input at key decision points:
+- Step 0: May ask ONE clarification question if confidence is low
+- PLACE: Presents 3 metaphor options for user selection
+- All other steps proceed autonomously with gate checks
+
+### Autonomous Mode (`--auto` or "surprise me" or "just do it")
+The agent makes all decisions independently:
+- **Step 0:** Runs with high-confidence threshold. If confidence is high, proceeds. If low, asks ONE question and proceeds regardless of answer.
+- **PLACE:** Skips user metaphor selection. The `metaphor-discoverer` generates 3 options, scores them using its rubric, selects the highest-scoring option, and documents its reasoning in the decision log.
+- **VOICE:** Uses all 7 principles. If PLACE established a metaphor, principle 7 (metaphor language) activates automatically. If no metaphor, principle 7 scores on distinctive character.
+- **All gates still apply.** Autonomous doesn't mean careless. Scores must still pass thresholds.
+
+Activate autonomous mode when:
+- User explicitly says "surprise me", "just do it", or "make it not look like everything else"
+- User passes `--auto` flag
+- User doesn't want to be interrupted with decision points
+
+---
+
+## Step 0: Understand the Codebase
+
+**This runs once, at the very beginning, before any framework.**
+
+Load the codebase comprehension process:
+`skills/shared/step-0-comprehension.md`
+
+1. Scan the project structure, dependencies, README, routes, and component hierarchy
+2. Build the Product Portrait (domain, interaction pattern, data density, user persona, emotional weight, physical analog)
+3. Assess confidence (high/medium/low)
+4. If autonomous mode AND confidence is low: ask ONE targeted question, then proceed
+5. If standard mode AND confidence is low: ask ONE targeted question, wait for answer
+6. If confidence is high: state the hypothesis and proceed
+
+**The Product Portrait feeds every subsequent step.** CLEAR uses it for context branching. PLACE uses it for metaphor seeding. ALIVE uses it for easter egg selection. VOICE uses it for tone calibration.
+
+---
+
 ## Gate Rule
 
 **If any step scores below 40/50, it blocks the next step.**
@@ -35,6 +75,33 @@ When a gate blocks:
 2. Apply the fixes within that framework's scope
 3. Re-score to confirm >= 40
 4. Only then proceed to the next step
+
+### Retry Limits
+
+**Maximum 2 repair attempts per gate failure.** If the score doesn't improve after 2 focused repair passes:
+
+1. Log the blocking issues clearly in the decision log
+2. Flag the specific violations that couldn't be resolved and WHY
+3. Apply the fallback strategy for that framework (see below)
+4. Proceed to the next framework with a warning
+
+### Fallback Strategies
+
+| Framework | Fallback | Reduced Target |
+|-----------|----------|---------------|
+| **CLEAR** | If accessibility can't be fully fixed (e.g., third-party component limitations), document the exceptions and proceed | 35/50 instead of 40/50 |
+| **PLACE** | If the metaphor isn't convincing after 2 cycles of repair, commit to the strongest version achieved | Note as "draft atmosphere — iteration recommended" |
+| **ALIVE** | If physics can't be injected (framework constraints like CSS-in-JS limitations), apply the subset that IS possible | List what was blocked and why |
+| **VOICE** | If the codebase has hardcoded strings the agent can't edit (e.g., third-party components), list them as manual tasks | Document untouchable strings |
+
+### Decision Log Entry for Gate Failures
+
+Every gate failure MUST log:
+- Which framework failed and the score
+- What was attempted in each repair pass
+- Why the repair didn't succeed
+- Which fallback was applied
+- What the user should manually address later
 
 ---
 
@@ -164,6 +231,16 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 
 ---
 
+### Product Portrait
+**Domain:** [from Step 0]
+**Interaction pattern:** [from Step 0]
+**User persona:** [from Step 0]
+**Physical analog:** [from Step 0]
+**Confidence:** [High/Medium/Low]
+**Mode:** [Standard/Autonomous]
+
+---
+
 ### CLEAR — Structure
 **Score:** [before] → [after] /50
 **Product type:** [classification]
@@ -223,7 +300,8 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 | CLEAR | /50 | [Pass/Fail] |
 | PLACE | /50 | [Pass/Fail] |
 | ALIVE | /50 | [Pass/Fail] |
-| **Combined** | **/150** | |
+| VOICE | /70 (normalized: /50) | [Pass/Fail] |
+| **Combined** | **/200** | |
 ```
 
 ---
@@ -232,13 +310,13 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 
 After all four frameworks complete:
 
-**If combined score is 120+:**
+**If combined score is 160+:**
 > Transformation complete. Your interface works (CLEAR), feels like [metaphor] (PLACE), responds with [physics personality] (ALIVE), and speaks with intention (VOICE). Run `$ade-audit` anytime to re-evaluate.
 
-**If combined score is 90-119:**
+**If combined score is 120-159:**
 > Transformation complete with room for polish. [List the P2/P3 recommendations.] Consider a focused pass on the weakest framework.
 
-**If combined score is below 90:**
+**If combined score is below 120:**
 > Transformation hit some walls. [List what blocked progress and what still needs work.] Run `$ade-audit` after addressing the remaining issues.
 
 ---

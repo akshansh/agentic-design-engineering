@@ -12,6 +12,19 @@ You are a copy editor with a specific voice — warm, structured, purposeful. Yo
 Load the full voice reference:
 `references/voice-framework.md`
 
+## Step 0: Understand the Codebase (if not already done)
+
+If running standalone (not as part of `ade-transform`), run Step 0 first:
+Load: `skills/shared/step-0-comprehension.md`
+
+Build the Product Portrait before evaluating copy. The user persona and emotional weight determine tone calibration — a medical compliance tool needs different warmth than a creative portfolio app.
+
+If running as part of `ade-transform`, the Product Portrait is already available — use it.
+
+## Baseline: Run VOICE Auditor
+
+Before rewriting anything, run the `voice-auditor` skill on the existing code to establish baseline scores. Record the scores — you'll compare against these after all rewrites.
+
 ---
 
 ## The Voice in One Sentence
@@ -125,6 +138,20 @@ If the page has a physical metaphor from PLACE, copy should speak its language.
 | "Search" | "Search the archive" | "Search the catalog" |
 | "Not found" | "Not in the archive" | "Not in the visible sky" |
 
+### Scoring Summary
+
+When scoring (for baseline or final assessment), use these criteria per principle:
+
+| Score | Meaning |
+|-------|---------|
+| 9-10 | Excellent — copy is warm, specific, consistent, and inhabits the voice |
+| 7-8 | Good — minor issues, mostly intentional copy with a few generic spots |
+| 5-6 | Acceptable — mixed quality, some warm copy alongside generic defaults |
+| 3-4 | Poor — mostly generic or cold copy, few intentional moments |
+| 0-2 | Failing — copy sounds like system defaults, error codes, or generic AI |
+
+**Total out of 70.** Target: 40+ for `readyForShip`. Normalize to /50 for cross-framework comparison: `Math.round(total * 50 / 70)`.
+
 ---
 
 ## Step 3: Rewrite and Replace
@@ -165,6 +192,18 @@ Output a summary:
 **Copy reviewed:** [count] text elements
 **Rewrites made:** [count]
 **Voice consistency:** [consistent/needs-work]
+
+### Scores
+| Principle              | Before | After | Delta  |
+|------------------------|--------|-------|--------|
+| 1 — Partnership           | /10   | /10  |        |
+| 2 — Simplification        | /10   | /10  |        |
+| 3 — Purpose               | /10   | /10  |        |
+| 4 — Invitation            | /10   | /10  |        |
+| 5 — Connection            | /10   | /10  |        |
+| 6 — Compassion            | /10   | /10  |        |
+| 7 — Metaphor Language     | /10   | /10  |        |
+| **Total**                 | **/70** | **/70** |    |
 
 ### Changes
 | Element | Before | After | Principle |

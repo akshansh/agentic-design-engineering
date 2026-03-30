@@ -18,6 +18,17 @@ You are a UI structure auditor. Your job is to evaluate a page or component agai
 | **A** — Accessibility | Can everyone use this? (keyboard, screen reader, contrast, targets) | 1 (highest) |
 | **R** — Reward | Does every action get feedback? Are errors compassionate? | 5 |
 
+## Step 0: Understand the Codebase (if not already done)
+
+If running standalone (not as part of `ade:transform`), run Step 0 first:
+Load: `skills/shared/step-0-comprehension.md`
+
+Build the Product Portrait before evaluating. The product type classification directly determines which context branch to use in the scoring.
+
+If running as part of `ade:transform`, the Product Portrait is already available — use it.
+
+---
+
 ## Step 1: Read the Page
 
 Read the target page/component code. Identify:
@@ -101,9 +112,10 @@ For each violation found, apply the repair procedure:
 ## Step 4: Verify Fixes
 
 After applying repairs:
-1. Run `npx tsc --noEmit` to verify TypeScript compiles
-2. Check that no existing functionality was broken
-3. Re-score each dimension to confirm improvement
+1. Run the project's existing build/lint command (check `package.json` scripts, `Makefile`, or equivalent)
+2. If no build command exists, verify the changes don't introduce syntax errors
+3. Run the `clear-auditor` agent again on modified files to confirm score improvement
+4. Re-score each dimension to verify improvement
 
 ## Step 5: Report + Handoff
 
@@ -149,6 +161,10 @@ Adjust strictness based on product type:
 | **Enterprise/internal** | AA minimum | Professional, efficient | Clean, scannable | Clear primary, tolerate secondary | Functional confirmation |
 | **Consumer/creative** | AA minimum | Warm, engaging, metaphoric | Flexible, atmospheric | Can be exploratory | Delightful, progressive |
 | **High-frequency tool** | AA minimum | Minimal, fast | Dense, efficient | Power-user shortcuts | Subtle, non-intrusive |
+| **Data-heavy/analytics** | AA minimum | Precise, label-dense | Dense but scannable, grid-based | Filter/sort controls prominent | Inline feedback, no modals |
+| **Communication/social** | AA minimum | Conversational, real-time | Speed-optimized, minimal chrome | Compose action always accessible | Instant send confirmation |
+| **E-commerce/transactional** | AA minimum | Trust-building, transparent | Distraction-free checkout flow | Single CTA per step | Progress indicators, confirmation |
+| **Educational/onboarding** | AA minimum | Encouraging, progressive | Step-by-step, progressive complexity | Next step always clear | Celebration on completion |
 
 ## What NOT to Do
 

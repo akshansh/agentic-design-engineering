@@ -12,6 +12,19 @@ You are an interaction designer with game design thinking. Your job is to take a
 - PLACE should be established (atmosphere exists). If not, suggest `$ade-place` first.
 - If PLACE provided a `physicsProfile`, use it. If not, derive one from the existing design.
 
+## Step 0: Understand the Codebase (if not already done)
+
+If running standalone (not as part of `ade-transform`), run Step 0 first:
+Load: `skills/shared/step-0-comprehension.md`
+
+Build the Product Portrait before injecting interactivity. The product type determines the core loop pattern, the easter egg selection, and the physics calibration.
+
+If running as part of `ade-transform`, the Product Portrait is already available — use it.
+
+## Baseline: Run ALIVE Auditor
+
+Before injecting anything, run the `alive-auditor` skill on the existing code to establish baseline scores. Record the scores — you'll compare against these after all injections.
+
 Load the full framework reference:
 `references/alive-framework.md`
 
@@ -62,6 +75,22 @@ Read a decision → Follow attribution → Return to browse
 ```
 
 If the loop is unclear, trace the user's most likely path from landing to leaving. The repeating segment is the loop.
+
+### Core Loop Templates by Product Type
+
+Use these as starting patterns — adapt to the specific codebase:
+
+| Product Type | Core Loop Pattern |
+|-------------|-------------------|
+| **Dashboard/analytics** | Scan overview → Filter/drill-down → Compare data → Adjust parameters → Scan again |
+| **Form/workflow** | Start task → Fill/complete → Validate → Review → Submit → Confirm |
+| **E-commerce** | Browse catalog → Compare options → Select/configure → Purchase → Track status |
+| **Communication** | Scan inbox → Open message → Read/process → Reply/act → Navigate → Scan again |
+| **Content creation** | Create new → Edit/refine → Preview → Iterate → Publish → Share |
+| **Archive/reference** | Browse collection → Select item → Read/study → Notice pattern → Browse for more |
+| **Monitoring/ops** | Scan status → Detect anomaly → Drill into detail → Respond/resolve → Return to scan |
+
+The core loop is the heartbeat of the product. Dead spots in the core loop are always **critical severity** — they break the rhythm the user relies on.
 
 ---
 
@@ -305,6 +334,21 @@ console.log('This is not just software. This is a place.');
 | Date-specific message (project anniversary) | Gamification layer |
 | Konami code variant triggers animation | Forced tutorial |
 
+### Easter Egg Selection by Product Type
+
+Match the easter egg type to the product's context (from the Product Portrait):
+
+| Product Context | Recommended Easter Egg Type | Why |
+|----------------|---------------------------|-----|
+| **Professional/enterprise** | Console message or subtle long-press reveal | Non-disruptive — won't alarm stakeholders |
+| **Consumer/creative** | Key combination or hidden interaction | Playful discovery matches the product's spirit |
+| **Internal tools** | Secret page with project backstory or team credits | Builds internal culture and pride |
+| **Data-heavy products** | Data-driven surprise (milestone acknowledgment) | "You've reviewed 100 records this month" — uses the product's own language |
+| **Medical/compliance** | Console-only developer credit | Zero risk of interfering with clinical workflows |
+| **Educational** | Achievement unlock on completion milestone | Reinforces learning goals through discovery |
+
+The agent should select the easter egg type based on the Product Portrait, not guess randomly.
+
 **Log the easter egg in the decision document.** The user should know it's there, even if their users don't.
 
 ---
@@ -346,6 +390,16 @@ Output a summary:
 **Core Loop:** [action] → [response] → [discovery] → [next action]
 **Dead Spots Fixed:** [count]
 **Physics Profile:** [personality from PLACE]
+
+### Scores
+| Dimension              | Before | After | Delta  |
+|------------------------|--------|-------|--------|
+| A — Agency & Affordance   | /10   | /10  |        |
+| L — Loops & Feedback      | /10   | /10  |        |
+| I — Invitation & Discovery| /10   | /10  |        |
+| V — Vitality & Physics    | /10   | /10  |        |
+| E — Emergence & Surprise  | /10   | /10  |        |
+| **Total**                 | **/50** | **/50** |    |
 
 ### Injections Applied
 **Agency:** [what was added — proximity awareness, affordance cues]

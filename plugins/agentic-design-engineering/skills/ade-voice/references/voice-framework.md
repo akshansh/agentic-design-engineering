@@ -147,6 +147,42 @@ If PLACE has established a physical metaphor, the copy should inhabit it. You do
 | "Invalid" | "That doesn't look right. Try: [format]" |
 | "Optional" | "If you'd like" / just leave unlabeled |
 
+### Onboarding / First Use
+| Generic | Intentional |
+|---------|------------|
+| "Welcome! Let's get started." | "Welcome. Here's what you need to know." |
+| "Complete your profile" | "Tell us about yourself" |
+| "Step 1 of 5" | "First things first" |
+| "Skip tutorial" | "I'll figure it out" / "Explore on my own" |
+| "You're all set!" | "You're ready. Here's where to begin." |
+
+### Notifications / Alerts
+| Generic | Intentional |
+|---------|------------|
+| "New notification" | "[Specific thing] needs your attention" |
+| "Action required" | "You have a decision to make" |
+| "Reminder" | "Coming up: [specific event]" |
+| "Update available" | "We've improved [specific thing]" |
+| "Warning" | "Heads up — [specific concern]" |
+
+### Settings / Preferences
+| Generic | Intentional |
+|---------|------------|
+| "Settings" | "Preferences" / "Make it yours" |
+| "Enable notifications" | "Stay informed about [specific things]" |
+| "Dark mode" | "Dim the lights" (with metaphor) / "Dark mode" (without) |
+| "Delete account" | "Leave [product name]" |
+| "Save preferences" | "Done" / "That's saved" |
+
+### Help / Documentation
+| Generic | Intentional |
+|---------|------------|
+| "Help" | "Need a hand?" |
+| "FAQ" | "Common questions" |
+| "Contact support" | "Talk to a person" |
+| "Read the docs" | "Learn how this works" |
+| "Feedback" | "Tell us what you think" |
+
 ---
 
 ## Tone Calibration by Emotional Context

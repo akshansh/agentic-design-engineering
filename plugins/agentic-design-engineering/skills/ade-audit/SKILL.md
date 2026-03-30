@@ -1,12 +1,12 @@
 ---
 name: ade:audit
-description: "Run a full CLEAR + PLACE + ALIVE evaluation on a page — score each framework out of 50, produce a combined report with prioritized recommendations across all three."
+description: "Run a full CLEAR + PLACE + ALIVE + VOICE evaluation on a page — score each framework, produce a combined report out of /200 with prioritized recommendations across all four."
 argument-hint: "[URL or file path of the page/component to audit]"
 ---
 
 # /ade:audit — Full Design Audit
 
-You are a design auditor running the complete ADE evaluation suite. Your job is to assess a page or component against all three design frameworks — CLEAR (structure), PLACE (atmosphere), and ALIVE (interactivity) — and produce a single prioritized report.
+You are a design auditor running the complete ADE evaluation suite. Your job is to assess a page or component against all four design frameworks — CLEAR (structure), PLACE (atmosphere), ALIVE (interactivity), and VOICE (communication) — and produce a single prioritized report.
 
 **This is an audit, not a transformation.** You score and recommend. You do not fix.
 
@@ -55,7 +55,7 @@ Score each PLACE dimension 0–10:
 | **L** — Light & Depth | Is there a directional light source and sense of enclosure? | /10 |
 | **A** — Atmosphere Layers | Are background, vignette, grain, and surface materials present? | /10 |
 | **C** — Color from Materials | Are colors derived from named materials, not arbitrary hex values? | /10 |
-| **E** — Environmental Consistency | Does every page feel like the same building? | /10 |
+| **E** — Enacted Typography | Do headings and copy feel like they belong to the place? | /10 |
 
 **PLACE Total: /50**
 
@@ -84,7 +84,27 @@ For each dimension scoring below 8, list dead spots and missing injections with 
 
 ---
 
-## Step 5: Prioritize Recommendations
+## Step 5: Run the VOICE Auditor
+
+Score each VOICE principle 0–10:
+
+| Principle | Question | Score |
+|-----------|----------|-------|
+| **1** — Partnership | Does the copy speak with the user, not at them? | /10 |
+| **2** — Simplification | Is every word earning its place? | /10 |
+| **3** — Purpose | Do actions explain why before what? | /10 |
+| **4** — Invitation | Are interactions framed as invitations, not commands? | /10 |
+| **5** — Connection | Does copy connect moments to meaning? | /10 |
+| **6** — Compassion | Are errors kind and guiding? | /10 |
+| **7** — Metaphor Language | Does copy inhabit the PLACE metaphor (if established)? | /10 |
+
+**VOICE Total: /70** (normalized to /50 for combined scoring: `Math.round(total * 50 / 70)`)
+
+For each principle scoring below 7, list specific copy violations with file:line references.
+
+---
+
+## Step 6: Prioritize Recommendations
 
 Combine all violations across the three frameworks into a single prioritized list.
 
@@ -107,7 +127,7 @@ List each recommendation as:
 
 ---
 
-## Step 6: Combined Report
+## Step 7: Combined Report
 
 Output the full report:
 
@@ -124,7 +144,8 @@ Output the full report:
 | CLEAR (Structure) | XX/50 | [Passing (40+) / Needs Work / Failing] |
 | PLACE (Atmosphere) | XX/50 | [Passing (40+) / Needs Work / Failing] |
 | ALIVE (Interactivity) | XX/50 | [Passing (40+) / Needs Work / Failing] |
-| **Combined** | **XX/150** | **[Overall status]** |
+| VOICE (Communication) | XX/50 | [Passing (40+) / Needs Work / Failing] |
+| **Combined** | **XX/200** | **[Overall status]** |
 
 ### CLEAR Breakdown
 | Dimension | Score | Key Issues |
@@ -142,7 +163,7 @@ Output the full report:
 | L — Light & Depth | /10 | [summary or "Clean"] |
 | A — Atmosphere Layers | /10 | [summary or "Clean"] |
 | C — Color from Materials | /10 | [summary or "Clean"] |
-| E — Environmental Consistency | /10 | [summary or "Clean"] |
+| E — Enacted Typography | /10 | [summary or "Clean"] |
 
 ### ALIVE Breakdown
 | Dimension | Score | Key Issues |
@@ -153,22 +174,33 @@ Output the full report:
 | V — Vitality & Physics | /10 | [summary or "Clean"] |
 | E — Emergence & Surprise | /10 | [summary or "Clean"] |
 
+### VOICE Breakdown
+| Principle | Score | Key Issues |
+|-----------|-------|------------|
+| 1 — Partnership | /10 | [summary or "Clean"] |
+| 2 — Simplification | /10 | [summary or "Clean"] |
+| 3 — Purpose | /10 | [summary or "Clean"] |
+| 4 — Invitation | /10 | [summary or "Clean"] |
+| 5 — Connection | /10 | [summary or "Clean"] |
+| 6 — Compassion | /10 | [summary or "Clean"] |
+| 7 — Metaphor Language | /10 | [summary or "Clean"] |
+
 ### Prioritized Recommendations
 [P0 items first, then P1, P2, P3 — each with framework tag, issue, fix, file:line]
 
 ### Verdict
 [One of the following:]
-- **Score 120+:** This interface is well-crafted. Minor polish recommended.
-- **Score 90-119:** Solid foundation. Targeted improvements will elevate it.
-- **Score 60-89:** Significant gaps. Focus on P0/P1 items before shipping.
-- **Score below 60:** Needs a full transformation pass. Start with CLEAR.
+- **Score 160+:** This interface is well-crafted across all dimensions. Minor polish recommended.
+- **Score 120-159:** Solid foundation. Targeted improvements will elevate it.
+- **Score 80-119:** Significant gaps. Focus on P0/P1 items before shipping.
+- **Score below 80:** Needs a full transformation pass. Start with `/ade:transform`.
 ```
 
 Log this report to `ade_docs/YYYY-MM-DD-audit.md`.
 
 ---
 
-## Step 7: Next Steps
+## Step 8: Next Steps
 
 Based on the scores, recommend the appropriate action:
 

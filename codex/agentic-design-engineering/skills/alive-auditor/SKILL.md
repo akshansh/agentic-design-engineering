@@ -107,7 +107,8 @@ For each dead spot found, return:
     "aligned": false,
     "fix": "Unify all spring tensions to high (500ms+), increase transform damping"
   },
-  "summary": "Interface has atmosphere but feels static. Core loop exists but has 4 dead spots. No easter egg. Discovery is flat — nothing to find beyond the obvious."
+  "summary": "Interface has atmosphere but feels static. Core loop exists but has 4 dead spots. No easter egg. Discovery is flat — nothing to find beyond the obvious.",
+  "readyForVoice": false
 }
 ```
 
@@ -118,3 +119,4 @@ For each dead spot found, return:
 - Dead spots in the core loop are always "critical" severity.
 - Be specific about what "dead" means: "feels like a spreadsheet cell" is diagnostic. "No animation" is just observation.
 - The 8 kinds of fun (from MDA framework) help assess what types of engagement exist.
+- `readyForVoice` is true only if total score >= 35. ALIVE has a lower threshold than CLEAR because interactivity improvements are incremental.

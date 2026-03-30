@@ -18,6 +18,7 @@ This plugin provides design engineering frameworks that transform generic UIs in
 | `clear-auditor` | Evaluates UI against CLEAR framework: copy, layout, emphasis, accessibility, reward. Returns scored findings with repair procedures. | inherit |
 | `place-auditor` | Evaluates atmosphere against PLACE framework: physical metaphor, lighting, animation, color-as-material, typography. Returns scored findings with diagnostics. | inherit |
 | `alive-auditor` | Evaluates interactivity against ALIVE framework: agency, loops, invitation, vitality, emergence. Returns scored findings with dead-spot map. | inherit |
+| `voice-auditor` | Evaluates UI copy against VOICE framework: partnership, simplification, purpose, invitation, connection, compassion, metaphor language. Returns scored findings. | inherit |
 
 ### Design Agents (`agents/design/`)
 
@@ -27,11 +28,17 @@ This plugin provides design engineering frameworks that transform generic UIs in
 | `atmosphere-builder` | Given a chosen metaphor and materials, generates scoped CSS atmosphere layers (background, light source, vignette, texture, air). | inherit |
 | `vitality-injector` | Scans code for interaction dead spots (hard cuts, spinner loaders, color-only hovers) and generates physics-based replacements. | inherit |
 
+### Analysis Agents (`agents/analysis/`)
+
+| Agent | Description | Model |
+|-------|-------------|-------|
+| `codebase-comprehender` | Scans project structure, dependencies, and UI patterns to build a Product Portrait — understanding domain, user persona, and emotional weight before framework evaluation. | inherit |
+
 ### Voice Agents (`agents/voice/`)
 
 | Agent | Description | Model |
 |-------|-------------|-------|
-| `akshansh-voice` | Reviews UI copy (button labels, error messages, empty states, microcopy) and rewrites in Akshansh's communication style: warm, structured, purposeful. | inherit |
+| `voice-writer` | Reviews UI copy (button labels, error messages, empty states, microcopy) and rewrites generic text to sound warm, structured, and purposeful. Supports custom voice profiles. | inherit |
 
 ## Skills Directory
 
@@ -43,7 +50,7 @@ This plugin provides design engineering frameworks that transform generic UIs in
 | `ade-place` | `/ade:place` | Atmosphere transformation. Discovers metaphor, builds CSS atmosphere, iterates 5 cycles via design-iterator. |
 | `ade-alive` | `/ade:alive` | Interactivity injection. Identifies core loop, finds dead spots, injects physics and discovery layers, requires easter egg. |
 | `ade-voice` | `/ade:voice` | Communication style pass. Reviews and rewrites UI copy to sound intentional, not generic. |
-| `ade-audit` | `/ade:audit` | Full evaluation. Runs CLEAR + PLACE + ALIVE audits in sequence, produces combined scored report. |
+| `ade-audit` | `/ade:audit` | Full evaluation. Runs CLEAR + PLACE + ALIVE + VOICE audits in sequence, produces combined scored report out of /200. |
 | `ade-transform` | `/ade:transform` | End-to-end transformation. CLEAR fix → PLACE atmosphere → ALIVE vitality → VOICE copy. The flagship skill. |
 
 ## Cross-Framework Handoffs
@@ -55,6 +62,14 @@ Each skill ends with a suggestion for the next framework in the chain:
 /ade:place → "Atmosphere is set. Want it to feel alive? → /ade:alive"
 /ade:alive → "Interactivity injected. Want the copy to sound intentional? → /ade:voice"
 ```
+
+## Step 0: Codebase Comprehension
+
+Every skill execution begins with Step 0 — building a Product Portrait that understands the domain, user persona, and emotional weight of the codebase before evaluation. See `skills/shared/step-0-comprehension.md`.
+
+## Autonomous Mode
+
+The `ade:transform` skill supports an autonomous mode (`--auto`) where the agent makes all decisions independently — including metaphor selection. All gate rules and quality thresholds still apply. See the Operational Modes section in `skills/ade-transform/SKILL.md`.
 
 ## Decision Logging
 

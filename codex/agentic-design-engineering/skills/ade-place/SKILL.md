@@ -9,6 +9,19 @@ You are an art director. Your job is to take a generic, functional UI and transf
 
 **Prerequisite:** CLEAR must pass first (score >= 40). If not, tell the user to run `$ade-clear` first.
 
+## Step 0: Understand the Codebase (if not already done)
+
+If running standalone (not as part of `ade-transform`), run Step 0 first:
+Load: `skills/shared/step-0-comprehension.md`
+
+Build the Product Portrait before designing anything. The domain, user persona, and physical analog directly seed the metaphor discovery process.
+
+If running as part of `ade-transform`, the Product Portrait is already available — use it.
+
+## Baseline: Run PLACE Auditor
+
+Before transforming anything, run the `place-auditor` skill on the existing code to establish baseline scores. Record the scores — you'll compare against these after transformation.
+
 ## The Core Principle
 
 Every application inhabits a place. Your job is to discover which place, then build it.
@@ -204,27 +217,75 @@ Semantic colors inherit from materials:
 
 ---
 
-## Step 5: Iterate with Screenshots (5 cycles — mandatory)
+## Step 5: Iterate Through 5 Design Cycles (mandatory)
 
-Use the `design-iterator` agent for each page being transformed. If unavailable, use this manual loop:
-
-**Each cycle:**
-1. Make the changes to the code
-2. Screenshot the page in a real browser (or ask the user to check)
-3. Ask yourself: *"Does this feel like [the named place]? What breaks the spell?"*
-4. Identify the single weakest element and fix it
-5. Log what changed and why
-
-**Cycle focus:**
-- Cycle 1: Atmosphere foundation (background, color, light source)
-- Cycle 2: Material texture and typography character
-- Cycle 3: Surface materials (cards, panels, borders)
-- Cycle 4: Ornamental details and entrance animations
-- Cycle 5: Final polish, consistency check, responsive verification
+Each cycle has a specific focus and a concrete verification checklist. The agent verifies each cycle's checklist before moving to the next.
 
 **Transform one page at a time.** Start with the most emotionally important page (usually login or the primary view). Establish art direction there, then propagate.
 
 **Each page gets its own scoped class** and 5 cycles. This is slow. That's the point.
+
+---
+
+### Cycle 1: Atmosphere Foundation
+**Focus:** Background, color, light source
+
+**Make changes**, then verify:
+- [ ] Base background uses a multi-stop gradient (not a flat color)
+- [ ] A radial gradient simulates a directional light source (`::before` or `::after`)
+- [ ] At least one vignette layer exists (darker edges creating enclosure)
+- [ ] All new styles are scoped under the page class (no global pollution)
+- [ ] Temperature is consistent (all warm OR all cool OR intentionally mixed)
+
+---
+
+### Cycle 2: Material Texture and Typography
+**Focus:** Texture grain, font selection, material-derived colors
+
+**Make changes**, then verify:
+- [ ] A CSS-generated grain/texture layer exists (not an image)
+- [ ] All colors are defined as CSS custom properties named after physical materials (e.g., `--mahogany`, `--brass`, not `--primary-blue`)
+- [ ] All text/background pairs pass WCAG AA contrast (>= 4.5:1 for normal text, >= 3:1 for large text)
+- [ ] Display font is NOT a generic default (not Inter, not system-ui for headings)
+- [ ] Body font complements the display font without competing
+
+---
+
+### Cycle 3: Surface Materials
+**Focus:** Cards, panels, borders, interactive surfaces
+
+**Make changes**, then verify:
+- [ ] Cards/panels have `backdrop-filter`, `border`, and `box-shadow` that differ from browser defaults
+- [ ] Surface materials feel like physical objects (not flat rectangles)
+- [ ] Hover states on interactive surfaces include `transform` (not just color change)
+- [ ] Shadow direction is consistent with the light source from Cycle 1
+- [ ] Edge treatments (borders, dividers) use material-derived colors
+
+---
+
+### Cycle 4: Ornamental Details and Entrance Animation
+**Focus:** Decorative elements, entrance motion, responsive
+
+**Make changes**, then verify:
+- [ ] At least one ornamental CSS element exists (divider, decorative pseudo-element, border flourish)
+- [ ] Ornamental elements use `aria-hidden` treatment (decorative `content: ''`)
+- [ ] At least one entrance `@keyframes` animation exists
+- [ ] Entrance animations use staggered delays (80ms+ between elements)
+- [ ] `prefers-reduced-motion` media query disables animations
+
+---
+
+### Cycle 5: Final Verification
+**Focus:** Consistency, responsiveness, auditor validation
+
+**Verify:**
+- [ ] Run the `place-auditor` on the transformed code — score must be >= 35/50
+- [ ] All 5 PLACE dimensions must score >= 5/10 individually
+- [ ] Responsive: styles work at mobile width (< 640px) — check for overflow, readability
+- [ ] No global style pollution — all selectors scoped under page class
+- [ ] The metaphor is identifiable: could a stranger name the place from the code alone?
+
+If the place-auditor score is below 35/50, identify the weakest dimension and apply a targeted fix before proceeding.
 
 ---
 
@@ -255,6 +316,16 @@ Output a summary:
 **Temperature:** [warm/cool/mixed]
 **Materials:** [list]
 **Pages transformed:** [list with scope classes]
+
+### Scores
+| Dimension          | Before | After | Delta  |
+|--------------------|--------|-------|--------|
+| P — Physical Metaphor | /10   | /10  |        |
+| L — Lighting          | /10   | /10  |        |
+| A — Animation         | /10   | /10  |        |
+| C — Color as Material | /10   | /10  |        |
+| E — Enacted Typography| /10   | /10  |        |
+| **Total**             | **/50** | **/50** |    |
 
 ### Atmosphere Layers Applied
 - Background: [description]

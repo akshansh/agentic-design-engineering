@@ -10,9 +10,11 @@ This isn't a design system. It's a design *philosophy* with teeth — actionable
 
 ---
 
-## See It In Action
+## Watch the Walkthrough
 
-[**▶ Watch the demo — 8 min**](https://supercut.ai/share/akshansh/C1YmDLwspBPB14BJSHnAMI) — see Build, Style, Move, and Write transform a real interface from generic to inhabited.
+[![Agentic Design Engineering — 8 min walkthrough](docs/agentic-design-engineering-video.png)](https://supercut.ai/share/akshansh/C1YmDLwspBPB14BJSHnAMI)
+
+*8 min · The origin story, the four frameworks, and a live install demo.*
 
 ---
 

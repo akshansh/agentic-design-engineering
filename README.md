@@ -10,6 +10,16 @@ This isn't a design system. It's a design *philosophy* with teeth — actionable
 
 ---
 
+## See It In Action
+
+<a href="https://supercut.ai/share/akshansh/C1YmDLwspBPB14BJSHnAMI" target="_blank">
+  <img src="https://supercut.ai/share/akshansh/C1YmDLwspBPB14BJSHnAMI/thumbnail" alt="▶ Watch — Agentic Design Engineering" width="100%" style="border-radius:12px;" />
+</a>
+
+> [**▶ Watch the demo**](https://supercut.ai/share/akshansh/C1YmDLwspBPB14BJSHnAMI) — see Build, Style, Move, and Write in action on a real interface.
+
+---
+
 ## Installation
 
 Choose the host you want to install into:

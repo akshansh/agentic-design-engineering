@@ -141,7 +141,7 @@ Output a summary:
 - [anything that couldn't be auto-fixed]
 ```
 
-Log this to `ade_docs/YYYY-MM-DD-clear-audit.md`.
+Log this to `ade_docs/YYYY-MM-DD-build-audit.md`.
 
 ### Handoff
 

@@ -343,7 +343,7 @@ Output a summary:
 - [list with line ranges]
 ```
 
-Log to `ade_docs/YYYY-MM-DD-place-transformation.md`.
+Log to `ade_docs/YYYY-MM-DD-style-transformation.md`.
 
 ### Handoff
 

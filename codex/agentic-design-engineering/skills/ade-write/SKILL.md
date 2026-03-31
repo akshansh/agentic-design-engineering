@@ -216,7 +216,7 @@ Output a summary:
 - [list]
 ```
 
-Log to `ade_docs/YYYY-MM-DD-voice-review.md`.
+Log to `ade_docs/YYYY-MM-DD-write-review.md`.
 
 ### Handoff
 

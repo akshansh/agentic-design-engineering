@@ -205,7 +205,7 @@ Log this report to `ade_docs/YYYY-MM-DD-audit.md`.
 Based on the scores, recommend the appropriate action:
 
 **If any framework scores below 40:**
-> [Framework] scored [X]/50 — below the passing threshold. Run `/ade:[clear|place|alive]` to address the gaps before a re-audit.
+> [Framework] scored [X]/50 — below the passing threshold. Run `/ade:build` (structure), `/ade:style` (atmosphere), `/ade:move` (interactivity), or `/ade:write` (copy) — whichever framework failed — to address the gaps before a re-audit.
 
 **If all frameworks pass (40+) but total is below 120:**
 > All frameworks pass individually, but there's room for polish. Focus on the P2/P3 recommendations above.

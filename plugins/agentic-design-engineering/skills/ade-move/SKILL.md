@@ -422,7 +422,7 @@ Output a summary:
 - [note any Canvas/WebGL additions and their cost]
 ```
 
-Log to `ade_docs/YYYY-MM-DD-alive-injection.md`.
+Log to `ade_docs/YYYY-MM-DD-move-injection.md`.
 
 ### Handoff
 

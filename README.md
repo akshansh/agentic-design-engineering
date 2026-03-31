@@ -12,11 +12,7 @@ This isn't a design system. It's a design *philosophy* with teeth — actionable
 
 ## See It In Action
 
-<a href="https://supercut.ai/share/akshansh/C1YmDLwspBPB14BJSHnAMI" target="_blank">
-  <img src="https://supercut.ai/share/akshansh/C1YmDLwspBPB14BJSHnAMI/thumbnail" alt="▶ Watch — Agentic Design Engineering" width="100%" style="border-radius:12px;" />
-</a>
-
-> [**▶ Watch the demo**](https://supercut.ai/share/akshansh/C1YmDLwspBPB14BJSHnAMI) — see Build, Style, Move, and Write in action on a real interface.
+[**▶ Watch the demo — 8 min**](https://supercut.ai/share/akshansh/C1YmDLwspBPB14BJSHnAMI) — see Build, Style, Move, and Write transform a real interface from generic to inhabited.
 
 ---
 

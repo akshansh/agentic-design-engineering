@@ -63,9 +63,9 @@ Each skill ends with a suggestion for the next framework in the chain:
 /ade:move → "Interactivity injected. Want the copy to sound intentional? → /ade:write"
 ```
 
-## Step 0: Codebase Comprehension
+## Step 0: Understand
 
-Every skill execution begins with Step 0 — building a Product Portrait that understands the domain, user persona, and emotional weight of the codebase before evaluation. See `skills/shared/step-0-comprehension.md`.
+Every skill execution begins with Step 0 — building a Product Portrait that understands the domain, user persona, and emotional weight of the codebase before evaluation. See `skills/shared/step-0-understand.md`.
 
 ## Autonomous Mode
 

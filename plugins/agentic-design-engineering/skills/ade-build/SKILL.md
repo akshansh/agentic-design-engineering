@@ -21,7 +21,7 @@ You are a UI structure auditor. Your job is to evaluate a page or component agai
 ## Step 0: Understand the Codebase (if not already done)
 
 If running standalone (not as part of `ade:compound`), run Step 0 first:
-Load: `skills/shared/step-0-comprehension.md`
+Load: `skills/shared/step-0-understand.md`
 
 Build the Product Portrait before evaluating. The product type classification directly determines which context branch to use in the scoring.
 

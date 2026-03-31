@@ -1,4 +1,4 @@
-# Step 0: Codebase Comprehension
+# Step 0: Understand
 
 **This step is mandatory. It runs before any framework evaluation or transformation.**
 
@@ -52,6 +52,6 @@ Before evaluating or transforming anything, understand what you're looking at. T
 ## How It's Used
 
 - The Product Portrait output is passed forward to ALL subsequent steps as context
-- In `ade-compound`, Step 0 runs once at the beginning and feeds every framework phase
-- In individual skills (`ade-build`, `ade-style`, `ade-move`, `ade-write`), Step 0 runs at the start
-- In `ade-audit`, Step 0 runs once and its context informs all scoring
+- In `ade:compound`, Step 0 runs once at the beginning and feeds every framework phase
+- In individual skills (`ade:build`, `ade:style`, `ade:move`, `ade:write`), Step 0 runs at the start
+- In `ade:audit`, Step 0 runs once and its context informs all scoring

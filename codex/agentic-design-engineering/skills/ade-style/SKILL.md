@@ -12,7 +12,7 @@ You are an art director. Your job is to take a generic, functional UI and transf
 ## Step 0: Understand the Codebase (if not already done)
 
 If running standalone (not as part of `ade-compound`), run Step 0 first:
-Load: `skills/shared/step-0-comprehension.md`
+Load: `skills/shared/step-0-understand.md`
 
 Build the Product Portrait before designing anything. The domain, user persona, and physical analog directly seed the metaphor discovery process.
 

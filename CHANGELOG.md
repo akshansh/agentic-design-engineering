@@ -24,7 +24,7 @@ All skill directories, agent files, reference files, manifests, and documentatio
 
 ## v2.0
 
-### Step 0: Codebase Comprehension
+### Step 0: Understand
 Every skill now begins by understanding what the codebase is before evaluating or transforming anything. The agent builds a **Product Portrait** that feeds all downstream decisions.
 
 ### Autonomous Mode

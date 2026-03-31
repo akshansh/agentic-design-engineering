@@ -13,7 +13,7 @@ Always apply frameworks in this order: **Build** (structure) → **Style** (atmo
 - Move should complete before Write (can't write metaphor copy before the metaphor exists)
 - Each framework gates the next — scores must pass 40/50 before proceeding
 
-## Step 0: Codebase Comprehension
+## Step 0: Understand
 Every skill execution begins with Step 0 — building a Product Portrait that understands the domain, user persona, and emotional weight of the codebase before evaluation or transformation.
 
 ## Decision Logging

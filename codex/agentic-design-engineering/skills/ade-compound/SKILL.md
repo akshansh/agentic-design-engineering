@@ -50,8 +50,8 @@ Activate autonomous mode when:
 
 **This runs once, at the very beginning, before any framework.**
 
-Load the codebase comprehension process:
-`skills/shared/step-0-comprehension.md`
+Load the Step 0 understand process:
+`skills/shared/step-0-understand.md`
 
 1. Scan the project structure, dependencies, README, routes, and component hierarchy
 2. Build the Product Portrait (domain, interaction pattern, data density, user persona, emotional weight, physical analog)

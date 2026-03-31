@@ -2,7 +2,7 @@
 
 **Transform generic UIs into intentional, inhabited digital places.**
 
-A Claude Code plugin with four interconnected design frameworks that turn default-looking interfaces into spaces that feel crafted, alive, and distinctly human. Features codebase comprehension, autonomous mode, before/after scoring, and structured cross-framework handoffs.
+A Claude Code plugin with four interconnected design frameworks that turn default-looking interfaces into spaces that feel crafted, alive, and distinctly human. Features codebase understanding, autonomous mode, before/after scoring, and structured cross-framework handoffs.
 
 ## The Four Frameworks
 
@@ -21,7 +21,7 @@ Feedback, discovery, physics, easter eggs. Static interfaces are dead. Move inje
 Copy, tone, warmth. Most interface copy sounds like it was written by committee. Write rewrites it to sound like it was written by a person who cares — clear, warm, and purposeful, with language that reinforces the metaphor established by Style.
 
 ### Step 0 — Does the agent understand what it's looking at?
-Every skill begins with Codebase Comprehension — the agent scans the project structure, dependencies, and UI patterns to build a **Product Portrait** (domain, user persona, emotional weight, physical analog) before evaluating or transforming anything. This context feeds all downstream decisions.
+Every skill begins with Understand — the agent scans the project structure, dependencies, and UI patterns to build a **Product Portrait** (domain, user persona, emotional weight, physical analog) before evaluating or transforming anything. This context feeds all downstream decisions.
 
 ## Slash Commands
 
@@ -76,7 +76,7 @@ Then use slash commands: `/ade:build`, `/ade:style`, `/ade:move`, `/ade:write`, 
 
 ## Framework Ordering
 
-The frameworks run in sequence: **Step 0 (Comprehend) → Build → Style → Move → Write**.
+The frameworks run in sequence: **Step 0 (Understand) → Build → Style → Move → Write**.
 
 Step 0 builds a Product Portrait that feeds everything. Then: Build before Style (can't build atmosphere on a broken layout). Style before Move (can't animate without materiality). Move before Write (can't write metaphor copy before the metaphor exists). Each framework gates the next — scores must pass before proceeding.
 

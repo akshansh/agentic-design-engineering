@@ -15,7 +15,7 @@ Load the full voice reference:
 ## Step 0: Understand the Codebase (if not already done)
 
 If running standalone (not as part of `ade-compound`), run Step 0 first:
-Load: `skills/shared/step-0-comprehension.md`
+Load: `skills/shared/step-0-understand.md`
 
 Build the Product Portrait before evaluating copy. The user persona and emotional weight determine tone calibration — a medical compliance tool needs different warmth than a creative portfolio app.
 

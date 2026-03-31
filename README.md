@@ -157,7 +157,7 @@ Reviews and rewrites UI copy to sound intentional — warm partnership, purpose 
 ```mermaid
 graph TD
     subgraph "The Transformation Pipeline"
-        S0["0. COMPREHEND — Understand the codebase"] --> CL["1. Build — Fix structure"]
+        S0["0. UNDERSTAND — the codebase"] --> CL["1. Build — Fix structure"]
         CL --> PL["2. Style — Set atmosphere"]
         PL --> AL["3. Move — Inject vitality"]
         AL --> VO["4. Write — Polish copy"]
@@ -245,12 +245,12 @@ agentic-design-engineering/
 │       ├── CLAUDE.md                     # Quick reference
 │       ├── README.md                     # Plugin documentation
 │       ├── agents/
-│       │   ├── analysis/                 # 1 comprehension agent
+│       │   ├── analysis/                 # 1 understand agent
 │       │   ├── review/                   # 4 auditor agents
 │       │   ├── design/                   # 3 builder agents
 │       │   └── voice/                    # 1 voice agent
 │       ├── skills/
-│       │   ├── shared/                   # Step 0 comprehension + handoff schema
+│       │   ├── shared/                   # Step 0: understand + handoff schema
 │       │   ├── ade-build/                # + references/build-framework.md
 │       │   ├── ade-style/                # + references/style-framework.md
 │       │   ├── ade-move/                # + references/move-framework.md
@@ -266,7 +266,7 @@ agentic-design-engineering/
 │       ├── .codex-plugin/plugin.json     # Codex manifest
 │       ├── AGENTS.md                     # Codex project instructions
 │       ├── skills/
-│       │   ├── shared/                   # Step 0 comprehension + handoff schema
+│       │   ├── shared/                   # Step 0: understand + handoff schema
 │       │   ├── ade-build/                # 6 framework skills (adapted)
 │       │   ├── ade-style/                #   + references/
 │       │   ├── ade-move/

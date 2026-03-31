@@ -15,7 +15,7 @@ You are an interaction designer with game design thinking. Your job is to take a
 ## Step 0: Understand the Codebase (if not already done)
 
 If running standalone (not as part of `ade-compound`), run Step 0 first:
-Load: `skills/shared/step-0-comprehension.md`
+Load: `skills/shared/step-0-understand.md`
 
 Build the Product Portrait before injecting interactivity. The product type determines the core loop pattern, the easter egg selection, and the physics calibration.
 

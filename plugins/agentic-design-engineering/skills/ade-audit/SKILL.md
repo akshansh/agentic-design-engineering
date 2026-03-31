@@ -1,12 +1,12 @@
 ---
 name: ade:audit
-description: "Run a full CLEAR + PLACE + ALIVE + VOICE evaluation on a page — score each framework, produce a combined report out of /200 with prioritized recommendations across all four."
+description: "Run a full Build + Style + Move + Write evaluation on a page — score each framework, produce a combined report out of /200 with prioritized recommendations across all four."
 argument-hint: "[URL or file path of the page/component to audit]"
 ---
 
 # /ade:audit — Full Design Audit
 
-You are a design auditor running the complete ADE evaluation suite. Your job is to assess a page or component against all four design frameworks — CLEAR (structure), PLACE (atmosphere), ALIVE (interactivity), and VOICE (communication) — and produce a single prioritized report.
+You are a design auditor running the complete ADE evaluation suite. Your job is to assess a page or component against all four design frameworks — Build (structure), Style (atmosphere), Move (interactivity), and Write (communication) — and produce a single prioritized report.
 
 **This is an audit, not a transformation.** You score and recommend. You do not fix.
 
@@ -21,12 +21,12 @@ Read the target page/component code thoroughly. Build a mental model of:
 
 ---
 
-## Step 2: Run the CLEAR Auditor
+## Step 2: Run the Build Auditor
 
-Load the CLEAR framework reference:
-`references/clear-framework.md`
+Load the Build framework reference:
+`references/build-framework.md`
 
-Score each CLEAR dimension 0–10:
+Score each Build dimension 0–10:
 
 | Dimension | Question | Score |
 |-----------|----------|-------|
@@ -36,18 +36,18 @@ Score each CLEAR dimension 0–10:
 | **A** — Accessibility | Can everyone use this? (keyboard, screen reader, contrast, targets) | /10 |
 | **R** — Reward | Does every action get feedback? Are errors compassionate? | /10 |
 
-**CLEAR Total: /50**
+**Build Total: /50**
 
 For each dimension scoring below 8, list specific violations with file:line references.
 
 ---
 
-## Step 3: Run the PLACE Auditor
+## Step 3: Run the Style Auditor
 
-Load the PLACE framework reference:
-`references/place-framework.md`
+Load the Style framework reference:
+`references/style-framework.md`
 
-Score each PLACE dimension 0–10:
+Score each Style dimension 0–10:
 
 | Dimension | Question | Score |
 |-----------|----------|-------|
@@ -57,36 +57,36 @@ Score each PLACE dimension 0–10:
 | **C** — Color from Materials | Are colors derived from named materials, not arbitrary hex values? | /10 |
 | **E** — Enacted Typography | Do headings and copy feel like they belong to the place? | /10 |
 
-**PLACE Total: /50**
+**Style Total: /50**
 
 For each dimension scoring below 8, list what's missing or unconvincing.
 
 ---
 
-## Step 4: Run the ALIVE Auditor
+## Step 4: Run the Move Auditor
 
-Load the ALIVE framework reference:
-`references/alive-framework.md`
+Load the Move framework reference:
+`references/move-framework.md`
 
-Score each ALIVE dimension 0–10:
+Score each Move dimension 0–10:
 
 | Dimension | Question | Score |
 |-----------|----------|-------|
 | **A** — Agency & Affordance | Do elements respond before contact? Do they signal interactivity? | /10 |
 | **L** — Loops & Feedback | Does every action get a weighted, physical response? | /10 |
 | **I** — Invitation & Discovery | Are there scroll reveals, progressive depth, power-user paths? | /10 |
-| **V** — Vitality & Physics | Does the motion match the PLACE metaphor's weight and character? | /10 |
+| **V** — Vitality & Physics | Does the motion match the Style metaphor's weight and character? | /10 |
 | **E** — Emergence & Surprise | Is there a hidden fingerprint? Contextual acknowledgment? | /10 |
 
-**ALIVE Total: /50**
+**Move Total: /50**
 
 For each dimension scoring below 8, list dead spots and missing injections with file:line references.
 
 ---
 
-## Step 5: Run the VOICE Auditor
+## Step 5: Run the Write Auditor
 
-Score each VOICE principle 0–10:
+Score each Write principle 0–10:
 
 | Principle | Question | Score |
 |-----------|----------|-------|
@@ -96,9 +96,9 @@ Score each VOICE principle 0–10:
 | **4** — Invitation | Are interactions framed as invitations, not commands? | /10 |
 | **5** — Connection | Does copy connect moments to meaning? | /10 |
 | **6** — Compassion | Are errors kind and guiding? | /10 |
-| **7** — Metaphor Language | Does copy inhabit the PLACE metaphor (if established)? | /10 |
+| **7** — Metaphor Language | Does copy inhabit the Style metaphor (if established)? | /10 |
 
-**VOICE Total: /70** (normalized to /50 for combined scoring: `Math.round(total * 50 / 70)`)
+**Write Total: /70** (normalized to /50 for combined scoring: `Math.round(total * 50 / 70)`)
 
 For each principle scoring below 7, list specific copy violations with file:line references.
 
@@ -112,15 +112,15 @@ Combine all violations across the three frameworks into a single prioritized lis
 
 | Tier | Criteria | Examples |
 |------|----------|---------|
-| **P0 — Blocking** | Accessibility failures, broken interactions, missing keyboard nav | CLEAR-A violations, missing `prefers-reduced-motion` |
-| **P1 — Critical** | No metaphor, no feedback on core loop, copy that blames users | PLACE-P absence, ALIVE-L gaps, CLEAR-C blaming errors |
-| **P2 — Important** | Weak atmosphere, inconsistent physics, generic copy | PLACE-A thin layers, ALIVE-V mismatched weight, VOICE issues |
-| **P3 — Polish** | Missing ornamental details, no easter egg, minor copy improvements | PLACE ornaments, ALIVE-E easter egg missing, VOICE tone |
+| **P0 — Blocking** | Accessibility failures, broken interactions, missing keyboard nav | Build-A violations, missing `prefers-reduced-motion` |
+| **P1 — Critical** | No metaphor, no feedback on core loop, copy that blames users | Style-P absence, Move-L gaps, Build-C blaming errors |
+| **P2 — Important** | Weak atmosphere, inconsistent physics, generic copy | Style-A thin layers, Move-V mismatched weight, Write issues |
+| **P3 — Polish** | Missing ornamental details, no easter egg, minor copy improvements | Style ornaments, Move-E easter egg missing, Write tone |
 
 List each recommendation as:
 
 ```
-[P0/P1/P2/P3] [CLEAR/PLACE/ALIVE] — [specific issue]
+[P0/P1/P2/P3] [Build/Style/Move] — [specific issue]
 → [specific fix recommendation]
 → File: [file:line]
 ```
@@ -141,13 +141,13 @@ Output the full report:
 
 | Framework | Score | Status |
 |-----------|-------|--------|
-| CLEAR (Structure) | XX/50 | [Passing (40+) / Needs Work / Failing] |
-| PLACE (Atmosphere) | XX/50 | [Passing (40+) / Needs Work / Failing] |
-| ALIVE (Interactivity) | XX/50 | [Passing (40+) / Needs Work / Failing] |
-| VOICE (Communication) | XX/50 | [Passing (40+) / Needs Work / Failing] |
+| Build (Structure) | XX/50 | [Passing (40+) / Needs Work / Failing] |
+| Style (Atmosphere) | XX/50 | [Passing (40+) / Needs Work / Failing] |
+| Move (Interactivity) | XX/50 | [Passing (40+) / Needs Work / Failing] |
+| Write (Communication) | XX/50 | [Passing (40+) / Needs Work / Failing] |
 | **Combined** | **XX/200** | **[Overall status]** |
 
-### CLEAR Breakdown
+### Build Breakdown
 | Dimension | Score | Key Issues |
 |-----------|-------|------------|
 | C — Copy | /10 | [summary or "Clean"] |
@@ -156,7 +156,7 @@ Output the full report:
 | A — Accessibility | /10 | [summary or "Clean"] |
 | R — Reward | /10 | [summary or "Clean"] |
 
-### PLACE Breakdown
+### Style Breakdown
 | Dimension | Score | Key Issues |
 |-----------|-------|------------|
 | P — Physical Metaphor | /10 | [summary or "Clean"] |
@@ -165,7 +165,7 @@ Output the full report:
 | C — Color from Materials | /10 | [summary or "Clean"] |
 | E — Enacted Typography | /10 | [summary or "Clean"] |
 
-### ALIVE Breakdown
+### Move Breakdown
 | Dimension | Score | Key Issues |
 |-----------|-------|------------|
 | A — Agency & Affordance | /10 | [summary or "Clean"] |
@@ -174,7 +174,7 @@ Output the full report:
 | V — Vitality & Physics | /10 | [summary or "Clean"] |
 | E — Emergence & Surprise | /10 | [summary or "Clean"] |
 
-### VOICE Breakdown
+### Write Breakdown
 | Principle | Score | Key Issues |
 |-----------|-------|------------|
 | 1 — Partnership | /10 | [summary or "Clean"] |
@@ -193,7 +193,7 @@ Output the full report:
 - **Score 160+:** This interface is well-crafted across all dimensions. Minor polish recommended.
 - **Score 120-159:** Solid foundation. Targeted improvements will elevate it.
 - **Score 80-119:** Significant gaps. Focus on P0/P1 items before shipping.
-- **Score below 80:** Needs a full transformation pass. Start with `/ade:transform`.
+- **Score below 80:** Needs a full transformation pass. Start with `/ade:compound`.
 ```
 
 Log this report to `ade_docs/YYYY-MM-DD-audit.md`.
@@ -211,10 +211,10 @@ Based on the scores, recommend the appropriate action:
 > All frameworks pass individually, but there's room for polish. Focus on the P2/P3 recommendations above.
 
 **If total is 120+:**
-> Strong across all three frameworks. Consider running `/ade:voice` for a copy consistency pass.
+> Strong across all three frameworks. Consider running `/ade:write` for a copy consistency pass.
 
 **If the user wants everything fixed:**
-> Run `/ade:transform` to fix everything — it orchestrates all four frameworks in sequence.
+> Run `/ade:compound` to fix everything — it orchestrates all four frameworks in sequence.
 
 ---
 

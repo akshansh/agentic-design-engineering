@@ -6,11 +6,11 @@ alwaysApply: true
 # Agentic Design Engineering Conventions
 
 ## Framework Ordering
-Always apply frameworks in this order: **CLEAR** (structure) → **PLACE** (atmosphere) → **ALIVE** (interactivity) → **VOICE** (copy).
+Always apply frameworks in this order: **Build** (structure) → **Style** (atmosphere) → **Move** (interactivity) → **Write** (copy).
 
-- CLEAR must pass before PLACE is applied (can't build atmosphere on a broken layout)
-- PLACE should be established before ALIVE is injected (can't animate without materiality)
-- ALIVE should complete before VOICE (can't write metaphor copy before the metaphor exists)
+- Build must pass before Style is applied (can't build atmosphere on a broken layout)
+- Style should be established before Move is injected (can't animate without materiality)
+- Move should complete before Write (can't write metaphor copy before the metaphor exists)
 - Each framework gates the next — scores must pass 40/50 before proceeding
 
 ## Step 0: Codebase Comprehension
@@ -23,4 +23,4 @@ Every ADE skill execution MUST log decisions to `ade_docs/YYYY-MM-DD-<context>.m
 If a framework scores below 40/50, it blocks the next step. After 2 repair attempts, fallback strategies kick in — document what couldn't be fixed and proceed with a warning.
 
 ## Easter Egg Requirement
-Every ALIVE transformation MUST include at least one hidden fingerprint — the creator's signature in the work, discoverable but not obvious.
+Every Move transformation MUST include at least one hidden fingerprint — the creator's signature in the work, discoverable but not obvious.

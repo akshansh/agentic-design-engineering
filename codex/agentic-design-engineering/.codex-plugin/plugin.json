@@ -1,7 +1,7 @@
 {
   "name": "agentic-design-engineering",
   "version": "0.1.0",
-  "description": "Transform generic UIs into intentional, inhabited digital places — four interconnected design frameworks (CLEAR, PLACE, ALIVE, VOICE) with 13 skills and specialized agents.",
+  "description": "Transform generic UIs into intentional, inhabited digital places — four interconnected design frameworks (Build, Style, Move, Write) with 13 skills and specialized agents.",
   "author": {
     "name": "Akshansh Chaudhary",
     "url": "https://akshansh.net"
@@ -14,7 +14,7 @@
   "interface": {
     "displayName": "Agentic Design Engineering",
     "shortDescription": "Transform generic UIs into intentional, inhabited digital places.",
-    "longDescription": "Four interconnected design frameworks — CLEAR (structure), PLACE (atmosphere), ALIVE (interactivity), VOICE (communication) — that any AI agent can apply to turn default-looking interfaces into spaces that feel crafted, alive, and distinctly human.",
+    "longDescription": "Four interconnected design frameworks — Build (structure), Style (atmosphere), Move (interactivity), Write (communication) — that any AI agent can apply to turn default-looking interfaces into spaces that feel crafted, alive, and distinctly human.",
     "developerName": "Akshansh Chaudhary",
     "category": "Design",
     "capabilities": ["Read", "Write"]

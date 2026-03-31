@@ -8,17 +8,17 @@ A Claude Code plugin with four interconnected design frameworks that turn defaul
 
 Each framework asks a different question about your interface:
 
-### CLEAR — Does it work?
-Structure, accessibility, hierarchy. Before anything else, the interface must be usable. CLEAR audits layout consistency, responsive behavior, contrast ratios, focus management, and visual hierarchy — the foundation everything else builds on.
+### Build — Does it work?
+Structure, accessibility, hierarchy. Before anything else, the interface must be usable. Build audits layout consistency, responsive behavior, contrast ratios, focus management, and visual hierarchy — the foundation everything else builds on.
 
-### PLACE — Does it feel like somewhere?
-Atmosphere, metaphor, texture. Generic interfaces feel like nowhere. PLACE transforms them into inhabited spaces through physical metaphors — a boardroom with mahogany warmth, a workshop with industrial grit, a garden with organic softness. Real materials. Real light. Real temperature.
+### Style — Does it feel like somewhere?
+Atmosphere, metaphor, texture. Generic interfaces feel like nowhere. Style transforms them into inhabited spaces through physical metaphors — a boardroom with mahogany warmth, a workshop with industrial grit, a garden with organic softness. Real materials. Real light. Real temperature.
 
-### ALIVE — Does it engage?
-Feedback, discovery, physics, easter eggs. Static interfaces are dead. ALIVE injects vitality through micro-interactions, meaningful transitions, physics-based animations, and hidden fingerprints — small surprises that reward curiosity and make someone smile.
+### Move — Does it engage?
+Feedback, discovery, physics, easter eggs. Static interfaces are dead. Move injects vitality through micro-interactions, meaningful transitions, physics-based animations, and hidden fingerprints — small surprises that reward curiosity and make someone smile.
 
-### VOICE — Does it speak with intention?
-Copy, tone, warmth. Most interface copy sounds like it was written by committee. VOICE rewrites it to sound like it was written by a person who cares — clear, warm, and purposeful, with language that reinforces the metaphor established by PLACE.
+### Write — Does it speak with intention?
+Copy, tone, warmth. Most interface copy sounds like it was written by committee. Write rewrites it to sound like it was written by a person who cares — clear, warm, and purposeful, with language that reinforces the metaphor established by Style.
 
 ### Step 0 — Does the agent understand what it's looking at?
 Every skill begins with Codebase Comprehension — the agent scans the project structure, dependencies, and UI patterns to build a **Product Portrait** (domain, user persona, emotional weight, physical analog) before evaluating or transforming anything. This context feeds all downstream decisions.
@@ -27,17 +27,17 @@ Every skill begins with Codebase Comprehension — the agent scans the project s
 
 | Command | What it does |
 |---------|-------------|
-| `/ade:clear` | Audit and fix structural foundations (8 product-type contexts) |
-| `/ade:place` | Transform visual atmosphere with a physical metaphor (5 code-level design cycles) |
-| `/ade:alive` | Inject vitality, interactions, and easter eggs (product-matched) |
-| `/ade:voice` | Rewrite copy with warmth and intention (supports custom voice profiles) |
+| `/ade:build` | Audit and fix structural foundations (8 product-type contexts) |
+| `/ade:style` | Transform visual atmosphere with a physical metaphor (5 code-level design cycles) |
+| `/ade:move` | Inject vitality, interactions, and easter eggs (product-matched) |
+| `/ade:write` | Rewrite copy with warmth and intention (supports custom voice profiles) |
 | `/ade:audit` | Score all four frameworks without changing code (combined /200) |
-| `/ade:transform` | Full pipeline: Step 0 → CLEAR → PLACE → ALIVE → VOICE (supports `--auto` mode) |
+| `/ade:compound` | Full pipeline: Step 0 → Build → Style → Move → Write (supports `--auto` mode) |
 
 ## Key Features
 
 ### Autonomous Mode
-Add "surprise me" or `--auto` to `/ade:transform` and the agent makes all decisions independently — including metaphor selection via a 5-criteria scoring rubric (domain fit, material richness, emotional alignment, specificity, buildability). All quality gates still apply.
+Add "surprise me" or `--auto` to `/ade:compound` and the agent makes all decisions independently — including metaphor selection via a 5-criteria scoring rubric (domain fit, material richness, emotional alignment, specificity, buildability). All quality gates still apply.
 
 ### Before/After Scoring
 Every framework runs its auditor at the start (baseline) and end (result), producing delta tables:
@@ -53,7 +53,7 @@ Every framework runs its auditor at the start (baseline) and end (result), produ
 If a framework scores below 40/50, it blocks the next step. After 2 repair attempts, fallback strategies kick in — the agent documents what it couldn't fix and proceeds with a warning.
 
 ### Structured Handoffs
-Clean data contracts flow between frameworks: CLEAR passes product type and accessibility floor to PLACE. PLACE passes metaphor, materials, and physics profile to ALIVE. ALIVE passes interaction copy and easter egg triggers to VOICE.
+Clean data contracts flow between frameworks: Build passes product type and accessibility floor to Style. Style passes metaphor, materials, and physics profile to Move. Move passes interaction copy and easter egg triggers to Write.
 
 ## Installation
 
@@ -64,7 +64,7 @@ Clean data contracts flow between frameworks: CLEAR passes product type and acce
 /plugin install agentic-design-engineering
 ```
 
-Then use slash commands: `/ade:clear`, `/ade:place`, `/ade:alive`, `/ade:voice`, `/ade:audit`, `/ade:transform`
+Then use slash commands: `/ade:build`, `/ade:style`, `/ade:move`, `/ade:write`, `/ade:audit`, `/ade:compound`
 
 ### Cursor
 
@@ -72,17 +72,17 @@ Then use slash commands: `/ade:clear`, `/ade:place`, `/ade:alive`, `/ade:voice`,
 /add-plugin agentic-design-engineering
 ```
 
-Then use slash commands: `/ade:clear`, `/ade:place`, `/ade:alive`, `/ade:voice`, `/ade:audit`, `/ade:transform`
+Then use slash commands: `/ade:build`, `/ade:style`, `/ade:move`, `/ade:write`, `/ade:audit`, `/ade:compound`
 
 ## Framework Ordering
 
-The frameworks run in sequence: **Step 0 (Comprehend) → CLEAR → PLACE → ALIVE → VOICE**.
+The frameworks run in sequence: **Step 0 (Comprehend) → Build → Style → Move → Write**.
 
-Step 0 builds a Product Portrait that feeds everything. Then: CLEAR before PLACE (can't build atmosphere on a broken layout). PLACE before ALIVE (can't animate without materiality). ALIVE before VOICE (can't write metaphor copy before the metaphor exists). Each framework gates the next — scores must pass before proceeding.
+Step 0 builds a Product Portrait that feeds everything. Then: Build before Style (can't build atmosphere on a broken layout). Style before Move (can't animate without materiality). Move before Write (can't write metaphor copy before the metaphor exists). Each framework gates the next — scores must pass before proceeding.
 
 ## Philosophy
 
-Every application inhabits a place. Step 0 ensures the agent understands what that place could be. CLEAR ensures people can use it. PLACE ensures they want to be there. ALIVE ensures they want to come back. VOICE ensures it sounds like someone cares.
+Every application inhabits a place. Step 0 ensures the agent understands what that place could be. Build ensures people can use it. Style ensures they want to be there. Move ensures they want to come back. Write ensures it sounds like someone cares.
 
 Most software looks like it was assembled from a component library. It works, but it doesn't feel like anything. Agentic Design Engineering is a structured approach to changing that — not through taste alone, but through frameworks that any AI agent can apply consistently, autonomously, and measurably.
 

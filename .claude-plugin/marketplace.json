@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "agentic-design-engineering",
-      "description": "Transform generic UIs into intentional, inhabited digital places. Four interconnected frameworks — CLEAR (structure), PLACE (atmosphere), ALIVE (interactivity), VOICE (communication) — with 6 skills and 7 specialized agents.",
+      "description": "Transform generic UIs into intentional, inhabited digital places. Four interconnected frameworks — Build (structure), Style (atmosphere), Move (interactivity), Write (communication) — with 6 skills and 7 specialized agents.",
       "version": "0.1.0",
       "author": {
         "name": "Akshansh Chaudhary",

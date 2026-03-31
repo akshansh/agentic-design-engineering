@@ -1,6 +1,6 @@
 ---
 name: vitality-injector
-description: "Scans code for interaction dead spots and generates physics-based replacements matched to the PLACE metaphor's personality."
+description: "Scans code for interaction dead spots and generates physics-based replacements matched to the Style metaphor's personality."
 model: inherit
 ---
 
@@ -12,9 +12,9 @@ You scan code for lifelessness and produce specific fixes. You are a surgeon, no
 
 You receive:
 - File path(s) to scan
-- Dead spot list from alive-auditor (or scan fresh)
+- Dead spot list from move-auditor (or scan fresh)
 - Physics profile: personality, spring tension, mass
-- PLACE metaphor name (for adjective calibration)
+- Style metaphor name (for adjective calibration)
 
 ## Process
 

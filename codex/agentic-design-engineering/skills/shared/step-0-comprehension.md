@@ -45,13 +45,13 @@ Before evaluating or transforming anything, understand what you're looking at. T
 
 - A React component doesn't tell you whether it's used in a hospital or a music studio
 - The same card layout means something completely different in a finance dashboard vs. a recipe app
-- PLACE's metaphor discovery is impossible without understanding the product domain
-- CLEAR's context branching requires product understanding
+- Style's metaphor discovery is impossible without understanding the product domain
+- Build's context branching requires product understanding
 - The agent can't score meaningfully if it doesn't know what "good" looks like for this specific product
 
 ## How It's Used
 
 - The Product Portrait output is passed forward to ALL subsequent steps as context
-- In `ade-transform`, Step 0 runs once at the beginning and feeds every framework phase
-- In individual skills (`ade-clear`, `ade-place`, `ade-alive`, `ade-voice`), Step 0 runs at the start
+- In `ade-compound`, Step 0 runs once at the beginning and feeds every framework phase
+- In individual skills (`ade-build`, `ade-style`, `ade-move`, `ade-write`), Step 0 runs at the start
 - In `ade-audit`, Step 0 runs once and its context informs all scoring

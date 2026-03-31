@@ -4,10 +4,10 @@
 
 This plugin provides design engineering frameworks that transform generic UIs into intentional, inhabited digital places. It operates through four interconnected frameworks:
 
-- **CLEAR** — Structure, accessibility, hierarchy (Does it work?)
-- **PLACE** — Atmosphere, metaphor, texture (Does it feel like somewhere?)
-- **ALIVE** — Feedback, discovery, physics, easter eggs (Does it engage?)
-- **VOICE** — Communication style, microcopy, tone (Does it sound intentional?)
+- **Build** — Structure, accessibility, hierarchy (Does it work?)
+- **Style** — Atmosphere, metaphor, texture (Does it feel like somewhere?)
+- **Move** — Feedback, discovery, physics, easter eggs (Does it engage?)
+- **Write** — Communication style, microcopy, tone (Does it sound intentional?)
 
 ## Agent Directory
 
@@ -15,10 +15,10 @@ This plugin provides design engineering frameworks that transform generic UIs in
 
 | Agent | Description | Model |
 |-------|-------------|-------|
-| `clear-auditor` | Evaluates UI against CLEAR framework: copy, layout, emphasis, accessibility, reward. Returns scored findings with repair procedures. | inherit |
-| `place-auditor` | Evaluates atmosphere against PLACE framework: physical metaphor, lighting, animation, color-as-material, typography. Returns scored findings with diagnostics. | inherit |
-| `alive-auditor` | Evaluates interactivity against ALIVE framework: agency, loops, invitation, vitality, emergence. Returns scored findings with dead-spot map. | inherit |
-| `voice-auditor` | Evaluates UI copy against VOICE framework: partnership, simplification, purpose, invitation, connection, compassion, metaphor language. Returns scored findings. | inherit |
+| `build-auditor` | Evaluates UI against Build framework: copy, layout, emphasis, accessibility, reward. Returns scored findings with repair procedures. | inherit |
+| `style-auditor` | Evaluates atmosphere against Style framework: physical metaphor, lighting, animation, color-as-material, typography. Returns scored findings with diagnostics. | inherit |
+| `move-auditor` | Evaluates interactivity against Move framework: agency, loops, invitation, vitality, emergence. Returns scored findings with dead-spot map. | inherit |
+| `write-auditor` | Evaluates UI copy against Write framework: partnership, simplification, purpose, invitation, connection, compassion, metaphor language. Returns scored findings. | inherit |
 
 ### Design Agents (`agents/design/`)
 
@@ -46,21 +46,21 @@ This plugin provides design engineering frameworks that transform generic UIs in
 
 | Skill | Slash Command | Description |
 |-------|---------------|-------------|
-| `ade-clear` | `/ade:clear` | UI structure audit + repair. Evaluates then fixes accessibility, hierarchy, emphasis, copy, and feedback. |
-| `ade-place` | `/ade:place` | Atmosphere transformation. Discovers metaphor, builds CSS atmosphere, iterates 5 cycles via design-iterator. |
-| `ade-alive` | `/ade:alive` | Interactivity injection. Identifies core loop, finds dead spots, injects physics and discovery layers, requires easter egg. |
-| `ade-voice` | `/ade:voice` | Communication style pass. Reviews and rewrites UI copy to sound intentional, not generic. |
-| `ade-audit` | `/ade:audit` | Full evaluation. Runs CLEAR + PLACE + ALIVE + VOICE audits in sequence, produces combined scored report out of /200. |
-| `ade-transform` | `/ade:transform` | End-to-end transformation. CLEAR fix → PLACE atmosphere → ALIVE vitality → VOICE copy. The flagship skill. |
+| `ade-build` | `/ade:build` | UI structure audit + repair. Evaluates then fixes accessibility, hierarchy, emphasis, copy, and feedback. |
+| `ade-style` | `/ade:style` | Atmosphere transformation. Discovers metaphor, builds CSS atmosphere, iterates 5 cycles via design-iterator. |
+| `ade-move` | `/ade:move` | Interactivity injection. Identifies core loop, finds dead spots, injects physics and discovery layers, requires easter egg. |
+| `ade-write` | `/ade:write` | Communication style pass. Reviews and rewrites UI copy to sound intentional, not generic. |
+| `ade-audit` | `/ade:audit` | Full evaluation. Runs Build + Style + Move + Write audits in sequence, produces combined scored report out of /200. |
+| `ade-compound` | `/ade:compound` | End-to-end transformation. Build fix → Style atmosphere → Move vitality → Write copy. The flagship skill. |
 
 ## Cross-Framework Handoffs
 
 Each skill ends with a suggestion for the next framework in the chain:
 
 ```
-/ade:clear → "Structure passes. Want it to feel like somewhere? → /ade:place"
-/ade:place → "Atmosphere is set. Want it to feel alive? → /ade:alive"
-/ade:alive → "Interactivity injected. Want the copy to sound intentional? → /ade:voice"
+/ade:build → "Structure passes. Want it to feel like somewhere? → /ade:style"
+/ade:style → "Atmosphere is set. Want it to feel alive? → /ade:move"
+/ade:move → "Interactivity injected. Want the copy to sound intentional? → /ade:write"
 ```
 
 ## Step 0: Codebase Comprehension
@@ -69,7 +69,7 @@ Every skill execution begins with Step 0 — building a Product Portrait that un
 
 ## Autonomous Mode
 
-The `ade:transform` skill supports an autonomous mode (`--auto`) where the agent makes all decisions independently — including metaphor selection. All gate rules and quality thresholds still apply. See the Operational Modes section in `skills/ade-transform/SKILL.md`.
+The `ade:compound` skill supports an autonomous mode (`--auto`) where the agent makes all decisions independently — including metaphor selection. All gate rules and quality thresholds still apply. See the Operational Modes section in `skills/ade-compound/SKILL.md`.
 
 ## Decision Logging
 
@@ -89,11 +89,11 @@ Every skill execution MUST log its decisions to `ade_docs/YYYY-MM-DD-<context>.m
 - Reference files are loaded via backtick paths: `` `references/filename.md` ``
 
 ### Framework Ordering
-- CLEAR must pass before PLACE is applied
-- PLACE should be established before ALIVE is injected
-- VOICE can run after any framework produces copy
+- Build must pass before Style is applied
+- Style should be established before Move is injected
+- Write can run after any framework produces copy
 
 ### Easter Egg Requirement
-- Every ALIVE transformation MUST include at least one hidden fingerprint
+- Every Move transformation MUST include at least one hidden fingerprint
 - The creator's signature in the work — discoverable but not obvious
 - Inspired by Warren Robinett's Adventure (1979) and Ready Player One

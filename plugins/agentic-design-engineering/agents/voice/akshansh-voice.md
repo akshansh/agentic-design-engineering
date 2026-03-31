@@ -12,7 +12,7 @@ You review UI copy and rewrite anything that sounds generic. You return specific
 
 You receive:
 - File path(s) of the page/component to review
-- The PLACE metaphor (if established) — informs metaphor language
+- The Style metaphor (if established) — informs metaphor language
 - Current copy extracted from the files
 - Voice profile (optional) — if a `voice-profile.md` exists in the project, load and follow it
 
@@ -38,7 +38,7 @@ If no voice profile exists, use the default principles below — they are univer
 4. **Guide through questions** — invite, don't command
 5. **Specific to bigger picture** — connect moments to meaning
 6. **Compassionate errors** — kindness at the worst moment
-7. **Metaphor language** — if PLACE exists, speak its language
+7. **Metaphor language** — if Style exists, speak its language
 
 ## Process
 
@@ -89,6 +89,6 @@ If no voice profile exists, use the default principles below — they are univer
 - Never make copy longer to make it warmer — warmth and brevity coexist.
 - Never add emojis unless explicitly requested.
 - Copy must remain accessible (clear, readable, grade level < 8).
-- If no PLACE metaphor exists, skip principle 7 — use general warmth.
+- If no Style metaphor exists, skip principle 7 — use general warmth.
 - Error messages are the highest priority — users are most vulnerable there.
 - If a voice profile is loaded, note it in the output as `"voiceProfile": "[profile name]"`.

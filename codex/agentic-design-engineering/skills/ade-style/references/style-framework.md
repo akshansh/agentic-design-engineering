@@ -405,16 +405,118 @@ Run this on any existing UI that feels generic:
 
 ---
 
-## Advanced Techniques
+## Advanced Techniques — Rendering Stack
 
-### WebGL for Living Atmosphere
-Use sparingly for elements that need to feel alive:
-- Status pages: breathing, pulsing orbs (health indicators)
-- Backgrounds: subtle fluid simulation (warmth, movement)
-- Loading states: organic, physics-based animations
-- Hero sections: atmospheric particle effects
+The right rendering technology is the one the metaphor demands. CSS is the foundation and is always present. Advanced renderers layer on top of it.
 
-**Rule: WebGL should enhance the metaphor, not demonstrate technology.** A fluid orb works as a "living heartbeat." A particle effect works as "dust motes in lamplight." A 3D rotating cube works as nothing.
+### Technology Decision Matrix
+
+| Metaphor Type | Primary Renderer | When to Use |
+|---|---|---|
+| **Organic / Natural** (tree, forest, roots, mycelium, ocean, growth) | **P5.js** | Generative algorithms — L-systems for branching, Perlin noise for fluid/organic movement |
+| **3D / Spatial** (room, cave, cockpit, observatory, corridor) | **Three.js** | True 3D perspective, spatial depth the user inhabits |
+| **Mechanical / Precision** (clockwork, engine, instrument, loom) | **SVG + GSAP** | Vector geometry for mechanisms, GSAP for choreographed motion |
+| **Generative / Abstract** (galaxy, neural network, fractal, signal) | **P5.js** or **Three.js** | P5.js if 2D suffices; Three.js if depth is core |
+| **Material / Surface** (paper, leather, wood grain, ceramic, stone) | **CSS** with canvas grain | CSS excels here; canvas only for complex noise |
+| **Fluid / Atmospheric** (fog, plasma, aurora, deep sea, fire) | **WebGL via ogl.js** | Fragment shaders for phenomena that ARE light/energy |
+
+### Layered Architecture
+
+All rendering stacks use the same architecture — technology changes, layers don't:
+
+```
+Layer 1: CSS base atmosphere (always present — fallback if JS fails)
+Layer 2: Living renderer (P5.js / Three.js / SVG+GSAP — the metaphor's heartbeat)
+Layer 3: CSS surface materials (cards, panels, typography — always CSS)
+Layer 4: UI overlay (content — always HTML + CSS)
+```
+
+The living renderer sits between the CSS base and the CSS surface. It is always `pointer-events: none` — it is the environment, not the UI.
+
+### Installation Reference
+
+```bash
+npm install p5          # P5.js — organic/generative
+npm install three       # Three.js — 3D/spatial
+npm install gsap        # GSAP — timelines/scroll (also used by Move)
+npm install ogl         # ogl.js — lightweight WebGL for shaders
+```
+
+```html
+<!-- CDN alternatives -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+```
+
+### Example: P5.js for an Organic/Tree Metaphor
+
+```javascript
+const sketch = (p) => {
+  p.setup = () => {
+    const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+    canvas.style('position', 'fixed');
+    canvas.style('top', '0'); canvas.style('left', '0');
+    canvas.style('z-index', '0'); canvas.style('pointer-events', 'none');
+    p.colorMode(p.HSB);
+    p.noLoop(); // Draw once on setup; animate via p.draw() only if needed
+    drawTree(p, p.width / 2, p.height, -90, 120, 9);
+  };
+};
+
+function drawTree(p, x, y, angle, length, depth) {
+  if (depth === 0) return;
+  const x2 = x + p.cos(p.radians(angle)) * length;
+  const y2 = y + p.sin(p.radians(angle)) * length;
+  p.stroke(30, 40 + depth * 5, 30 + depth * 5); // Warm brown to lighter branch tips
+  p.strokeWeight(depth * 0.9);
+  p.line(x, y, x2, y2);
+  drawTree(p, x2, y2, angle - 22, length * 0.72, depth - 1);
+  drawTree(p, x2, y2, angle + 22, length * 0.72, depth - 1);
+}
+
+// Respect motion preferences
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  // Add gentle sway animation here if needed
+}
+
+new p5(sketch, document.getElementById('atmosphere-canvas'));
+```
+
+### Example: Three.js for a 3D/Spatial Metaphor
+
+```javascript
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x1a1008, 0.035); // Warm fog for enclosed space
+const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 100);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.domElement.style.cssText = 'position:fixed;top:0;left:0;z-index:0;pointer-events:none;';
+document.body.prepend(renderer.domElement);
+
+// Lighting matches the metaphor's light source
+const ambientLight = new THREE.AmbientLight(0x2a1c14, 0.4);
+const keyLight = new THREE.DirectionalLight(0xc9a44a, 1.2); // Warm brass desk lamp
+keyLight.position.set(0, 5, 2);
+scene.add(ambientLight, keyLight);
+
+const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function animate() {
+  requestAnimationFrame(animate);
+  if (motionOK) camera.position.x += (Math.sin(Date.now() * 0.0003) * 0.02 - camera.position.x) * 0.05;
+  renderer.render(scene, camera);
+})();
+```
+
+### Sustainability Rule
+
+Before choosing a library:
+1. Is it actively maintained? (last npm publish < 12 months)
+2. Does the project already use it? (prefer existing deps)
+3. Can a future developer understand it? (leave clear comments)
+4. Does it degrade gracefully? (CSS fallback always present)
+
+Complex technology earns its complexity. P5.js for a tree metaphor is earned. Three.js for a room metaphor is earned. Three.js for slightly more interesting gradients is not.
 
 ### CSS-Only Texture Library
 

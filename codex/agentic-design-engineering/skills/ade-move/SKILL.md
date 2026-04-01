@@ -30,6 +30,28 @@ Load the full framework reference:
 
 ---
 
+## Step 0.5: Select the Interaction Tool
+
+Before scanning for dead spots, establish the animation toolkit. This should align with what Style already installed — don't introduce a competing animation library.
+
+| Project Type | Primary Tool | Note |
+|---|---|---|
+| **Any stack — timelines, scroll, SVG** | **GSAP** | Framework-agnostic, industry standard |
+| **React — component springs, layout, gestures** | **Motion.dev** (`motion` package) | Declarative props: `whileHover`, `whileTap`, `layout` |
+| **React — both needed** | **GSAP (page-level) + Motion.dev (components)** | They coexist cleanly |
+| **Vue / Svelte / vanilla** | **GSAP** only | |
+| **Physics simulation** | **Matter.js** (2D) or **Rapier.js** (WASM) | Only when metaphor genuinely requires collision physics |
+
+```bash
+npm install gsap         # GSAP core + ScrollTrigger
+npm install motion       # Motion.dev (formerly Framer Motion)
+npm install matter-js    # 2D physics (only if needed)
+```
+
+Check the Style decision log for which libraries are already installed before adding new ones.
+
+---
+
 ## The Core Principle
 
 A dead interface: user clicks → system responds → nothing else happens.

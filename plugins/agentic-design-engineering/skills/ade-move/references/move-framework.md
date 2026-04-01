@@ -513,6 +513,64 @@ Move is for products where **engagement is a differentiator** — where users ha
 
 ---
 
+## Animation Tool Selection
+
+Choose the right tool for the interaction type:
+
+### GSAP (GreenSock Animation Platform)
+**Use for:** Complex timelines, scroll-driven animation, SVG morphing, any framework
+```bash
+npm install gsap
+```
+```javascript
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+// Complex entrance sequence
+gsap.from('.card', { opacity: 0, y: 24, duration: 0.7, stagger: 0.1, ease: 'power3.out' });
+
+// Scroll-pinned reveal
+gsap.to('.panel', {
+  opacity: 1, y: 0,
+  scrollTrigger: { trigger: '.section', start: 'top 80%', once: true }
+});
+```
+GSAP is framework-agnostic — it works in React, Vue, Svelte, and vanilla JS.
+
+### Motion.dev (formerly Framer Motion)
+**Use for:** React component springs, layout animations, gesture physics
+```bash
+npm install motion
+```
+```jsx
+import { motion } from 'motion/react';
+
+<motion.div
+  whileHover={{ y: -6, scale: 1.02 }}
+  whileTap={{ scale: 0.97 }}
+  transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+/>
+```
+Motion.dev is React-optimized. Use it alongside GSAP — GSAP owns page-level sequences and scroll, Motion.dev owns component-level springs.
+
+### When to use which
+| Task | Tool |
+|---|---|
+| Multi-step narrative animation sequence | GSAP timeline |
+| Scroll-driven reveal / parallax | GSAP ScrollTrigger |
+| SVG path morphing | GSAP MorphSVG |
+| React hover/tap spring | Motion.dev |
+| React layout animation | Motion.dev `layout` prop |
+| React page transitions | Motion.dev `AnimatePresence` |
+| Vue/Svelte/vanilla anything | GSAP |
+
+### Matter.js (2D Physics)
+**Use only when:** The metaphor genuinely requires collision physics (clockwork gears, falling objects, chain reactions).
+```bash
+npm install matter-js
+```
+
 ## Performance Budget for Vitality
 
 Aliveness has a cost. Set a budget:
@@ -522,10 +580,12 @@ Aliveness has a cost. Set a budget:
 | CSS transitions/transforms | Negligible | Always safe |
 | CSS animations | Low | Most contexts |
 | IntersectionObserver reveals | Low | Scroll-based discovery |
-| requestAnimationFrame loops | Medium | Cursor tracking, physics |
-| Canvas 2D | Medium | Status pages, visualizations |
-| WebGL shaders | High | Hero moments, living backgrounds |
-| Particle systems | High | Celebrations, atmospheric effects |
+| GSAP / Motion.dev | Very Low | Well-optimized — use freely |
+| requestAnimationFrame loops | Medium | Cursor tracking, live data |
+| Canvas 2D (P5.js) | Medium | Generative art, organic atmosphere |
+| Three.js | Medium-High | 3D environments |
+| WebGL shaders | High | Energy/plasma/fluid atmosphere |
+| Matter.js physics | High | Only when metaphor IS physics |
 
 **Rule:** If adding vitality pushes page load above 3 seconds or drops interaction below 60fps, scale back. A smooth, simple experience beats a janky, complex one. The user should never *notice* the technology — only feel the life.
 

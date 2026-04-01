@@ -15,13 +15,15 @@ This is the flagship skill. It runs all four frameworks in strict order, with ea
 ## The Sequence
 
 ```
-Build (structure) → Style (atmosphere) → Move (interactivity) → Write (copy)
+Build (structure) → Style (metaphor discovery + structural check) → [if needed: Build v2 (structural changes)] → Style (atmosphere) → Move (interactivity) → Write (copy)
 ```
 
 Each framework builds on the last. Skipping or reordering breaks the chain:
 - Style without Build = atmosphere on a broken foundation
 - Move without Style = animation with no personality to match
 - Write without context = copy that sounds warm but doesn't fit
+
+**The one sanctioned exception:** Style may send a Structural Change Request back to Build. This is the Build-Style Feedback Loop, and it is intentional. See Step 2 below.
 
 ---
 
@@ -143,18 +145,39 @@ If the user says "just do it" or "surprise me," derive the metaphor from the pro
 Then execute the full Style process:
 
 1. Translate the feeling into temperature (warm/cool/mixed)
-2. Discover the metaphor — present 3-5 options, let the user choose
+2. Discover the metaphor — present 3-5 options, let the user choose (or auto-select in `--auto` mode)
 3. Map every UI element to a physical analog
-4. Build the seven atmosphere layers (background → light → vignette → texture → surface → typography → ornament)
-5. Derive colors from materials, not hex pickers
-6. Iterate through 5 design cycles (mandatory — cycle 1 is scaffolding, not design)
-7. Set the Move physics constraints based on the metaphor's weight
+
+### Build-Style Feedback Loop (Step 2.75 — may trigger)
+
+After element mapping, Style runs its **Structural Authenticity Check**. If the metaphor demands structural changes that cannot be resolved by atmosphere alone, the following occurs:
+
+1. Style generates a **Structural Change Request** (specific changes needed + why + accessibility constraints)
+2. **Return to Build** — execute Build's structural repair with the Structural Change Request as requirements
+3. Build makes structural changes, re-verifies accessibility, re-scores
+4. **Return to Style** — proceed with atmosphere implementation on the new structure
+
+This loop counts as a second pass of Build. Log it in the decision log as "Build v2 — Structural Changes for Style."
+
+**If this loop triggers in autonomous mode:** Execute it without asking the user. Log what changed and why.
+
+**If this loop triggers in standard mode:** Report the Structural Change Request to the user, execute it, and confirm before proceeding.
+
+---
+
+4. **Select the rendering stack** — choose the technology that authentically serves the metaphor (CSS / P5.js / Three.js / SVG+GSAP / WebGL). Record the choice and rationale in the decision log.
+5. Build the atmosphere using the chosen rendering stack
+6. Derive colors from materials, not hex pickers
+7. Iterate through 5 design cycles (mandatory — cycle 1 is scaffolding, not design)
+8. Set the Move constraints based on the metaphor's weight and rendering stack
 
 **What to pass forward to Move:**
 - The chosen metaphor and its one-line description
+- The rendering stack chosen and why
 - The physics personality (weighty/floating/snappy/organic/mechanical)
 - Recommended spring tension and mass
 - The material palette and color derivations
+- Which libraries are already installed (so Move doesn't duplicate)
 
 **Gate check:** Style total must be >= 40/50 to proceed.
 
@@ -257,6 +280,9 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 **Temperature:** [warm/cool/mixed]
 **Materials:** [list of named materials]
 **Colors derived:** [material → color mappings]
+**Rendering stack:** [CSS / P5.js / Three.js / SVG+GSAP / WebGL — and why]
+**Libraries installed:** [list with versions]
+**Structural Feedback Loop triggered:** [Yes/No — if Yes, what changed]
 **Pages transformed:** [list with scope classes]
 **Design cycles completed:** [1-5, with notes per cycle]
 

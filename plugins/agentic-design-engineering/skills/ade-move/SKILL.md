@@ -31,6 +31,34 @@ Load the full framework reference:
 
 ---
 
+## Step 0.5: Select the Interaction Tool
+
+Before scanning for dead spots, establish the animation toolkit. This should align with what Style already installed — don't introduce a second competing animation library.
+
+### Tool Decision
+
+| Project Type | Primary Tool | Secondary |
+|---|---|---|
+| **Any stack — timelines, scroll, SVG, complex sequences** | **GSAP** | Motion.dev for React springs |
+| **React — component-level springs, layout, gestures** | **Motion.dev** (`motion` package) | GSAP for page-level sequences |
+| **React — both needed** | **GSAP (page) + Motion.dev (components)** | They coexist cleanly |
+| **Vue / Svelte / vanilla** | **GSAP** only | |
+| **Physics simulation** | **Matter.js** (2D) or **Rapier.js** (WASM, 2D/3D) | Only when metaphor needs collision/cloth physics |
+
+**If Style already installed a library, use it.** Check the decision log for Style's rendering stack before adding anything new.
+
+**GSAP vs Motion.dev in plain terms:**
+- GSAP: think in timelines, sequences, and DOM control. Animate anything, anywhere, any framework.
+- Motion.dev: think in component props. `whileHover`, `whileTap`, `layout`, `AnimatePresence`. React-native, declarative.
+
+```bash
+npm install gsap           # GSAP core
+npm install motion         # Motion.dev (formerly Framer Motion)
+npm install matter-js      # 2D physics (only if needed)
+```
+
+---
+
 ## The Core Principle
 
 A dead interface: user clicks → system responds → nothing else happens.
@@ -226,14 +254,62 @@ document.querySelectorAll('.discover-on-scroll').forEach(el => observer.observe(
 
 | Style Metaphor | Hover | Click | Entrance | Scroll |
 |----------------|-------|-------|----------|--------|
-| Library (weighty) | Slow lift, warm glow behind | Deep press, deliberate | Emerge upward, 80ms stagger | Smooth, heavy inertia |
+| Library (weighty) | Slow lift, warm glow behind | Deep press, deliberate | Emerge upward, stagger 80ms | Smooth, heavy inertia |
 | Observatory (floating) | Float upward, cool shimmer | Gentle pulse | Drift in from edges | Weightless, momentum |
 | Workshop (snappy) | Quick tilt, tool highlight | Crisp snap | Slide in fast, sharp stop | Responsive, immediate |
 | Garden (organic) | Sway, grow slightly | Bloom outward | Unfold like petals | Natural, varied speed |
+| Tree (growing) | Branch lights up toward cursor | Depth ripple outward | Grows from root, branches extend | Reveals depth layer by layer |
+| Machine (mechanical) | Part illuminates, gear ticks | Click-clack, precise | Components lock into place | Ratcheted, stepped reveals |
+
+**GSAP for orchestrated physics:**
+```javascript
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+// Weighty entrance — elements settle in with mass
+gsap.from('.card', {
+  opacity: 0,
+  y: 32,
+  duration: 0.8,
+  stagger: 0.1,
+  ease: 'power3.out'
+});
+
+// Scroll-pinned reveal — content unfolds as user descends
+gsap.to('.content-layer', {
+  opacity: 1,
+  y: 0,
+  scrollTrigger: {
+    trigger: '.section',
+    start: 'top center',
+    end: 'bottom center',
+    scrub: 1.5  // Scrub value matches physics weight
+  }
+});
+```
+
+**Motion.dev for React component springs:**
+```jsx
+import { motion } from 'motion/react';
+
+// Hover with metaphor-calibrated spring
+<motion.div
+  whileHover={{ y: -6, scale: 1.02 }}
+  whileTap={{ scale: 0.97, y: 2 }}
+  transition={{
+    type: 'spring',
+    stiffness: 120,   // Weighty: 120. Floating: 60. Snappy: 400.
+    damping: 20       // Weighty: 20. Floating: 10. Snappy: 30.
+  }}
+/>
+
+// Layout animation — items reflow with spring physics
+<motion.li layout transition={{ type: 'spring', stiffness: 200, damping: 25 }} />
+```
 
 **Ambient life** — the system breathes even when idle:
 ```css
-/* Subtle breathing on a status indicator */
 @keyframes breathe {
   0%, 100% { opacity: 0.7; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.03); }
@@ -241,11 +317,15 @@ document.querySelectorAll('.discover-on-scroll').forEach(el => observer.observe(
 .alive-indicator { animation: breathe 4s ease-in-out infinite; }
 ```
 
-**WebGL for living moments** (use sparingly):
-- Status pages: breathing orb (like The Table's /status page)
-- Hero backgrounds: subtle fluid simulation
-- Data visualization: organic, physics-based charts
-- **Rule:** WebGL enhances the metaphor, not demonstrates technology
+**Generative ambient (P5.js / Three.js)** — the renderer already installed by Style can power ambient life:
+- If P5.js is the renderer: add subtle Perlin noise drift to background particles; animate branching on scroll
+- If Three.js is the renderer: add camera drift, particle field movement, atmospheric fog that responds to mouse position
+- The existing renderer is the substrate — Move adds responsiveness to it, not a second renderer
+
+**Physics simulation** (use only when metaphor genuinely demands it):
+- Clockwork: `Matter.js` for gear collision simulation
+- Organic: spring forces between elements creating soft-body feel
+- **Rule**: Physics simulation earns its complexity only when the metaphor IS physics (a machine, falling leaves, water). Don't add a physics engine to simulate what CSS springs and GSAP can achieve.
 
 ### E — Emergence & Surprise Injections
 

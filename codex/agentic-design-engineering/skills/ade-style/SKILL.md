@@ -28,6 +28,8 @@ Every application inhabits a place. Your job is to discover which place, then bu
 
 A meeting archive should feel like a boardroom library. An email client should feel like a window looking outside. A camera app should feel like assembling a physical camera. The place isn't arbitrary — it emerges from what the product does, who uses it, and what feeling makes the work better.
 
+**This is not a reskinning job.** A metaphor applied only to colors and fonts is decoration. A metaphor applied to structure, navigation flow, interaction patterns, and rendering — that is architecture. The goal is the latter.
+
 Load the full framework reference:
 `references/style-framework.md`
 
@@ -107,6 +109,67 @@ Once the user picks (or you derive from strong references), map every UI element
 | Loading | [page turning, drawer opening, lamp flickering on] |
 | Error | [a polite guide explaining, a gentle redirection] |
 | Empty state | [an empty shelf with a label, a blank page waiting] |
+
+---
+
+## Step 2.5: Select the Rendering Stack
+
+Before building anything, choose the technology that best serves the metaphor. Delegate this decision to the `atmosphere-builder` skill, which contains the full Technology Selection matrix.
+
+**The key question:** What does this metaphor require that CSS alone cannot provide?
+
+- **CSS only**: Static material surfaces, lighting effects, texture. Right for: paper, leather, stone, flat architectural spaces.
+- **P5.js / Canvas 2D**: Generative, organic, living forms. Right for: trees, roots, mycelium, ocean, growth, anything that grows or breathes procedurally.
+- **Three.js**: True 3D depth and perspective. Right for: rooms, corridors, caves, observatories, cockpits — spaces the user inhabits.
+- **SVG + GSAP / Motion**: Precision-engineered motion. Right for: clockwork, mechanical instruments, architectural blueprints.
+- **WebGL shaders**: Pure visual phenomena impossible in CSS. Right for: plasma, aurora, fluid dynamics.
+
+**Record the technology decision in the decision log.** This choice cascades into how Move is implemented.
+
+---
+
+## Step 2.75: Structural Authenticity Check
+
+After mapping every UI element to its physical analog (Step 2), ask this question before touching any code:
+
+> "Can the current information architecture authentically embody this metaphor, or does the structure itself need to change?"
+
+**Signs that structure needs to change before atmosphere can be applied:**
+
+| Current Structure | Metaphor Demands | Resolution |
+|---|---|---|
+| Tab navigation | Branching / radial flow (tree, river delta) | Request structural change: rebuild navigation as branching system |
+| Linear scroll | Layered depth / exploration (cave, archive vault) | Request structural change: depth-based navigation or layered reveals |
+| Card grid (uniform) | Organic / irregular forms (forest floor, tide pools) | Request structural change: variable sizing, organic spacing |
+| Standard header + body | Immersive environment (cockpit, observatory dome) | Request structural change: UI elements float within the environment |
+
+**If structural changes are needed — Structural Feedback Loop:**
+
+1. **Do not begin atmosphere implementation yet.**
+2. Generate a **Structural Change Request** (format below).
+3. If running as part of `ade-compound`: hand the request back to the Build step. Build makes structural changes (keeping accessibility intact), then returns here.
+4. If running standalone: present the request to the user and ask them to run `$ade-build` with these requirements, then return.
+5. Once structural changes are confirmed, proceed to atmosphere implementation.
+
+**Structural Change Request format:**
+
+```
+## Structural Change Request from Style
+
+**Reason**: The [metaphor] requires structural reorganization to be authentic.
+The current [navigation/layout/component type] contradicts the metaphor's
+physical logic and cannot be resolved by atmosphere alone.
+
+**Required changes**:
+- [Element]: Change from [current] to [needed] — because [physical reason from metaphor]
+
+**Accessibility non-negotiables**:
+All changes must maintain WCAG AA. Structural changes cannot remove existing accessibility fixes.
+
+**Scope**: [files/components affected]
+```
+
+**This loop is intentional.** A metaphor applied to a structure it cannot inhabit produces decoration, not architecture.
 
 ---
 
@@ -369,10 +432,11 @@ If the result feels "off" but you can't pinpoint why, check these:
 
 ## What NOT to Do
 
-- Do not change the UI structure (layout, hierarchy, components) — that's Build's job
+- Do not change the UI structure (layout, hierarchy, components) without going through the Structural Feedback Loop — that's Build's domain
 - Do not add interactivity, physics, or discovery — that's Move's job
 - Do not change the copy voice — that's Write's job
-- Do not use images for atmosphere — CSS only (gradients, blend modes, pseudo-elements)
-- Do not sacrifice accessibility for aesthetics — contrast must always pass
+- Do not default to CSS when the metaphor demands more — use the right rendering technology for the metaphor
+- Do not sacrifice accessibility for aesthetics — contrast must always pass regardless of rendering tech
 - Do not apply atmosphere globally — scope to specific pages
 - Do not stop at cycle 1 — the first version is scaffolding, not design
+- Do not install a new animation library if Move's vitality-injector will install the same one — coordinate via the decision log

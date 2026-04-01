@@ -15,7 +15,8 @@ See `decision-log-template.md` for the full template structure. Skills copy this
 Log files follow this format: `YYYY-MM-DD-<context>.md`
 
 Examples:
-- `2026-03-29-clear-audit.md`
-- `2026-03-29-place-transformation.md`
-- `2026-03-29-alive-injection.md`
-- `2026-03-29-full-transform.md`
+- `2026-03-29-build-audit.md`
+- `2026-03-29-style-transformation.md`
+- `2026-03-29-move-injection.md`
+- `2026-03-29-write-review.md`
+- `2026-03-29-full-compound.md`

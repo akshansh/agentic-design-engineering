@@ -11,24 +11,24 @@
 
 ## Context
 - **What was audited/transformed:** [page/component path]
-- **Trigger:** [which skill was invoked: /ade:clear, /ade:place, /ade:alive, /ade:voice, /ade:audit, /ade:transform]
+- **Trigger:** [which skill was invoked: /ade:build, /ade:style, /ade:move, /ade:write, /ade:audit, /ade:compound]
 - **Starting state:** [brief description — generic? partially styled? broken?]
 - **Timestamp:** [ISO 8601]
 
-## CLEAR Decisions
+## Build Decisions
 - **Score:** [before] → [after] /50
 - **Product type context:** [emergency/enterprise/consumer/high-frequency/data-heavy/communication/e-commerce/educational]
 - **Violations fixed:** [list with file:line]
 - **Remaining issues:** [if any]
 - **Gate status:** [Pass/Fail — if fail, note retry count and fallback applied]
 
-### CLEAR → PLACE Handoff
+### Build → Style Handoff
 - **product_type:** [classification]
 - **structural_constraints:** [list]
 - **primary_user_action:** [identified emphasis]
 - **accessibility_floor:** [AA/AAA]
 
-## PLACE Decisions
+## Style Decisions
 - **Score:** [before] → [after] /50
 - **Metaphor chosen:** [one-line description]
 - **Materials:** [list of physical materials]
@@ -40,14 +40,14 @@
 - **Metaphor selection:** [User chose / Agent self-selected (autonomous)]
 - **Gate status:** [Pass/Fail]
 
-### PLACE → ALIVE Handoff
+### Style → Move Handoff
 - **metaphor:** [one-line]
 - **physics_personality:** [weighty/floating/snappy/organic/mechanical]
 - **spring_tension:** [high/medium/low]
 - **mass:** [heavy/medium/light]
 - **color_palette:** [material → hex mappings]
 
-## ALIVE Decisions
+## Move Decisions
 - **Score:** [before] → [after] /50
 - **Core loop:** [action → response → discovery → next action]
 - **Dead spots fixed:** [count and list]
@@ -61,11 +61,11 @@
   - Philosophy: [why this specific easter egg]
   - Selected because: [product context from Product Portrait]
 
-### ALIVE → VOICE Handoff
-- **interaction_copy:** [list of copy added by ALIVE]
-- **easter_egg_triggers:** [text/elements VOICE must NOT rewrite]
+### Move → Write Handoff
+- **interaction_copy:** [list of copy added by Move]
+- **easter_egg_triggers:** [text/elements Write must NOT rewrite]
 
-## VOICE Decisions
+## Write Decisions
 - **Score:** [before] → [after] /70 (normalized: /50)
 - **Copy elements reviewed:** [count]
 - **Rewrites made:** [count]
@@ -79,10 +79,10 @@
 ## Final Scores
 | Framework | Before | After | Status |
 |-----------|--------|-------|--------|
-| CLEAR | /50 | /50 | [pass/fail] |
-| PLACE | /50 | /50 | [pass/fail] |
-| ALIVE | /50 | /50 | [pass/fail] |
-| VOICE | /70 (/50) | /70 (/50) | [pass/fail] |
+| Build | /50 | /50 | [pass/fail] |
+| Style | /50 | /50 | [pass/fail] |
+| Move | /50 | /50 | [pass/fail] |
+| Write | /70 (/50) | /70 (/50) | [pass/fail] |
 | **Combined** | **/200** | **/200** | [tier] |
 
 ## Gate Failures (if any)

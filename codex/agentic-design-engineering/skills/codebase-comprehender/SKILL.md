@@ -73,7 +73,7 @@ If confidence is High, also output:
 ## Rules
 
 - Be specific. "An office" is useless. "A pharmaceutical compliance officer's organized desk — labeled folders, rubber stamps, audit checklists" is a portrait.
-- The physical analog seeds PLACE's metaphor discovery. Make it evocative.
-- Context classification maps directly to CLEAR's context branching table.
+- The physical analog seeds Style's metaphor discovery. Make it evocative.
+- Context classification maps directly to Build's context branching table.
 - If the project is a generic template or boilerplate with no content, say so explicitly — don't fabricate a domain.
 - One targeted question is better than five vague ones. If you need to ask, ask the ONE thing that would most change your assessment.

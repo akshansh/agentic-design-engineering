@@ -6,16 +6,16 @@ This plugin provides design engineering frameworks for Claude Code. See AGENTS.m
 
 | Skill | Purpose |
 |-------|---------|
-| `/ade:clear` | UI structure audit + repair (accessibility, hierarchy, emphasis) |
-| `/ade:place` | Atmosphere transformation (generic → inhabited place) |
-| `/ade:alive` | Interactivity injection (feedback, discovery, physics, easter eggs) |
-| `/ade:voice` | Apply intentional communication style to UI copy |
-| `/ade:audit` | Full CLEAR + PLACE + ALIVE evaluation with combined report |
-| `/ade:transform` | End-to-end transformation from generic to specialized |
+| `/ade:build` | UI structure audit + repair (accessibility, hierarchy, emphasis) |
+| `/ade:style` | Atmosphere transformation (generic → inhabited place) |
+| `/ade:move` | Interactivity injection (feedback, discovery, physics, easter eggs) |
+| `/ade:write` | Apply intentional communication style to UI copy |
+| `/ade:audit` | Full Build + Style + Move + Write evaluation with combined report |
+| `/ade:compound` | End-to-end transformation from generic to specialized |
 
 ## Framework Ordering
 
-Always apply in this order: CLEAR (structure) → PLACE (atmosphere) → ALIVE (interactivity) → VOICE (copy).
+Always apply in this order: Build (structure) → Style (atmosphere) → Move (interactivity) → Write (copy).
 
 ## Decision Logging
 

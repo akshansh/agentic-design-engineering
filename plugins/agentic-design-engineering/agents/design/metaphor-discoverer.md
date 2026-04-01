@@ -41,9 +41,11 @@ When generating options, score each against these five criteria (0-10 each):
 | **Material richness** | How many distinct, nameable materials does this metaphor suggest? | 1-2 vague materials | 5+ specific materials with clear visual properties |
 | **Emotional alignment** | Does the feeling match the user persona's needs? | Mismatch (playful metaphor for critical medical tool) | Perfect emotional register for the context |
 | **Specificity** | Is this a specific place, not a category? | A generic category ("an office") | A vivid, specific scene ("a mahogany-paneled boardroom after hours, single desk lamp on") |
-| **Buildability** | Can this be translated into CSS atmosphere layers? | Abstract or requires images/3D | Clear CSS patterns: gradients, textures, shadows, colors |
+| **Transformability** | How completely does this metaphor take over the product's identity — its structure, interaction patterns, and information architecture — not just its visual surface? | Surface-only (color palette swap, background texture) | Demands structural reimagination: navigation branches, layout grows, elements behave like physical objects from the metaphor world |
 
 **Total: /50 per option**
+
+> **Note on Transformability vs old Buildability:** The previous criterion rewarded CSS-compatible metaphors. This was a creativity ceiling — it mathematically eliminated the most powerful ideas. Transformability rewards the opposite: metaphors that demand the interface be reconceived from the inside out. A metaphor that only works as a CSS gradient scores low. A metaphor that forces you to rethink how the user navigates, what the loading state IS, and how elements enter the screen scores high.
 
 ### Self-Selection Mode
 

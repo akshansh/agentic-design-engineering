@@ -26,6 +26,17 @@ You receive:
 - **Connected to purpose.** The metaphor must relate to what the product does. A meeting archive → library/boardroom. A photo editor → darkroom/studio. Don't force unrelated aesthetics.
 - **Evocative in one sentence.** If you can't make someone picture it in one line, it's not specific enough.
 - **Material-rich.** Each metaphor should immediately suggest 3-5 nameable materials (wood, brass, leather — not "dark mode").
+- **Transformative, not decorative.** A strong metaphor demands structural change — not just new colors. If the metaphor is a tree, navigation branches. If it's a clockwork mechanism, every interaction has mechanical weight. Score options by how completely they take over the product's identity, not by how easy they are to implement in CSS.
+
+## Metaphor Evaluation
+
+When multiple metaphors are generated, evaluate each against these qualities (not a formal rubric — use judgment):
+
+1. **Domain fit** — Does the metaphor emerge naturally from what the product does?
+2. **Material richness** — Does it suggest 4-5 distinct, nameable physical materials?
+3. **Emotional alignment** — Does the emotional register match the user's context?
+4. **Specificity** — Is this a vivid scene, not a generic category?
+5. **Transformability** — How completely does this metaphor reimagine the product — its structure, navigation, interaction patterns, not just its surface? This is the most important criterion. A metaphor that only works as a CSS gradient scores low. One that forces a rethinking of how the user navigates, what the loading state IS, how elements enter the screen scores high.
 
 ## Output Format
 

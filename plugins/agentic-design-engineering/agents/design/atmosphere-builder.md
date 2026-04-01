@@ -29,8 +29,8 @@ Before writing a single line of code, select the rendering stack. The metaphor d
 
 | Metaphor Type | Primary Tool | Secondary | When to Escalate |
 |---|---|---|---|
-| **Organic / Natural** (tree, forest, roots, mycelium, ocean, growth, terrain, coral) | **P5.js** | CSS for surfaces | Add Three.js only if true 3D depth is essential to the metaphor |
-| **3D / Spatial** (room, cave, cockpit, observatory, architecture, vault, corridor) | **Three.js** | CSS for UI overlays | Use react-three-fiber if project is React |
+| **Organic / Natural** (tree, forest, roots, mycelium, ocean, growth, terrain, coral) | **P5.js** (standalone/vanilla) or **PixiJS** (React production) | CSS for surfaces | P5.js for non-React or isolated canvas; PixiJS when embedded in React component tree |
+| **3D / Spatial** (room, cave, cockpit, observatory, architecture, vault, corridor) | **Three.js + R3F + Drei** (React) or **Three.js** (vanilla) | CSS for UI overlays | R3F integrates Three.js directly into React component tree; Drei adds helpers (cameras, effects, shaders) |
 | **Mechanical / Precision** (clockwork, engine, printing press, instrument panel, loom) | **SVG + GSAP** | CSS for surfaces | Use Three.js only if mechanical parts need 3D perspective |
 | **Generative / Abstract** (galaxy, neural network, fractal, signal, circuitry, topology) | **P5.js** or **Three.js** | WebGL shaders for pure energy/plasma | Choose P5.js if 2D suffices; Three.js if depth matters |
 | **Material / Surface** (paper manuscript, leather journal, darkroom, textile, ceramic, wood grain) | **CSS** with canvas-generated grain | P5.js for complex noise textures | Rarely needs more than CSS |
@@ -56,22 +56,28 @@ For each library chosen, verify:
 
 ### Installation Reference
 
+```bash
+# npm (production)
+npm install p5          # P5.js — organic/generative (standalone sketches)
+npm install pixi.js     # PixiJS — high-performance 2D (React production)
+npm install three       # Three.js core
+npm install @react-three/fiber @react-three/drei  # R3F + helpers (React)
+npm install gsap        # GSAP — timelines/scroll (see license note below)
+npm install motion      # Motion.dev — MIT licensed alternative for React/vanilla
+npm install ogl         # ogl.js — lightweight WebGL for shaders
+npm install animejs     # Anime.js v4 — lightweight, MIT, GSAP alternative
+```
+
 ```html
 <!-- CDN (prototyping / vanilla HTML) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
 <script src="https://unpkg.com/ogl"></script>
 ```
 
-```bash
-# npm (production)
-npm install p5
-npm install gsap
-npm install three
-npm install ogl
-```
+> **GSAP License Warning (as of October 2024):** GSAP was acquired by Webflow. The license is free but explicitly prohibits use in tools that compete with Webflow (no-code builders, website builders, CMS-adjacent tools). Webflow can terminate the license at their discretion. For any project that could be construed as a web-building or no-code tool, use **Motion.dev** (MIT, irrevocable) or **Anime.js v4** (MIT) instead. For standard product/app UI work with no Webflow-adjacent functionality, GSAP remains an excellent choice.
+
+> **P5.js + React note:** P5.js uses a global sketch model that conflicts with React's component tree. For standalone background canvases in any environment, P5.js is excellent. For production React apps that embed generative visuals as part of the component hierarchy, use **PixiJS** (WebGL-accelerated 2D, production-grade) or raw Canvas API instead. If using P5.js with React, isolate it in a `useEffect` with a single `<canvas>` ref and explicit cleanup to avoid memory leaks.
 
 ---
 

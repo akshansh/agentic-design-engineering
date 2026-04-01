@@ -413,7 +413,7 @@ The right rendering technology is the one the metaphor demands. CSS is the found
 
 | Metaphor Type | Primary Renderer | When to Use |
 |---|---|---|
-| **Organic / Natural** (tree, forest, roots, mycelium, ocean, growth) | **P5.js** | Generative algorithms — L-systems for branching, Perlin noise for fluid/organic movement |
+| **Organic / Natural** (tree, forest, roots, mycelium, ocean, growth) | **P5.js** (standalone/vanilla) or **PixiJS** (React production) | P5.js for non-React or isolated background canvas; PixiJS for React apps (P5.js's global model conflicts with React's component tree) |
 | **3D / Spatial** (room, cave, cockpit, observatory, corridor) | **Three.js** | True 3D perspective, spatial depth the user inhabits |
 | **Mechanical / Precision** (clockwork, engine, instrument, loom) | **SVG + GSAP** | Vector geometry for mechanisms, GSAP for choreographed motion |
 | **Generative / Abstract** (galaxy, neural network, fractal, signal) | **P5.js** or **Three.js** | P5.js if 2D suffices; Three.js if depth is core |
@@ -436,18 +436,15 @@ The living renderer sits between the CSS base and the CSS surface. It is always 
 ### Installation Reference
 
 ```bash
-npm install p5          # P5.js — organic/generative
-npm install three       # Three.js — 3D/spatial
-npm install gsap        # GSAP — timelines/scroll (also used by Move)
-npm install ogl         # ogl.js — lightweight WebGL for shaders
+npm install p5                                     # P5.js — organic/generative (standalone canvas only)
+npm install pixi.js                                # PixiJS — high-performance 2D (React production)
+npm install three                                  # Three.js core
+npm install @react-three/fiber @react-three/drei   # R3F + Drei helpers (React)
+npm install gsap                                   # GSAP — timelines, scroll, SVG (free, use for all standard products)
+npm install ogl                                    # ogl.js — lightweight WebGL for shaders
 ```
 
-```html
-<!-- CDN alternatives -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-<script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-```
+> **P5.js scope:** P5.js is for standalone background canvases only. Its global sketch model conflicts with React's component tree. For React apps that need embedded generative visuals, use PixiJS or raw Canvas API. P5.js works well isolated in a `<canvas>` element with cleanup in `useEffect`.
 
 ### Example: P5.js for an Organic/Tree Metaphor
 

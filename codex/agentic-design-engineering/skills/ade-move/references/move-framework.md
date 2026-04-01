@@ -563,13 +563,28 @@ Motion.dev is React-optimized. Use it alongside GSAP — GSAP owns page-level se
 | React hover/tap spring | Motion.dev |
 | React layout animation | Motion.dev `layout` prop |
 | React page transitions | Motion.dev `AnimatePresence` |
-| Vue/Svelte/vanilla anything | GSAP |
+| Vue/Svelte/vanilla anything | Motion.dev (universal) or GSAP |
+| License-sensitive (Webflow-adjacent products) | Motion.dev or Anime.js v4 (both MIT) |
+| Cinematic Three.js/R3F sequences with GUI editing | Theatre.js + R3F |
+
+> **GSAP License Warning (October 2024):** GSAP was acquired by Webflow. The free license prohibits use in tools that compete with Webflow (website builders, no-code tools, CMS-adjacent products), and Webflow can terminate it at will. For standard SaaS/product UI, GSAP is safe. For Webflow-adjacent tools, use **Motion.dev** (MIT) or **Anime.js v4** (MIT, ~17KB, moderate complexity).
+
+### Theatre.js (Cinematic Sequences)
+A visual animation editor for Three.js/R3F — think After Effects for the web in real-time. You animate camera position, lights, and 3D properties via a GUI timeline editor; output serializes to JSON.
+```bash
+npm install @theatre/core    # Apache 2.0 — runtime
+npm install @theatre/studio  # AGPL 3.0 — editor (dev-only, not shipped to users)
+```
+Use when: A designer needs to choreograph a cinematic Three.js sequence without writing animation code.
 
 ### Matter.js (2D Physics)
 **Use only when:** The metaphor genuinely requires collision physics (clockwork gears, falling objects, chain reactions).
 ```bash
 npm install matter-js
 ```
+
+### WebGPU (Platform Note)
+Three.js r171+ supports WebGPU with zero configuration changes. WebGPU is now available in Chrome, Edge, and Safari 26 (late 2025). Firefox support is in development. For new Three.js/R3F projects, WebGPU delivers substantial performance gains for particle systems and compute-intensive atmospheric effects — target it where browser support allows, with WebGL as the fallback.
 
 ## Performance Budget for Vitality
 

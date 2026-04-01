@@ -38,17 +38,13 @@ Select based on project stack and interaction type:
 ### Installation Reference
 
 ```bash
-# GSAP
-npm install gsap
-# CDN: https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js
-
-# Motion.dev (React)
-npm install motion
-# Or the Framer Motion name still works: npm install framer-motion
-
-# Matter.js (2D physics)
-npm install matter-js
+npm install gsap          # GSAP — timelines, ScrollTrigger, SVG morphing
+npm install motion        # Motion.dev — MIT licensed (React, Vue, vanilla)
+npm install animejs       # Anime.js v4 — lightweight MIT alternative to GSAP (~17KB)
+npm install matter-js     # Matter.js — 2D physics (only if metaphor requires collision)
 ```
+
+> **GSAP License Warning (October 2024):** GSAP was acquired by Webflow. The license is free but prohibits use in tools competing with Webflow (website builders, no-code tools, CMS-adjacent products). Webflow can terminate the license at will. For any such project, use **Motion.dev** (MIT, irrevocable) or **Anime.js v4** (MIT) instead. For standard product/SaaS UI work, GSAP is fine.
 
 ### Key Difference: GSAP vs Motion.dev
 

@@ -249,9 +249,45 @@ Generic UIs use Inter or system fonts because they're "safe." Place-based UIs ch
 
 ---
 
+### The Sixth Layer — Sound of the Place (optional, unscored)
+
+**Every place has an acoustic signature. Most interfaces are mute.**
+
+The five scored dimensions are visual. Sound is the optional sixth atmosphere layer — defined here in Style, implemented as interaction feedback in Move. When the Product Portrait says sound is appropriate (immersive sessions, creative tools, portfolios, archives — not open-plan enterprise dashboards), define the acoustic signature alongside the metaphor:
+
+1. **Name the room tone in one line.** "The hush of thick carpet and a ticking brass clock." "The low hum of a ship's air recycler." If you can't name it, the metaphor isn't specific enough yet.
+2. **Derive sounds from the named materials** — the same materials that produced the color palette. Mahogany thumps low. Brass ticks bright. Paper whispers.
+3. **Record it in the Style → Move handoff** so earcons match the physics personality (weighty places sound low and slow; snappy places click short and precise).
+
+Full craft reference — synthesis recipes, the sound grammar, opt-in rules, and audit checklist: `skills/shared/sound-design.md`
+
+**Sound never scores against the /50.** A silent place can be complete. A place with wrong-material sounds cannot.
+
+---
+
+## The Metaphor Fidelity Ladder
+
+**The most common failure mode of AI-generated "themed" design: a standard interface wearing a costume.**
+
+Ask an AI for a spaceship-themed dashboard and the first generation is usually a normal menu bar, normal cards, normal table — with labels renamed to "Launch" and "Mission Control" and a navy background. That is not a spaceship. That is slop with a sticker on it. The Fidelity Ladder names the levels so both the builder and the auditor can locate exactly where a design stands:
+
+| Level | Name | What It Looks Like | Verdict |
+|-------|------|--------------------|---------|
+| **0** | Keyword Skin | Standard UI, themed vocabulary only ("Launch" button on a default navbar) | Slop with a costume |
+| **1** | Palette Skin | Themed colors and one texture on stock components | Decoration |
+| **2** | Component Costume | Individual elements redrawn as metaphor objects (buttons look like levers) but layout and navigation are conventional | Surface commitment |
+| **3** | Behavioral Inhabitation | Navigation, loading, errors, and layout OPERATE like the place — a spaceship has a control deck, not a hamburger menu; loading is an airlock cycle, not a spinner | Architecture |
+| **4** | Full Inhabitation | Structure, motion, sound, and copy are all native to the place; a stranger names the metaphor within seconds, and nothing on screen contradicts it | The place IS the product |
+
+**Minimum target for any Style transformation: Level 3.** Levels 0–2 are what the Transformability criterion and the Structural Authenticity Check exist to prevent — if the interaction patterns are still generic, the metaphor hasn't moved in yet.
+
+**The fastest fidelity test:** pick the three most conventional patterns on the page (usually the nav menu, the loading state, and the empty state) and ask — *would this exact pattern exist inside the physical place?* A boardroom library has no hamburger menu; it has a hallway of labeled doors. If all three patterns would survive in any generic app, the design is at Level 2 or below.
+
+---
+
 ## Prerequisites
 
-**Before applying Style, ensure Build passes.** Run a Build audit (`clear_framework_ultimate.md`) first. Fix any accessibility, hierarchy, or structural issues. Style builds atmosphere on top of sound structure — not instead of it. A beautiful place that fails keyboard navigation is a locked door.
+**Before applying Style, ensure Build passes.** Run a Build audit (`/ade:build` — see `skills/ade-build/references/build-framework.md`) first. Fix any accessibility, hierarchy, or structural issues. Style builds atmosphere on top of sound structure — not instead of it. A beautiful place that fails keyboard navigation is a locked door.
 
 **Style transformations are always scoped.** Every page gets its own wrapper class (e.g. `.boardroom-page`, `.ledger-page`, `.observatory-view`). Never apply atmosphere styles globally or to shared components — scope them to the specific page/view being transformed. This prevents style bleed and allows incremental transformation (one page at a time).
 
@@ -327,7 +363,7 @@ For every screen and major UI element, name its physical analog:
 4. **Color from materials** — derive palette from the named physical materials
 5. **Ornamental elements** — dividers, icons, decorative marks that reinforce the metaphor
 6. **Interaction physics** — hover, click, entrance animations
-7. **Sound and haptics** (if applicable) — the finishing touch
+7. **Sound and haptics** (if the Product Portrait allows) — define the acoustic signature from the same materials as the palette; see `skills/shared/sound-design.md`
 
 **Each page gets its own chapter in the narrative.** In The Table:
 - Login = arriving at the door (`.login-panel` scope)
@@ -345,6 +381,8 @@ Each cycle:
 3. **Fix** the single weakest element (don't try to fix everything at once)
 4. **Screenshot again** and compare to the previous state
 5. **Log** what changed and why
+
+**Save every screenshot to the evidence trail** (`ade_docs/evidence/` — see `skills/shared/evidence-trail.md`), starting with a baseline capture BEFORE cycle 1. The cycle screenshots aren't scratch material — they are the proof of the transformation, referenced from the decision log. Narrate each cycle to the user as it happens: what's about to change, what the new screenshot shows, what's still weakest.
 
 **The first version is never the design.** It's the scaffolding. The design emerges through iteration:
 - Cycle 1: Atmosphere foundation (background, color, basic feel)

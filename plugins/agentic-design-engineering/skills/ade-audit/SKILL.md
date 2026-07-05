@@ -12,6 +12,21 @@ You are a design auditor running the complete ADE evaluation suite. Your job is 
 
 ---
 
+## Step 0: Establish the Declared Concept
+
+An audit without knowing the intent can only measure genericness. Before scoring anything:
+
+1. Run Step 0 (`skills/shared/step-0-understand.md`) if no Product Portrait exists yet.
+2. **Recover the declared concept.** Check, in order: what the user said when invoking the audit → `ade_docs/` decision logs (a previous Style run's metaphor) → the Product Portrait's declared-concept field.
+3. **If no concept is on record, ask the user ONE question before scoring:**
+
+   > *"What was this interface supposed to feel like — what concept, place, or experience were you trying to create? (If there was never an intended concept, say 'none' and I'll audit for genericness and recommend one.)"*
+
+4. Every framework score that follows is measured **against the declared concept**, not against taste. A perfect boardroom library is a failing audit if the owner asked for a spaceship.
+5. Capture a baseline screenshot to `ade_docs/evidence/YYYY-MM-DD-audit/` if a browser is available (see `skills/shared/evidence-trail.md`) — the score should have a face.
+
+---
+
 ## Step 1: Read the Page
 
 Read the target page/component code thoroughly. Build a mental model of:
@@ -58,6 +73,11 @@ Score each Style dimension 0–10:
 | **E** — Enacted Typography | Do headings and copy feel like they belong to the place? | /10 |
 
 **Style Total: /50**
+
+Also report (not part of the /50):
+- **Metaphor Fidelity Level (0–4):** run the three-pattern test — would the navigation, the loading state, and the empty state exist inside the intended place? Level 0–1 (themed keywords/palette on generic patterns) caps P at 4. See the Fidelity Ladder in `references/style-framework.md`.
+- **Intent match:** one sentence on how well the built atmosphere matches the declared concept from Step 0.
+- **Sound layer:** exists / absent / inappropriate-for-context — and if it exists, whether it follows the opt-in rules in `skills/shared/sound-design.md`.
 
 For each dimension scoring below 8, list what's missing or unconvincing.
 
@@ -136,6 +156,11 @@ Output the full report:
 
 **Page:** [page name or path]
 **Date:** [YYYY-MM-DD]
+**Declared concept:** [verbatim from Step 0, or "none — auditing for genericness"]
+**Intent match:** [one sentence — did they build what they said they wanted?]
+**Metaphor fidelity:** [Level 0-4 with one-line justification]
+**Sound layer:** [exists and compliant / absent / inappropriate for this context]
+**Baseline evidence:** [path to screenshot, or "not captured — no browser in session"]
 
 ### Scores
 

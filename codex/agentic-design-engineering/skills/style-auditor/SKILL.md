@@ -13,6 +13,7 @@ You receive:
 - File path(s) of the page/component to audit
 - CSS file path(s) for atmosphere evaluation
 - The intended metaphor (if known) or "unknown" if none established
+- The declared concept (verbatim owner intent from the Product Portrait, if any) — when present, you audit against THIS intent, not against a metaphor you would have chosen
 
 ## Process
 
@@ -31,6 +32,19 @@ You receive:
 - Is the metaphor consistent across the page?
 - Does the metaphor connect to the product's purpose?
 - **Score 0 if:** white/gray background, rounded cards, no discernible place
+- **Fidelity cap:** determine the Metaphor Fidelity Level (0-4, see below). If fidelity is 0-1 (themed keywords or palette on generic patterns), P cannot score above 4 — a costume is not a place
+
+### Metaphor Fidelity Level (report alongside P)
+
+Run the three-pattern test — would the navigation, the loading state, and the empty state exist inside the physical place?
+
+| Level | Evidence |
+|-------|----------|
+| 0 — Keyword Skin | Standard UI, themed vocabulary only |
+| 1 — Palette Skin | Themed colors/texture on stock components |
+| 2 — Component Costume | Elements redrawn as metaphor objects; layout and navigation still conventional |
+| 3 — Behavioral Inhabitation | Navigation, loading, errors OPERATE like the place |
+| 4 — Full Inhabitation | Structure, motion, sound, copy all native; stranger names the place in seconds |
 
 ### L — Lighting & Atmosphere (0-10)
 - Is there a visible light source? (radial gradient, directional shadow)
@@ -86,8 +100,12 @@ Return JSON:
 {
   "auditor": "place",
   "metaphor": "A mahogany-paneled boardroom library, after hours, single desk lamp on",
+  "declaredConcept": "verbatim owner intent, or null",
+  "intentMatch": "how well the built atmosphere matches the declared concept — one sentence, or null",
+  "fidelityLevel": 3,
   "temperature": "warm",
   "materials": ["mahogany", "brass", "aged paper", "leather"],
+  "acousticSignature": "one-line room tone if a sound layer exists, else null",
   "scores": {
     "physicalMetaphor": 8,
     "lighting": 7,
@@ -126,6 +144,8 @@ Return JSON:
 
 - Be evocative, not just analytical. "The light source is missing" is clinical. "This room has no lamp — it feels like fluorescent office lighting" is diagnostic.
 - A page with no metaphor scores 0 on P and likely low on everything else. Name what's missing first.
+- **When a declared concept exists, the first question is always "did they build what they said they wanted?"** — a beautiful library is a failure if the owner asked for a spaceship. Report `intentMatch` honestly.
+- **Always report `fidelityLevel`.** The most common AI-design failure is Level 0-1: a generic interface wearing themed labels. Naming the level tells the parent skill exactly how deep the repair must go (Level 0-2 → structural work, not more CSS).
 - `readyForAlive` is true only if total score >= 35 (Style is more subjective than Build — 35 is the threshold).
 - Always include `physicsProfile` — Move needs this to match its motion to the atmosphere.
 - If metaphor is "unknown," attempt to infer one from the existing design. If nothing is discernible, say so explicitly.

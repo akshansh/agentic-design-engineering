@@ -288,6 +288,8 @@ Each cycle has a specific focus and a concrete verification checklist. The agent
 
 **Each page gets its own scoped class** and 5 cycles. This is slow. That's the point.
 
+**Evidence trail (required):** Before cycle 1, capture a baseline screenshot to `ade_docs/evidence/YYYY-MM-DD-style/00-baseline.png`. Save each cycle's screenshot to the same directory, and narrate each cycle to the user in real time — one line on what's about to change, one line on what the capture shows and what's still weakest. Full convention: `skills/shared/evidence-trail.md`. If no browser is available in this session, state that in the decision log — never silently skip.
+
 ---
 
 ### Cycle 1: Atmosphere Foundation
@@ -347,6 +349,8 @@ Each cycle has a specific focus and a concrete verification checklist. The agent
 - [ ] Responsive: styles work at mobile width (< 640px) — check for overflow, readability
 - [ ] No global style pollution — all selectors scoped under page class
 - [ ] The metaphor is identifiable: could a stranger name the place from the code alone?
+- [ ] **Fidelity level >= 3** on the Metaphor Fidelity Ladder (see `references/style-framework.md`) — run the three-pattern test: would the navigation, the loading state, and the empty state exist inside the physical place? If all three are generic patterns with themed labels, this is a costume, not a place — return to the Structural Authenticity Check
+- [ ] Final screenshots captured to the evidence trail (desktop 1440px + mobile 390px)
 
 If the style-auditor score is below 35/50, identify the weakest dimension and apply a targeted fix before proceeding.
 
@@ -364,7 +368,15 @@ Before handing off, document the physics personality this metaphor implies:
 | Garden/nature | Organic, flowing | Low-medium | Varied |
 | Machine/engine | Mechanical, exact | Very high | Firm |
 
-Record this in the decision log for Move to reference.
+**Also define the acoustic signature (if the Product Portrait allows sound):**
+
+1. Room tone in one line — *"the hush of thick carpet and a ticking brass clock"*
+2. Material sound palette — which named materials make which sounds (see the material table in `skills/shared/sound-design.md`)
+3. Sound personality — must match the physics personality above (weighty → low/slow, snappy → short/precise)
+
+If the Product Portrait says sound is inappropriate (open-plan enterprise, clinical, high-frequency tools), record `acoustic_signature: none — [reason]` so Move knows the silence is a decision, not an omission.
+
+Record all of this in the decision log for Move to reference.
 
 ---
 
@@ -378,6 +390,9 @@ Output a summary:
 **Metaphor:** [one-line description]
 **Temperature:** [warm/cool/mixed]
 **Materials:** [list]
+**Fidelity level:** [0-4 on the Metaphor Fidelity Ladder — target >= 3]
+**Rendering stack:** [CSS / P5.js / Three.js / SVG+GSAP / WebGL — from Step 2.5]
+**Acoustic signature:** [one-line room tone + material sound palette, or "none — reason"]
 **Pages transformed:** [list with scope classes]
 
 ### Scores
@@ -401,6 +416,10 @@ Output a summary:
 - Physics personality: [weighty/floating/snappy/organic/mechanical]
 - Recommended spring tension: [high/medium/low]
 - Recommended mass: [heavy/medium/light]
+- Acoustic signature: [carried forward for earcon design, or "none"]
+
+### Evidence
+- [table linking baseline → cycle → final screenshots in ade_docs/evidence/, per skills/shared/evidence-trail.md]
 
 ### Files Modified
 - [list with line ranges]
@@ -433,10 +452,12 @@ If the result feels "off" but you can't pinpoint why, check these:
 ## What NOT to Do
 
 - Do not change the UI structure (layout, hierarchy, components) without going through the Structural Feedback Loop — that's Build's domain
-- Do not add interactivity, physics, or discovery — that's Move's job
+- Do not add interactivity, physics, or discovery — that's Move's job (Style defines the physics and acoustic profiles; Move implements them)
 - Do not change the copy voice — that's Write's job
+- Do not use stock images for atmosphere — generate it with the rendering stack chosen in Step 2.5 (CSS layers, P5.js, Three.js, shaders)
 - Do not default to CSS when the metaphor demands more — use the right rendering technology for the metaphor
 - Do not sacrifice accessibility for aesthetics — contrast must always pass regardless of rendering tech
 - Do not apply atmosphere globally — scope to specific pages
 - Do not stop at cycle 1 — the first version is scaffolding, not design
+- Do not settle for fidelity level 2 or below — themed labels on generic patterns are a costume, not a place
 - Do not install a new animation library if Move's vitality-injector will install the same one — coordinate via the decision log

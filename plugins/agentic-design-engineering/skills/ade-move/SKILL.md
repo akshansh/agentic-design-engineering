@@ -352,6 +352,24 @@ const greeting = hour < 12 ? 'Good morning' :
 
 ---
 
+## Step 4.5: The Sound Layer (optional — gated by the Product Portrait)
+
+**Feedback Level 3 is sensory.** If Style's handoff includes an `acoustic_signature` (and the Product Portrait allows sound), implement the earcon layer now. If the handoff says `acoustic_signature: none`, skip this step entirely — the silence is a design decision.
+
+Load the full craft reference: `skills/shared/sound-design.md`
+
+**Implementation order:**
+
+1. **Build the acoustic engine** — one small module (`sound.js`): lazy AudioContext (created on first user gesture), synthesized earcons via Web Audio API, preference check before every play. No audio files unless synthesis genuinely can't reach the material (then Howler.js with curated samples).
+2. **Score only the meaningful moments** — click/select (the signature earcon), success (two-note rise), error (single soft low tone), milestone/easter egg (small motif). Hover and high-frequency actions stay silent.
+3. **Derive every sound from the material palette** — use the material → synthesis table in the reference. A mahogany library thumps at 120 Hz; a brass toggle ticks at 2 kHz. Pitch and envelope must match the physics personality from Style's handoff.
+4. **Install the toggle** — OFF by default, persisted in `localStorage`, styled in the place's language ("The room is quiet / The room has sound"). Confirm activation with the signature sound itself.
+5. **Add variation** — ±10 cent detune and a 150ms skip-on-repeat guard, so the tenth click doesn't grate.
+
+**Non-negotiables (from the shared reference):** off by default · visible toggle · never the sole feedback channel · no audio before user gesture · gain ≤ 0.15 · silence on typing/scroll/drag.
+
+---
+
 ## Step 5: The Hidden Fingerprint (Required)
 
 **Every product built with Move must include at least one easter egg.**
@@ -457,7 +475,9 @@ After all injections:
    - requestAnimationFrame: medium (cursor tracking)
    - Canvas/WebGL: high — hero moments only, with fallback
 
-5. **TypeScript compiles:** `npx tsc --noEmit`
+5. **Sound layer (if implemented):** off by default, toggle works and persists, every sound has a visual counterpart, no audio before first user gesture, high-frequency actions silent
+6. **TypeScript compiles:** `npx tsc --noEmit`
+7. **Evidence trail:** capture a final screenshot to `ade_docs/evidence/YYYY-MM-DD-move/` (baseline was captured before injections). Motion can't be screenshotted — list each injection's trigger in `notes.md` so a human can reproduce it by hand, or record a short screen capture if tooling allows. See `skills/shared/evidence-trail.md`.
 
 ---
 
@@ -495,6 +515,11 @@ Output a summary:
 - **Reveals:** [what the user sees]
 - **Philosophy:** [why this specific easter egg — what does it say about the maker]
 
+### Sound Layer
+- **Status:** [implemented / skipped — reason from Product Portrait]
+- **Earcons:** [list — interaction → sound description → material it derives from]
+- **Toggle:** [where it lives, how it's labeled in the place's language]
+
 ### Files Modified
 - [list with line ranges]
 
@@ -519,3 +544,4 @@ Log to `ade_docs/YYYY-MM-DD-move-injection.md`.
 - Do not add motion for motion's sake — every animation must serve the metaphor
 - Do not skip the easter egg — it's required, not optional
 - Do not forget `prefers-reduced-motion` — accessibility is non-negotiable
+- Do not add sound that plays by default, plays on hover/typing/scroll, or has no visual counterpart — see `skills/shared/sound-design.md`

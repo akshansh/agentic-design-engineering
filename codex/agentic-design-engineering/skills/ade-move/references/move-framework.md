@@ -108,6 +108,8 @@ Level 5: + surprise/delight       ← Memorable (remarkable)
 
 Most products stop at Level 2. Level 4-5 is where interfaces feel alive.
 
+**Level 3 in practice — the earcon layer.** Sound is the most neglected feedback channel and the easiest to ruin. When the Product Portrait allows it, interactions get short synthesized sounds (earcons) derived from the Style metaphor's materials — a mahogany card thumps low, a brass toggle ticks bright. Always opt-in (off by default), always paired with visual feedback, always silent on high-frequency actions. Full craft reference: `skills/shared/sound-design.md`. Haptics (`navigator.vibrate`, pointer events on mobile) follow the same rules: brief, meaningful moments only.
+
 **Nested loops** (Wright's concept): Small loops nest inside bigger ones. A micro-loop (hover → feedback) nests inside a task loop (browse → select → read) which nests inside a session loop (login → explore → discover → return). Each loop level has its own pacing:
 
 | Loop Level | Duration | Product Example | Feedback Type |

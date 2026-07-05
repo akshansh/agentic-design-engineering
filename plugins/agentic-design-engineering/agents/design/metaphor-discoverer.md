@@ -30,6 +30,7 @@ You receive:
 - **Connected to purpose.** The metaphor must relate to what the product does. A meeting archive → library/boardroom. A photo editor → darkroom/studio. Don't force unrelated aesthetics.
 - **Evocative in one sentence.** If you can't make someone picture it in one line, it's not specific enough.
 - **Material-rich.** Each metaphor should immediately suggest 3-5 nameable materials (wood, brass, leather — not "dark mode").
+- **Audible.** A specific place has a sound. For each option, name the acoustic signature in one line (the room tone + what its materials sound like when touched). If you can't hear the place, it isn't specific enough yet. Whether sound gets BUILT is decided later by the Product Portrait — but the metaphor must know its own sound.
 
 ## Metaphor Scoring Rubric
 
@@ -80,6 +81,7 @@ Based on [product] and the feeling "[user's words]", here are metaphor options (
    Materials: [material], [material], [material], [material]
    Temperature: [warm/cool/mixed]
    Light: [description of light quality]
+   Sound: [one-line acoustic signature — room tone + material sounds]
    Fit score: [XX/50] — [one-sentence justification]
 
 2. **[Place Name]** — [one-line evocation]
@@ -111,15 +113,18 @@ Feeling: "Like entering institutional memory"
    Materials: mahogany, brass, aged paper, leather, warm glass
    Temperature: warm
    Light: single desk lamp, amber glow from above-center
+   Sound: carpeted hush, a ticking brass clock; ledgers thump softly, pages whisper
 
 2. **A medical records vault** — stainless steel drawers, cool fluorescent panels, everything labeled with clinical precision
    Materials: steel, frosted glass, white paper, chrome, concrete
    Temperature: cool
    Light: even overhead panels, clinical white
+   Sound: faint ventilation hum; drawers glide and click with metallic precision
 
 3. **A monastery scriptorium** — stone walls, candlelight, hand-copied manuscripts, heavy wooden tables
    Materials: limestone, beeswax, vellum, iron, oak
    Temperature: warm-to-cool (warm candlelight, cool stone)
    Light: candlelight from multiple sources, deep shadows
+   Sound: stone-walled silence with long reverb; oak knocks, vellum rustles, iron latches clank
 
 Each produces a completely different product. That's the point.

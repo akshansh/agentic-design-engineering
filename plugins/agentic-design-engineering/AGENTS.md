@@ -5,9 +5,18 @@
 This plugin provides design engineering frameworks that transform generic UIs into intentional, inhabited digital places. It operates through four interconnected frameworks:
 
 - **Build** — Structure, accessibility, hierarchy (Does it work?)
-- **Style** — Atmosphere, metaphor, texture (Does it feel like somewhere?)
-- **Move** — Feedback, discovery, physics, easter eggs (Does it engage?)
+- **Style** — Atmosphere, metaphor, texture, acoustic signature (Does it feel like somewhere?)
+- **Move** — Feedback, discovery, physics, sound, easter eggs (Does it engage?)
 - **Write** — Communication style, microcopy, tone (Does it sound intentional?)
+
+## Shared References (`skills/shared/`)
+
+| File | Purpose |
+|------|---------|
+| `step-0-understand.md` | Product Portrait process — runs before every framework |
+| `handoff-schema.md` | Structured data contracts between frameworks |
+| `sound-design.md` | The acoustic layer — material-derived earcons, room tone, Web Audio patterns, opt-in rules |
+| `evidence-trail.md` | Screenshot evidence + real-time narration conventions — every run proves its transformation |
 
 ## Agent Directory
 
@@ -16,8 +25,8 @@ This plugin provides design engineering frameworks that transform generic UIs in
 | Agent | Description | Model |
 |-------|-------------|-------|
 | `build-auditor` | Evaluates UI against Build framework: copy, layout, emphasis, accessibility, reward. Returns scored findings with repair procedures. | inherit |
-| `style-auditor` | Evaluates atmosphere against Style framework: physical metaphor, lighting, animation, color-as-material, typography. Returns scored findings with diagnostics. | inherit |
-| `move-auditor` | Evaluates interactivity against Move framework: agency, loops, invitation, vitality, emergence. Returns scored findings with dead-spot map. | inherit |
+| `style-auditor` | Evaluates atmosphere against Style framework: physical metaphor, lighting, animation, color-as-material, typography. Reports metaphor fidelity level (0-4) and intent match against the declared concept. | inherit |
+| `move-auditor` | Evaluates interactivity against Move framework: agency, loops, invitation, vitality, emergence. Returns scored findings with dead-spot map, easter egg verification, and sound layer compliance. | inherit |
 | `write-auditor` | Evaluates UI copy against Write framework: partnership, simplification, purpose, invitation, connection, compassion, metaphor language. Returns scored findings. | inherit |
 
 ### Design Agents (`agents/design/`)
@@ -97,3 +106,18 @@ Every skill execution MUST log its decisions to `ade_docs/YYYY-MM-DD-<context>.m
 - Every Move transformation MUST include at least one hidden fingerprint
 - The creator's signature in the work — discoverable but not obvious
 - Inspired by Warren Robinett's Adventure (1979) and Ready Player One
+
+### Sound Layer Rules
+- Sound is optional and gated by the Product Portrait's sound-appropriateness field
+- When built: OFF by default, visible persisted toggle, material-derived synthesis, never the sole feedback channel, silent on high-frequency actions
+- Full craft reference: `skills/shared/sound-design.md`
+
+### Evidence Trail Requirement
+- Every transformation captures a baseline screenshot BEFORE changes and saves per-step captures to `ade_docs/evidence/` (see `skills/shared/evidence-trail.md`)
+- Decision logs must reference their evidence — a log without proof is incomplete
+- Narrate in real time: one line before each phase (what and why), one line after (what changed)
+- If no browser is available, state that explicitly in the log — never silently skip
+
+### Metaphor Fidelity Floor
+- Style transformations target fidelity level >= 3 (Behavioral Inhabitation) on the Metaphor Fidelity Ladder
+- Themed labels on generic patterns (levels 0-1) are a failure state, not a result

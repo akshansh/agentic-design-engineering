@@ -12,10 +12,10 @@ Each framework asks a different question about your interface:
 Structure, accessibility, hierarchy. Before anything else, the interface must be usable. Build audits layout consistency, responsive behavior, contrast ratios, focus management, and visual hierarchy — the foundation everything else builds on.
 
 ### Style — Does it feel like somewhere?
-Atmosphere, metaphor, texture. Generic interfaces feel like nowhere. Style transforms them into inhabited spaces through physical metaphors — a boardroom with mahogany warmth, a workshop with industrial grit, a garden with organic softness. Real materials. Real light. Real temperature.
+Atmosphere, metaphor, texture, sound. Generic interfaces feel like nowhere. Style transforms them into inhabited spaces through physical metaphors — a boardroom with mahogany warmth, a workshop with industrial grit, a garden with organic softness. Real materials. Real light. Real temperature. Real acoustics. Style picks the rendering technology the metaphor demands (CSS layers, P5.js, Three.js, SVG+GSAP, shaders) and holds every transformation to the Metaphor Fidelity Ladder — themed labels on generic menus don't pass.
 
 ### Move — Does it engage?
-Feedback, discovery, physics, easter eggs. Static interfaces are dead. Move injects vitality through micro-interactions, meaningful transitions, physics-based animations, and hidden fingerprints — small surprises that reward curiosity and make someone smile.
+Feedback, discovery, physics, sound, easter eggs. Static interfaces are dead. Move injects vitality through micro-interactions, meaningful transitions, physics-based animations, opt-in material-derived earcons, and hidden fingerprints — small surprises that reward curiosity and make someone smile.
 
 ### Write — Does it speak with intention?
 Copy, tone, warmth. Most interface copy sounds like it was written by committee. Write rewrites it to sound like it was written by a person who cares — clear, warm, and purposeful, with language that reinforces the metaphor established by Style.
@@ -37,7 +37,7 @@ Every skill begins with Understand — the agent scans the project structure, de
 ## Key Features
 
 ### Autonomous Mode
-Add "surprise me" or `--auto` to `/ade:compound` and the agent makes all decisions independently — including metaphor selection via a 5-criteria scoring rubric (domain fit, material richness, emotional alignment, specificity, buildability). All quality gates still apply.
+Add "surprise me" or `--auto` to `/ade:compound` and the agent makes all decisions independently — including metaphor selection via a 5-criteria scoring rubric (domain fit, material richness, emotional alignment, specificity, transformability). All quality gates still apply.
 
 ### Before/After Scoring
 Every framework runs its auditor at the start (baseline) and end (result), producing delta tables:
@@ -88,9 +88,11 @@ Most software looks like it was assembled from a component library. It works, bu
 
 ## Decision Logging
 
-Every `/ade:*` execution creates a dated decision log in the project's `ade_docs/` directory. This records: Product Portrait, before/after scores with deltas, cross-framework handoff data, gate pass/fail status, metaphor chosen, physics profiles, copy rewrites, easter eggs planted, and all files modified. What gets decided gets documented.
+Every `/ade:*` execution creates a dated decision log in the project's `ade_docs/` directory. This records: Product Portrait, declared concept, before/after scores with deltas, cross-framework handoff data, gate pass/fail status, metaphor chosen, fidelity level, rendering stack, physics profiles, acoustic signature, copy rewrites, easter eggs planted, and all files modified. What gets decided gets documented.
 
-See `docs/decision-log-template.md` for the template structure.
+Every run also leaves an **evidence trail**: a baseline screenshot before any change and per-cycle captures in `ade_docs/evidence/`, referenced from the log — proof of the transformation, not just a description of it. The agent narrates each phase in real time as it works.
+
+See `docs/decision-log-template.md` and `skills/shared/evidence-trail.md` for the structures.
 
 ## Author
 

@@ -18,6 +18,8 @@ Before evaluating or transforming anything, understand what you're looking at. T
 | **User persona** | Who opens this every day? What's their emotional state? | QA analyst (high-stakes), creative freelancer (exploratory), ops manager (routine) |
 | **Emotional weight** | What are the consequences of getting it wrong? | Life-critical, professional routine, playful exploration, high-stakes decisions |
 | **Physical analog** | If this existed 100 years ago, what would it be? | Inspector's desk, artist's studio, trading floor, librarian's catalog |
+| **Sound appropriateness** | Would this product's users welcome sound? Where and how often is it used? | Immersive/creative (yes), open-plan enterprise desk tool (no), clinical (never — sound is reserved for alarms) |
+| **Declared concept** | Has the owner already stated what this should feel like or be? | "It should feel like a spaceship", an existing metaphor in the decision logs, a brand world — record it verbatim if it exists |
 
 3. **Rate confidence**: High / Medium / Low
 
@@ -37,6 +39,8 @@ Before evaluating or transforming anything, understand what you're looking at. T
 **User persona:** [who, frequency, emotional state]
 **Emotional weight:** [clinical/professional/playful/high-stakes]
 **Physical analog:** [specific physical object or place from 100 years ago]
+**Sound appropriateness:** [yes/no/never — with reason]
+**Declared concept:** [verbatim owner intent if stated anywhere — otherwise "none declared"]
 **Confidence:** [High/Medium/Low]
 **Context classification:** [emergency|enterprise|consumer|high-frequency|data-heavy|communication|e-commerce|educational]
 ```

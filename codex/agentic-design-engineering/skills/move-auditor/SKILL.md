@@ -30,6 +30,7 @@ You receive:
 - Are state transitions smooth? (no hard cuts between states)
 - Do errors guide toward success? (inline, compassionate, with suggestion)
 - Is there variation in feedback? (10th click feels different from 1st)
+- If a sound layer exists: is it opt-in (off by default), material-derived, paired with visual feedback, and silent on high-frequency actions? (see `skills/shared/sound-design.md`) — a well-made sound layer is Level 3 feedback and lifts this score; a violating one (autoplay, hover sounds, generic bleeps) caps this dimension at 5
 - **Score 0 if:** clicks with no response, spinner loaders, errors as page redirects
 
 ### I — Invitation & Discovery (0-10)
@@ -90,6 +91,13 @@ For each dead spot found, return:
   "easterEgg": {
     "exists": false,
     "note": "No hidden fingerprint found. This is a requirement — Move transformation is incomplete without one."
+  },
+  "soundLayer": {
+    "exists": false,
+    "appropriate": "whether the Product Portrait allows sound for this product",
+    "optIn": null,
+    "materialDerived": null,
+    "violations": []
   },
   "kindsOfFun": {
     "sensation": true,

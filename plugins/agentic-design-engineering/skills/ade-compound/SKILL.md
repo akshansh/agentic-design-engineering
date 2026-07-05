@@ -10,6 +10,8 @@ You are the lead designer orchestrating a complete transformation. Your job is t
 
 This is the flagship skill. It runs all four frameworks in strict order, with each step handing off constraints and context to the next.
 
+**Narrate and evidence the whole run.** Before each framework phase, tell the user in one or two lines what is about to happen and why; after it, what changed and what the scores say. Capture a baseline screenshot before Build touches anything and save every framework's captures to `ade_docs/evidence/` (see `skills/shared/evidence-trail.md`). The user should be able to watch the transformation happen and inspect the proof afterward — never work silently and dump a report at the end.
+
 ---
 
 ## The Sequence
@@ -57,7 +59,7 @@ Load the Step 0 understand process:
 `skills/shared/step-0-understand.md`
 
 1. Scan the project structure, dependencies, README, routes, and component hierarchy
-2. Build the Product Portrait (domain, interaction pattern, data density, user persona, emotional weight, physical analog)
+2. Build the Product Portrait (domain, interaction pattern, data density, user persona, emotional weight, physical analog, sound appropriateness, declared concept)
 3. Assess confidence (high/medium/low)
 4. If autonomous mode AND confidence is low: ask ONE targeted question, then proceed
 5. If standard mode AND confidence is low: ask ONE targeted question, wait for answer
@@ -168,14 +170,16 @@ This loop counts as a second pass of Build. Log it in the decision log as "Build
 4. **Select the rendering stack** — choose the technology that authentically serves the metaphor (CSS / P5.js / Three.js / SVG+GSAP / WebGL). Record the choice and rationale in the decision log.
 5. Build the atmosphere using the chosen rendering stack
 6. Derive colors from materials, not hex pickers
-7. Iterate through 5 design cycles (mandatory — cycle 1 is scaffolding, not design)
-8. Set the Move constraints based on the metaphor's weight and rendering stack
+7. Iterate through 5 design cycles (mandatory — cycle 1 is scaffolding, not design), saving each cycle's screenshot to the evidence trail and verifying **fidelity level >= 3** in cycle 5 (no themed labels on generic patterns)
+8. Set the Move constraints based on the metaphor's weight and rendering stack — including the **acoustic signature** (room tone + material sounds) if the Product Portrait allows sound, or an explicit `none — [reason]`
 
 **What to pass forward to Move:**
 - The chosen metaphor and its one-line description
+- The fidelity level achieved (0-4)
 - The rendering stack chosen and why
 - The physics personality (weighty/floating/snappy/organic/mechanical)
 - Recommended spring tension and mass
+- The acoustic signature (or "none — reason")
 - The material palette and color derivations
 - Which libraries are already installed (so Move doesn't duplicate)
 
@@ -201,14 +205,16 @@ Execute the full Move process using the physics profile from Style.
    - **Invitation** — scroll reveals, progressive depth, power-user paths
    - **Vitality** — physics matching the Style metaphor's weight
    - **Emergence** — contextual acknowledgment, data-driven insights
-5. Implement the hidden fingerprint (required — not optional)
-6. Verify `prefers-reduced-motion` coverage
-7. Verify keyboard navigation still works
+5. Implement the sound layer (only if Style handed off an acoustic signature — earcons derived from materials, off by default, visible toggle; see `skills/shared/sound-design.md`)
+6. Implement the hidden fingerprint (required — not optional)
+7. Verify `prefers-reduced-motion` coverage
+8. Verify keyboard navigation still works
 
 **What to pass forward to Write:**
 - The complete metaphor context (place + physics + materials)
 - Any interaction-specific copy that was added (loading states, tooltips, error messages)
 - The easter egg description (so Write doesn't accidentally rewrite its trigger text)
+- The sound toggle location and label (so Write can polish it in the place's language without breaking it)
 
 **Gate check:** Move total must be >= 40/50 to proceed.
 
@@ -260,6 +266,8 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 **Interaction pattern:** [from Step 0]
 **User persona:** [from Step 0]
 **Physical analog:** [from Step 0]
+**Sound appropriateness:** [from Step 0]
+**Declared concept:** [from Step 0 — verbatim owner intent, or "none declared"]
 **Confidence:** [High/Medium/Low]
 **Mode:** [Standard/Autonomous]
 
@@ -283,6 +291,8 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 **Rendering stack:** [CSS / P5.js / Three.js / SVG+GSAP / WebGL — and why]
 **Libraries installed:** [list with versions]
 **Structural Feedback Loop triggered:** [Yes/No — if Yes, what changed]
+**Fidelity level:** [0-4 — target >= 3]
+**Acoustic signature:** [one line, or "none — reason"]
 **Pages transformed:** [list with scope classes]
 **Design cycles completed:** [1-5, with notes per cycle]
 
@@ -298,6 +308,7 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 - Type: [key combination / console message / secret page]
 - Trigger: [how to activate]
 - Reveals: [what the user sees]
+**Sound layer:** [implemented — earcon list + toggle location / skipped — reason]
 
 ---
 
@@ -312,6 +323,11 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 - Build → Style: [what structural context informed atmosphere]
 - Style → Move: [what physics profile was derived from metaphor]
 - Move → Write: [what interaction copy was preserved]
+
+---
+
+### Evidence
+[table linking baseline → per-framework → final screenshots in ade_docs/evidence/, per skills/shared/evidence-trail.md — or an explicit note that no browser was available]
 
 ---
 

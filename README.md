@@ -140,15 +140,17 @@ Rooted in: Cognitive Load Theory (Sweller), Gestalt Principles, WCAG 2.1, Flow T
 
 *"Every application inhabits a place. Your job is to discover which place, then build it."*
 
-Transforms generic interfaces into inhabited spaces through physical metaphors — a boardroom with mahogany warmth, a workshop with industrial grit, a garden with organic softness. Real materials. Real light. Real temperature.
+Transforms generic interfaces into inhabited spaces through physical metaphors — a boardroom with mahogany warmth, a workshop with industrial grit, a garden with organic softness. Real materials. Real light. Real temperature. Even a real sound: every metaphor names its acoustic signature.
 
-Inspired by: "Build Places, Not Products" (Lucas Crespo), Cora's art direction at Every
+Style selects the rendering technology the metaphor demands — layered CSS, P5.js generative art, Three.js environments, SVG+GSAP choreography, or WebGL shaders — and enforces the **Metaphor Fidelity Ladder**: themed labels on generic menus are a costume (level 0-1); the target is level 3+, where navigation, loading, and errors *operate* like the place.
+
+Inspired by: "Build Places, Not Products" (Lucas Crespo), Cora's art direction at Every, P5.js creative coding at Parsons
 
 ### Move — Interactivity & Game Design Thinking
 
 *"You can take almost anything, and looking at it the right way, make it a fascinating interactive experience." — Will Wright*
 
-Injects vitality through micro-interactions, physics-based animations, discovery layers, and **required easter eggs** — the creator's hidden signature in the work. Inspired by Warren Robinett hiding his name inside Atari's Adventure in 1979.
+Injects vitality through micro-interactions, physics-based animations (GSAP, Motion.dev, or vanilla CSS — matched to the project stack), discovery layers, an opt-in sound layer of material-derived earcons, and **required easter eggs** — the creator's hidden signature in the work. Inspired by Warren Robinett hiding his name inside Atari's Adventure in 1979.
 
 Rooted in: Will Wright's MasterClass on Game Design, MDA Framework, Csikszentmihalyi's Flow Theory
 
@@ -206,18 +208,20 @@ Nine specialized agents power the framework skills:
 | `style-auditor` | Evaluates atmosphere, returns diagnostics + physics profile for Move |
 | `move-auditor` | Evaluates interactivity, maps dead spots, verifies easter egg exists |
 | `write-auditor` | Evaluates UI copy against 7 voice principles, returns scored findings |
-| `metaphor-discoverer` | Suggests 3 ranked metaphors with scoring rubric — user picks or delegates |
-| `atmosphere-builder` | Generates scoped CSS atmosphere layers from chosen metaphor + materials |
-| `vitality-injector` | Scans code for dead spots, produces minimal physics-based patches |
+| `metaphor-discoverer` | Suggests 3 ranked metaphors — each with materials, temperature, light, and acoustic signature — scored for Transformability |
+| `atmosphere-builder` | Selects the rendering technology (CSS → P5.js → Three.js → shaders) and builds the atmosphere from the chosen metaphor + materials |
+| `vitality-injector` | Scans code for dead spots, produces physics-based patches via GSAP, Motion.dev, or vanilla CSS |
 | `voice-writer` | Reviews UI copy, rewrites generic text with warmth and purpose. Supports custom voice profiles |
 
 In Claude Code and Cursor, these run as dedicated agents. In Codex, they're converted to skills (e.g., `$build-auditor`).
 
 ---
 
-## Decision Logging
+## Decision Logging & Evidence Trail
 
-Every execution creates a dated decision log in the project's `ade_docs/` directory. Each log records: Product Portrait, metaphor chosen, materials, physics profile, copy rewrites, easter egg planted, before/after scores with deltas, cross-framework handoff data, gate pass/fail status, and files modified. What gets decided gets documented.
+Every execution creates a dated decision log in the project's `ade_docs/` directory. Each log records: Product Portrait, declared concept, metaphor chosen, fidelity level, materials, rendering stack, physics profile, acoustic signature, copy rewrites, easter egg planted, before/after scores with deltas, cross-framework handoff data, gate pass/fail status, and files modified. What gets decided gets documented.
+
+And what gets documented gets **proven**: every run captures a baseline screenshot before any change and saves per-cycle captures to `ade_docs/evidence/`, referenced from the decision log — so anyone can see what the transformation started with and what it became. While working, the agent narrates each phase in real time instead of dumping a report at the end.
 
 ---
 

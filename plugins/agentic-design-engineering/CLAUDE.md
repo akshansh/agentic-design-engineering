@@ -6,6 +6,7 @@ This plugin provides design engineering frameworks for Claude Code. See AGENTS.m
 
 | Skill | Purpose |
 |-------|---------|
+| `/ade:setup` | Post-install readiness check (stack, evidence capture, history) — run this first |
 | `/ade:build` | UI structure audit + repair (accessibility, hierarchy, emphasis) |
 | `/ade:style` | Atmosphere transformation (generic → inhabited place) |
 | `/ade:move` | Interactivity injection (feedback, discovery, physics, easter eggs) |

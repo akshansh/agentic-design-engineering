@@ -28,6 +28,7 @@ This plugin provides design engineering frameworks for OpenAI Codex. It transfor
 | `ade-write` | `$ade-write` | Communication style pass. Reviews and rewrites UI copy to sound intentional, not generic. |
 | `ade-audit` | `$ade-audit` | Full evaluation. Runs Build + Style + Move + Write audits in sequence, produces combined scored report out of /200. |
 | `ade-compound` | `$ade-compound` | End-to-end transformation. Build fix → Style atmosphere → Move vitality → Write copy. The flagship skill. |
+| `ade-setup` | `$ade-setup` | Post-install readiness check. Detects the rendering stack, evidence-capture tier, prior ADE history, and sound feasibility; recommends the right first command. Read-only. |
 
 ### Specialist Skills (supporting)
 

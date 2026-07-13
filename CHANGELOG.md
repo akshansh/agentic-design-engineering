@@ -1,5 +1,25 @@
 # Changelog
 
+## v3.3 — The Agent-Native Repo
+
+Benchmarked against [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin): the repository itself is now something AI agents can read, understand, and maintain — and installation no longer requires cloning anything.
+
+### Understanding: repo-root agent context
+- **Root `AGENTS.md`** — authoring instructions for agents working on this source repo: the two-package parity rule (with the Claude↔Codex conversion table), the four-manifest versioning rule, skill authoring conventions, methodology invariants, and validation commands. Distinguishes authoring context (this repo) from runtime context (the installed plugin), so instructions land at the right layer.
+- **Root `CLAUDE.md` and `GEMINI.md`** — host entry points that route agents to `AGENTS.md`.
+- **`CONCEPTS.md`** — the shared domain vocabulary: Product Portrait, declared concept, Transformability, the Metaphor Fidelity Ladder, earcons, evidence trail, gates, handoffs. Every term the skills use with project-specific meaning, defined once.
+
+### Execution: `/ade:setup`
+New seventh user-invocable skill (`$ade-setup` in Codex), modeled on Compound Engineering's `/ce-setup`. A read-only readiness check that runs after install: detects the rendering stack and animation libraries already on hand, reports which evidence-capture tier the session supports (directly addressing the evidence-tooling variance in headless environments), finds prior `ade_docs/` history so transformations resume instead of restarting, notes sound-layer feasibility, and recommends the right first command.
+
+### Installation: direct from GitHub, every host
+(Shipped alongside this release.) Codex — both App and CLI — now installs the marketplace straight from GitHub (`codex plugin marketplace add akshansh/agentic-design-engineering`); GitHub Copilot (VS Code + Copilot CLI) is a documented host since it reads the Claude-compatible manifests already shipped. The clone + `install-codex.sh` flow moved to a contributors-only Local Development section. README gained Getting Started, Limitations, and FAQ sections.
+
+### Versions
+Manifests bumped to **0.3.3** across all four version fields.
+
+---
+
 ## v3.2 — Sound, Fidelity, Evidence
 
 ### The Acoustic Layer

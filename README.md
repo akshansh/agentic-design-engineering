@@ -8,7 +8,7 @@ Agentic Design Engineering is a structured system for changing that. Four interc
 
 This isn't a design system. It's a design *philosophy* with teeth — actionable agent instructions, repair procedures, iteration loops, and evaluation criteria that produce measurably different results.
 
-Works with **Claude Code**, **Cursor**, **OpenAI Codex**, and **GitHub Copilot** · Current release: v3.2 · [Changelog](CHANGELOG.md)
+Works with **Claude Code**, **Cursor**, **OpenAI Codex**, and **GitHub Copilot** · Current release: v3.3 · [Changelog](CHANGELOG.md)
 
 ---
 
@@ -124,6 +124,22 @@ Release notes live in `CHANGELOG.md`, so this README stays focused on what the p
 
 ---
 
+## Getting Started
+
+After installing, run the readiness check in any project:
+
+```text
+/ade:setup
+```
+
+It inspects the project (read-only) — rendering stack, screenshot capability for the evidence trail, prior ADE history, sound feasibility — and recommends your first command:
+
+- **`/ade:audit`** if the design is already deliberate: score it before touching it.
+- **`/ade:compound`** if the interface works but feels like nothing: the full transformation.
+- **`/ade:build`** if there are structural or accessibility problems to fix first.
+
+---
+
 ## The Four Frameworks
 
 ```mermaid
@@ -198,6 +214,7 @@ graph TD
 
 | Action | Claude Code / Cursor | Codex |
 |--------|----------------------|-------|
+| Check project + session readiness (read-only) | `/ade:setup` | `$ade-setup` |
 | Audit + repair UI structure | `/ade:build` | `$ade-build` |
 | Transform atmosphere with metaphor | `/ade:style` | `$ade-style` |
 | Inject physics, discovery, easter egg | `/ade:move` | `$ade-move` |
@@ -282,7 +299,8 @@ agentic-design-engineering/
 │       │   ├── ade-move/                # + references/move-framework.md
 │       │   ├── ade-write/                # + references/write-framework.md
 │       │   ├── ade-audit/
-│       │   └── ade-compound/
+│       │   ├── ade-compound/
+│       │   └── ade-setup/                # readiness check
 │       ├── rules/                        # Cursor rules (.mdc)
 │       │   └── ade-conventions.mdc       # Framework ordering + quality gates
 │       └── docs/                         # Decision log template
@@ -299,6 +317,7 @@ agentic-design-engineering/
 │       │   ├── ade-write/
 │       │   ├── ade-audit/
 │       │   ├── ade-compound/
+│       │   ├── ade-setup/                # readiness check
 │       │   ├── build-auditor/            # 9 specialist skills
 │       │   ├── style-auditor/
 │       │   ├── move-auditor/
@@ -310,13 +329,47 @@ agentic-design-engineering/
 │       │   └── akshansh-voice/           # (voice-writer)
 │       └── docs/                         # Decision log template
 │
-├── .claude-plugin/marketplace.json       # Claude Code marketplace entry
+├── .claude-plugin/marketplace.json       # Claude Code marketplace entry (also read by Copilot)
 ├── .cursor-plugin/marketplace.json       # Cursor marketplace entry
 ├── .agents/plugins/marketplace.json      # Codex marketplace entry
+├── AGENTS.md                             # Authoring instructions for agents working on this repo
+├── CLAUDE.md                             # Claude Code entry point → AGENTS.md
+├── GEMINI.md                             # Gemini entry point → AGENTS.md
+├── CONCEPTS.md                           # Shared domain vocabulary
 ├── .gitignore
 ├── LICENSE                               # MIT
 └── README.md                             # This file
 ```
+
+---
+
+## Limitations
+
+Stated plainly, so you know before you run:
+
+- **Evidence depends on the session.** Screenshot capture uses whatever browser tooling the host session has. In headless environments the skills degrade gracefully — every uncaptured step is logged explicitly as "not captured" — but the evidence trail is thinner. Run `/ade:setup` to see which tier your session supports.
+- **The sound layer is young.** Material-derived earcons shipped in v3.2 and follow strict opt-in rules, but the acoustic layer has been exercised on fewer real products than the visual frameworks.
+- **Web-first.** The frameworks assume a web UI (HTML/CSS/JS and the browser as the medium). The methodology transfers to native apps; the repair procedures and rendering stacks don't yet.
+- **Structural changes cost more than reskins.** The Fidelity Ladder deliberately blocks cheap themed costumes, which means an ambitious metaphor can send changes back through Build. That's the point — but budget for it.
+
+---
+
+## FAQ
+
+**Do I have to run all four frameworks?**
+No. Each stands alone (`/ade:build` alone is a legitimate accessibility pass). But the order is fixed when you combine them — Build before Style, Style before Move, Move before Write — because each hands constraints to the next.
+
+**Does it work on an existing app, or only new builds?**
+Existing apps are the primary case. Step 0 reads the codebase first and builds a Product Portrait before anything is evaluated, and Build repairs what exists rather than replacing it.
+
+**How is this different from a design system?**
+A design system standardizes components so everything looks consistent. ADE does the opposite job: it makes *this* app feel like *somewhere specific* — with scored gates, decision logs, and screenshot evidence instead of taste-based review.
+
+**Will it fight my agent's autonomy?**
+Standard mode pauses at the decisions that are genuinely yours (which metaphor, whether to approve structural change). Autonomous mode (`--auto`) makes every call itself and documents its reasoning — but no mode can skip a quality gate.
+
+**What does it leave behind in my repo?**
+An `ade_docs/` directory: dated decision logs plus an `evidence/` folder of before/after screenshots. Delete it and the app still works — it's the proof, not the product.
 
 ---
 

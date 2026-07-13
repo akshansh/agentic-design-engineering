@@ -8,6 +8,8 @@ Agentic Design Engineering is a structured system for changing that. Four interc
 
 This isn't a design system. It's a design *philosophy* with teeth — actionable agent instructions, repair procedures, iteration loops, and evaluation criteria that produce measurably different results.
 
+Works with **Claude Code**, **Cursor**, **OpenAI Codex**, and **GitHub Copilot** · Current release: v3.2 · [Changelog](CHANGELOG.md)
+
 ---
 
 ## Watch the Walkthrough
@@ -20,42 +22,34 @@ This isn't a design system. It's a design *philosophy* with teeth — actionable
 
 ## Installation
 
-Choose the host you want to install into:
+ADE ships in the standard Claude Code plugin format, plus a Codex skills package — and every host can now install it **directly from GitHub, no cloning required**. Pick your host:
 
 ```mermaid
 flowchart LR
-    Start["Choose your host"] --> Claude["Claude Code"]
-    Start --> Cursor["Cursor"]
-    Start --> CodexPersonal["Codex<br/>Personal marketplace"]
-    Start --> CodexRepo["Codex<br/>Repo-scoped"]
+    Repo["akshansh/agentic-design-engineering<br/>on GitHub"] --> Claude["Claude Code"]
+    Repo --> Cursor["Cursor"]
+    Repo --> Codex["OpenAI Codex<br/>App or CLI"]
+    Repo --> Copilot["GitHub Copilot<br/>VS Code or CLI"]
 
-    Claude --> ClaudeInstall["Add marketplace<br/>Install plugin"]
-    Cursor --> CursorInstall["Add plugin"]
-    CodexPersonal --> Clone["Clone from GitHub"]
-    Clone --> Script["Run ./scripts/install-codex.sh"]
-    Script --> Enable["Restart Codex<br/>Open marketplace<br/>Install or enable ADE"]
-    CodexRepo --> RepoClone["Clone from GitHub"]
-    RepoClone --> OpenRepo["Open Codex in repo root"]
-    OpenRepo --> RepoEnable["Install or enable<br/>from repo marketplace"]
+    Claude --> C1["/plugin marketplace add<br/>/plugin install"]
+    Cursor --> C2["/add-plugin"]
+    Codex --> C3["Add plugin marketplace<br/>from GitHub, then install"]
+    Copilot --> C4["Reads the same<br/>Claude-compatible manifests"]
 
-    style Start fill:#4a3a5c,stroke:#7a6a8c,color:#fff
+    style Repo fill:#4a3a5c,stroke:#7a6a8c,color:#fff
     style Claude fill:#2d5a3d,stroke:#4a8c5c,color:#fff
-    style ClaudeInstall fill:#dff3e6,stroke:#4a8c5c,color:#1f3b2b
+    style C1 fill:#dff3e6,stroke:#4a8c5c,color:#1f3b2b
     style Cursor fill:#2a4a6b,stroke:#5282ef,color:#fff
-    style CursorInstall fill:#dce8ff,stroke:#5282ef,color:#1e3556
-    style CodexPersonal fill:#8a5d18,stroke:#c9a44a,color:#fff
-    style Clone fill:#f6ecd5,stroke:#c9a44a,color:#5a3b08
-    style Script fill:#f6ecd5,stroke:#c9a44a,color:#5a3b08
-    style Enable fill:#f6ecd5,stroke:#c9a44a,color:#5a3b08
-    style CodexRepo fill:#6e3328,stroke:#a04d3e,color:#fff
-    style RepoClone fill:#f4dfdb,stroke:#a04d3e,color:#5a261e
-    style OpenRepo fill:#f4dfdb,stroke:#a04d3e,color:#5a261e
-    style RepoEnable fill:#f4dfdb,stroke:#a04d3e,color:#5a261e
+    style C2 fill:#dce8ff,stroke:#5282ef,color:#1e3556
+    style Codex fill:#8a5d18,stroke:#c9a44a,color:#fff
+    style C3 fill:#f6ecd5,stroke:#c9a44a,color:#5a3b08
+    style Copilot fill:#6e3328,stroke:#a04d3e,color:#fff
+    style C4 fill:#f4dfdb,stroke:#a04d3e,color:#5a261e
 ```
 
 ### Claude Code
 
-```bash
+```text
 /plugin marketplace add akshansh/agentic-design-engineering
 /plugin install agentic-design-engineering
 ```
@@ -68,47 +62,63 @@ Then use slash commands: `/ade:build`, `/ade:style`, `/ade:move`, `/ade:write`, 
 /add-plugin agentic-design-engineering
 ```
 
-Then use slash commands: `/ade:build`, `/ade:style`, `/ade:move`, `/ade:write`, `/ade:audit`, `/ade:compound`
+Then use the same slash commands as Claude Code.
 
-### OpenAI Codex (recommended: personal marketplace)
+### OpenAI Codex (App)
 
-Codex supports local marketplaces today. The public third-party plugin directory is still limited, so the recommended path is: clone from GitHub, register a personal marketplace entry, then install or enable the plugin from Codex.
+Codex installs plugin marketplaces directly from GitHub:
 
-```bash
-git clone https://github.com/akshansh/agentic-design-engineering.git
-cd agentic-design-engineering
-./scripts/install-codex.sh
-```
+1. Open **Plugins** from the sidebar.
+2. Click **Add plugin marketplace**.
+3. Enter Source: `akshansh/agentic-design-engineering` · Git ref: `main` · Sparse paths: leave blank.
+4. Click **Add marketplace**.
+5. Install **Agentic Design Engineering**, then restart Codex.
 
-What `./scripts/install-codex.sh` does:
-
-- Copies the Codex plugin to `~/.codex/plugins/agentic-design-engineering`
-- Creates or updates `~/.agents/plugins/marketplace.json`
-- Registers the plugin with `source.path: "./.codex/plugins/agentic-design-engineering"`
-
-After the script finishes:
-
-1. Restart Codex.
-2. Open the plugin marketplace.
-3. Install or enable **Agentic Design Engineering** from your personal marketplace.
-
-### OpenAI Codex (repo-scoped: for contributors)
-
-Use this when you are developing the plugin itself and want Codex to discover it from the cloned repository rather than your personal marketplace.
+### OpenAI Codex (CLI)
 
 ```bash
-git clone https://github.com/akshansh/agentic-design-engineering.git
-cd agentic-design-engineering
+codex plugin marketplace add akshansh/agentic-design-engineering
+codex plugin add agentic-design-engineering@ade-marketplace
 ```
-
-Then open Codex in the repository root. Codex can discover the repo marketplace at `.agents/plugins/marketplace.json` and load the Codex plugin source from `./codex/agentic-design-engineering`.
-
-From there:
-
-1. Open the plugin marketplace.
-2. Install or enable **Agentic Design Engineering** from the repo marketplace.
 
 Then use skills: `$ade-build`, `$ade-style`, `$ade-move`, `$ade-write`, `$ade-audit`, `$ade-compound`
+
+### GitHub Copilot
+
+Copilot reads the same Claude-compatible plugin manifests this repo already ships.
+
+**VS Code:** run `Chat: Install Plugin from Source` from the command palette, enter `akshansh/agentic-design-engineering`, and select **agentic-design-engineering**.
+
+**Copilot CLI:**
+
+```text
+/plugin marketplace add akshansh/agentic-design-engineering
+/plugin install agentic-design-engineering@ade-marketplace
+```
+
+### Local development (contributors)
+
+Work from a checkout when developing the plugin itself:
+
+```bash
+git clone https://github.com/akshansh/agentic-design-engineering.git
+cd agentic-design-engineering
+```
+
+**Claude Code** — load the checkout directly:
+
+```bash
+claude --plugin-dir "$PWD/plugins/agentic-design-engineering"
+```
+
+**Codex CLI** — register the checkout as a local marketplace:
+
+```bash
+codex plugin marketplace add "$PWD"
+codex plugin add agentic-design-engineering@ade-marketplace
+```
+
+**Codex App** — open Codex in the repo root; it discovers `.agents/plugins/marketplace.json` and loads the plugin from `./codex/agentic-design-engineering`. Or, for a persistent personal marketplace outside the checkout, run `./scripts/install-codex.sh` — it copies the Codex package to `~/.codex/plugins/` and registers it in `~/.agents/plugins/marketplace.json`.
 
 Release notes live in `CHANGELOG.md`, so this README stays focused on what the project is and how to install it.
 
@@ -192,8 +202,12 @@ graph TD
 | Transform atmosphere with metaphor | `/ade:style` | `$ade-style` |
 | Inject physics, discovery, easter egg | `/ade:move` | `$ade-move` |
 | Rewrite copy with warmth | `/ade:write` | `$ade-write` |
-| Score all frameworks (read-only) | `/ade:audit` | `$ade-audit` |
+| Score all four frameworks against the declared concept (read-only) | `/ade:audit` | `$ade-audit` |
 | Full pipeline: Build → Style → Move → Write | `/ade:compound` | `$ade-compound` |
+
+`/ade:compound` runs in two modes. **Standard** (default) pauses at key decision points — you pick the metaphor, you approve structural changes. **Autonomous** (`--auto`, or just say "surprise me") self-selects and documents its reasoning in the decision log. Every quality gate applies in both modes.
+
+`/ade:audit` opens by recovering the **declared concept** — what this was *supposed* to feel like, from your invocation, previous decision logs, or one targeted question — and scores all four frameworks against that intent. A perfect boardroom library is a failing audit if you asked for a spaceship.
 
 ---
 
@@ -208,7 +222,7 @@ Nine specialized agents power the framework skills:
 | `style-auditor` | Evaluates atmosphere, returns diagnostics + physics profile for Move |
 | `move-auditor` | Evaluates interactivity, maps dead spots, verifies easter egg exists |
 | `write-auditor` | Evaluates UI copy against 7 voice principles, returns scored findings |
-| `metaphor-discoverer` | Suggests 3 ranked metaphors — each with materials, temperature, light, and acoustic signature — scored for Transformability |
+| `metaphor-discoverer` | Suggests 3-5 ranked metaphors — each with materials, temperature, light, and acoustic signature — scored for Transformability |
 | `atmosphere-builder` | Selects the rendering technology (CSS → P5.js → Three.js → shaders) and builds the atmosphere from the chosen metaphor + materials |
 | `vitality-injector` | Scans code for dead spots, produces physics-based patches via GSAP, Motion.dev, or vanilla CSS |
 | `voice-writer` | Reviews UI copy, rewrites generic text with warmth and purpose. Supports custom voice profiles |
@@ -262,7 +276,7 @@ agentic-design-engineering/
 │       │   ├── design/                   # 3 builder agents
 │       │   └── voice/                    # 1 voice agent
 │       ├── skills/
-│       │   ├── shared/                   # Step 0: understand + handoff schema
+│       │   ├── shared/                   # Step 0, handoff schema, sound design, evidence trail
 │       │   ├── ade-build/                # + references/build-framework.md
 │       │   ├── ade-style/                # + references/style-framework.md
 │       │   ├── ade-move/                # + references/move-framework.md
@@ -278,7 +292,7 @@ agentic-design-engineering/
 │       ├── .codex-plugin/plugin.json     # Codex manifest
 │       ├── AGENTS.md                     # Codex project instructions
 │       ├── skills/
-│       │   ├── shared/                   # Step 0: understand + handoff schema
+│       │   ├── shared/                   # Step 0, handoff schema, sound design, evidence trail
 │       │   ├── ade-build/                # 6 framework skills (adapted)
 │       │   ├── ade-style/                #   + references/
 │       │   ├── ade-move/

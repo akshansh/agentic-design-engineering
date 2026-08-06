@@ -4,15 +4,17 @@
 
 Works with **Claude Code**, **Cursor**, **OpenAI Codex**, and **GitHub Copilot** · Current release: **v3.3** (manifest `0.3.3`) · [Changelog](CHANGELOG.md)
 
+Design doesn’t happen after the code. We build it in — with every agent call, every transformation, every word we choose.
+
 ---
 
 ## What it is
 
 Agentic Design Engineering (ADE) is a design methodology, shipped as plugins for AI coding agents, that turns default-looking interfaces into spaces that feel crafted, inhabited, and distinctly human.
 
-Four frameworks — **Build**, **Style**, **Move**, **Write** — plus readiness, audit, and compound skills. Not a component library. A design philosophy with teeth: scored gates, repair loops, decision logs, and screenshot evidence.
+Four frameworks — **Build**, **Style**, **Move**, **Write** — plus readiness, audit, and compound skills. Not a component library. Not a Venus ops app with auth, routes, or a database. A design philosophy with teeth: scored gates, repair loops, decision logs, and screenshot evidence.
 
-This README serves two readers equally: a human developer arriving fresh, and an AI agent that needs accurate context before touching the code. Shared vocabulary lives in [`CONCEPTS.md`](CONCEPTS.md). Authoring rules for this repo live in [`AGENTS.md`](AGENTS.md).
+This README serves two readers equally: a human developer arriving fresh, and an AI agent that needs accurate context before touching the code. Shared vocabulary lives in [`CONCEPTS.md`](CONCEPTS.md) — read it before editing any skill. Authoring rules for this repo live in [`AGENTS.md`](AGENTS.md).
 
 ---
 
@@ -20,7 +22,7 @@ This README serves two readers equally: a human developer arriving fresh, and an
 
 Most AI-built interfaces look the same. Rounded corners, neutral grays, tidy rows of cards. Competent, functional, forgettable. The internet is becoming an office park — every app a different floor of the same building.
 
-ADE exists to change that. Theme is not a costume of labels on a hamburger menu. Craft lives in small details — materials, light, physics, acoustic signature, a hidden fingerprint. Software should feel like a place you want to stay, not a form you endure.
+We built ADE to change that. Theme is not a costume of labels on a hamburger menu. Craft lives in small details — materials, light, physics, acoustic signature, a hidden fingerprint. Software should feel like a place you want to stay, not a form you endure.
 
 ---
 

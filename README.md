@@ -2,7 +2,7 @@
 
 **Transform generic UIs into intentional, inhabited digital places.**
 
-Works with **Claude Code**, **Cursor**, **OpenAI Codex**, and **GitHub Copilot** · Current release: **v3.3** (manifest `0.3.3`) · [Changelog](CHANGELOG.md)
+Works with **Claude Code**, **Cursor**, **OpenAI Codex**, and **GitHub Copilot** · Current release: **v3.4** (manifest `0.3.4`) · [Changelog](CHANGELOG.md)
 
 Design doesn’t happen after the code. We build it in — with every agent call, every transformation, every word we choose.
 
@@ -265,7 +265,7 @@ Dated decision logs in the project's `ade_docs/`, plus baseline and per-cycle sc
 | | |
 |---|---|
 | **Marketing version** | v3.3 — *The Agent-Native Repo* |
-| **Manifest version** | `0.3.3` (Claude, Cursor, Codex, marketplace entry) |
+| **Manifest version** | `0.3.4` (Claude, Cursor, Codex, marketplace entry) |
 | **Hosts** | Claude Code, Cursor, OpenAI Codex (App + CLI), GitHub Copilot (VS Code + CLI) |
 | **Skills** | 7 user-invocable (`setup`, `build`, `style`, `move`, `write`, `audit`, `compound`) |
 | **Specialists** | 9 (4 auditors, 3 designers, 1 analyst, 1 voice) |

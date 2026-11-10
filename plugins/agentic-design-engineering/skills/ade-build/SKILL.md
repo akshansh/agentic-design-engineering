@@ -98,7 +98,7 @@ For each violation found, apply the repair procedure:
 |-----------|--------|
 | Multiple primary actions competing | Demote all but the most important to secondary styling (outline/ghost button). |
 | No clear primary action | Identify the ONE thing the user should do. Make it: largest, highest contrast, most prominent position. |
-| Visual weight not distributed by golden ratio | Primary = 100% weight, Secondary = 61.8%, Tertiary = 38.2%. Apply via size, color, and position. |
+| No clear order of visual weight | One primary, then a readable descending order. Apply via size, color, and position. There is no fixed ratio; judge it on the rendered page. |
 
 ### R — Reward Repairs (Priority 5)
 

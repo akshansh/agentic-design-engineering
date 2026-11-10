@@ -84,4 +84,5 @@ jq . .claude-plugin/marketplace.json .cursor-plugin/marketplace.json .agents/plu
 - Gates: each framework passes at 40/50; audits report /200 combined. Autonomous mode (`--auto`) obeys every gate.
 - Style targets Metaphor Fidelity Ladder level ≥ 3; levels 0–1 cap the metaphor score.
 - Sound is opt-in, off by default, never the sole feedback channel, gated by the Product Portrait.
-- Every Move transformation plants an easter egg. Every run logs to `ade_docs/` and captures evidence to `ade_docs/evidence/`.
+- Move plants an easter egg when the Product Portrait or project law calls for one; otherwise it records the absence as a decision. Every run logs to `ade_docs/` and captures evidence to `ade_docs/evidence/`.
+- Techniques are a menu, not a checklist. No auditor scores a design down for the absence of a gradient, texture, animation, sound, metaphor or easter egg when the declared concept does not call for it (`skills/shared/technique-neutrality.md`).

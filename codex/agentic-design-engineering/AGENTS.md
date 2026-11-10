@@ -15,6 +15,7 @@ This plugin provides design engineering frameworks for OpenAI Codex. It transfor
 | `handoff-schema.md` | Structured data contracts between frameworks |
 | `sound-design.md` | The acoustic layer — material-derived earcons, room tone, Web Audio patterns, opt-in rules |
 | `evidence-trail.md` | Screenshot evidence + real-time narration conventions — every run proves its transformation |
+| `technique-neutrality.md` | The rule that effects are techniques, not requirements: judge against the declared concept |
 
 ## Skills
 

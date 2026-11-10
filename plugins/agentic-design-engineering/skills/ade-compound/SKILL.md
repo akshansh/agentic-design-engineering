@@ -206,7 +206,7 @@ Execute the full Move process using the physics profile from Style.
    - **Vitality** — physics matching the Style metaphor's weight
    - **Emergence** — contextual acknowledgment, data-driven insights
 5. Implement the sound layer (only if Style handed off an acoustic signature — earcons derived from materials, off by default, visible toggle; see `skills/shared/sound-design.md`)
-6. Implement the hidden fingerprint (required — not optional)
+6. Implement the hidden fingerprint when the Product Portrait or project law calls for one (otherwise record `easter_egg: none — [reason]`)
 7. Verify `prefers-reduced-motion` coverage
 8. Verify keyboard navigation still works
 

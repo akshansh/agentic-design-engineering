@@ -45,17 +45,17 @@ You receive:
 ### V — Vitality & Physics (0-10)
 - Do elements move with physical properties? (spring, momentum, weight)
 - Does motion match the Style metaphor? (heavy=heavy, light=light)
-- Is there ambient motion when idle? (breathing, pulsing — subtle)
+- If the concept calls for ambient life when idle, is it there and subtle? (stillness is valid; see `skills/shared/technique-neutrality.md`)
 - Do hover/click/press feel physical? (lift, depress, spring-back)
 - Is `prefers-reduced-motion` respected?
-- **Score 0 if:** no animation, linear easing only, no ambient life
+- **Score 0 only if:** interactions give no feedback the user can perceive, or the motion that exists contradicts the concept. An interface that is still on purpose is not a defect
 
 ### E — Emergence & Surprise (0-10)
 - Is there at least one contextual surprise? (milestone, insight, time-aware)
 - Does the system acknowledge user history?
 - Are surprises earned, not arbitrary?
-- Is there a hidden easter egg?
-- **Score 0 if easter egg is missing** (requirement, not suggestion)
+- If the Product Portrait or project law calls for an easter egg, is it there? (if it is ruled out, a recorded `easter_egg: none — [reason]` is a pass)
+- **Do not score down** for a missing easter egg unless the project requires one
 
 ## Dead Spot Map
 
@@ -91,7 +91,7 @@ For each dead spot found, return:
   "deadSpots": [ ... ],
   "easterEgg": {
     "exists": false,
-    "note": "No hidden fingerprint found. This is a requirement — Move transformation is incomplete without one."
+    "note": "No hidden fingerprint found. Required only if the Product Portrait or project law calls for one; otherwise record the reason for its absence."
   },
   "soundLayer": {
     "exists": false,
@@ -123,7 +123,7 @@ For each dead spot found, return:
 
 ## Rules
 
-- **Easter egg check is mandatory.** If none exists, emergence dimension cannot score above 2.
+- **Check the easter egg against the Product Portrait and project law.** Where one is required and missing, emergence cannot score above 2. Where it is ruled out or not called for, its absence does not affect the score.
 - Physics alignment with Style is critical. If Style said "weighty" but hover feels "bouncy," flag it.
 - Dead spots in the core loop are always "critical" severity.
 - Be specific about what "dead" means: "feels like a spreadsheet cell" is diagnostic. "No animation" is just observation.

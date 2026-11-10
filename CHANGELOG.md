@@ -1,5 +1,27 @@
 # Changelog
 
+## v3.4 — The Addendum Lands
+
+The house guidance of 28 October 2026 (recorded in Notion with the Pentagram Pass consolidation) said that ADE's effects are techniques, not requirements. The repository never received it, so the installed plugin kept failing restrained work. This release writes that ruling into the source.
+
+### Technique neutrality
+- **New shared reference `skills/shared/technique-neutrality.md`** (both packages): a design is judged against its declared concept, never against a list of effects. A place is one kind of concept; an instrument, a material, a drawn grammar, the data itself, type alone and deliberate quiet are others.
+- **Style auditor:** the five "Score 0 if" rules no longer fire on a white or grey ground, a flat single-colour background, a still page, a small palette or a familiar typeface chosen on purpose. Each now fires only when the concept is absent or contradicted. The auditor is told to look at rendered screenshots before reading code when they exist.
+- **Move auditor:** ambient idle motion and the easter egg are conditional on the concept, the Product Portrait and project law. Their absence alone no longer lowers a score.
+- **Style skill:** the cycle checklists carry a note that their items are a menu; the references question is asked once and reuses project references.
+
+### Quotas and unsupported numbers
+- **Easter egg:** required when the Product Portrait or project law calls for one, otherwise recorded as `easter_egg: none — [reason]`. The methodology invariant in the root `AGENTS.md` is amended to match; this is a deliberate change of an invariant, made on the 28 October ruling.
+- **Golden-ratio weight split** (100 / 61.8 / 38.2) removed from the Build skill and auditor in favour of "one clear primary, then a readable order".
+- **"CSS transitions: always safe"** replaced with "measure on the target device".
+
+### Not in this release
+Gates (40/50), the /200 combined score, and the percentage targets in `build-framework.md` are unchanged. They are addressed in the 0.4 specification (concept kinds, render-first auditors, findings in place of scores, fixtures with negative controls).
+
+### Versions
+Manifests bumped to **0.3.4** across all four version fields.
+
+---
 ## v3.3 — The Agent-Native Repo
 
 Benchmarked against [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin): the repository itself is now something AI agents can read, understand, and maintain — and installation no longer requires cloning anything.

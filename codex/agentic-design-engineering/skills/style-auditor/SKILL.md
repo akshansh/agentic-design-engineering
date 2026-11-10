@@ -23,6 +23,12 @@ You receive:
 4. Identify the specific atmosphere gaps
 5. Diagnose "feels off" symptoms if present
 
+## Technique-neutral rule (read first)
+
+Judge the page against its declared concept, not against a list of effects. Gradients, a light source, a vignette, grain, blur, hover transforms, ornament, entrance animation and a room metaphor are techniques. A white ground, a flat colour, a still page or a familiar typeface chosen on purpose is not a defect when the concept asks for it, and can score 10. A physical place is one kind of concept; an instrument, a material, a drawn grammar, the data itself, type alone and deliberate quiet are others. Full rule: `skills/shared/technique-neutrality.md`.
+
+When screenshots of the rendered page are available, look at them before reading the code. Code tells you where a repair goes; the render tells you whether the design works.
+
 ## Evaluation Criteria
 
 ### P — Physical Metaphor (0-10)
@@ -31,7 +37,7 @@ You receive:
 - Is the metaphor specific? ("boardroom library" not just "office")
 - Is the metaphor consistent across the page?
 - Does the metaphor connect to the product's purpose?
-- **Score 0 if:** white/gray background, rounded cards, no discernible place
+- **Score 0 only if:** no organising concept of any kind can be named from the page. A white or grey ground is not, by itself, evidence of that
 - **Fidelity cap:** determine the Metaphor Fidelity Level (0-4, see below). If fidelity is 0-1 (themed keywords or palette on generic patterns), P cannot score above 4 — a costume is not a place
 
 ### Metaphor Fidelity Level (report alongside P)
@@ -52,7 +58,7 @@ Run the three-pattern test — would the navigation, the loading state, and the 
 - Is there material texture? (grain, noise, pattern — CSS-generated)
 - Are there multiple atmosphere layers? (base + light + vignette + texture)
 - Does the page have temperature? (warm amber vs cool blue vs neutral gray)
-- **Score 0 if:** flat single-color background, no gradients, no texture
+- **Score 0 only if:** the declared concept calls for light, depth or texture and none is present. A flat single-colour ground that the concept asks for scores on how well it serves that concept
 
 ### A — Animation as Physics (0-10)
 - Do elements enter with physical weight? (cascade, emerge — not just fade)
@@ -60,7 +66,7 @@ Run the three-pattern test — would the navigation, the loading state, and the 
 - Do button presses feel physical? (scale down, shadow compress)
 - Is there a narrative entrance sequence? (staggered delays)
 - Is `prefers-reduced-motion` respected?
-- **Score 0 if:** no entrance animation, hover only changes color, no physics
+- **Score 0 only if:** the concept calls for motion and what exists contradicts it. Stillness the concept asks for is not a defect
 
 ### C — Color as Material (0-10)
 - Can you name the physical materials? (wood, brass, leather — not "primary blue")
@@ -68,16 +74,16 @@ Run the three-pattern test — would the navigation, the loading state, and the 
 - Are semantic colors derived from materials? (decisions=forest ink, not arbitrary green)
 - Is there contrast between surfaces? (dark base + warm accents, not uniform)
 - Do all text/background pairs meet WCAG AA? (>= 4.5:1)
-- **Score 0 if:** gray + blue palette, no nameable materials, colors feel arbitrary
+- **Score 0 only if:** the colours feel arbitrary: nobody could say why these and not others. A small, plain palette chosen on purpose is not a defect
 
 ### E — Enacted Typography (0-10)
-- Does the display font have character? (not Inter, not system default)
+- Was the display font chosen on purpose for this concept? (a familiar face is fine when it is a decision, not a default)
 - Does the body font complement without competing?
 - Do headings feel like they belong to the physical place?
 - Does button/action copy use metaphor language? ("Enter the archive" not "Submit")
 - Do empty states and errors sound like the voice of the place?
 - Is type size used for atmosphere? (monumental headings, intimate labels)
-- **Score 0 if:** system font everywhere, generic button labels, no type personality
+- **Score 0 only if:** the type was plainly never decided: defaults everywhere, generic labels, no hierarchy
 
 ## Atmosphere Diagnostics
 

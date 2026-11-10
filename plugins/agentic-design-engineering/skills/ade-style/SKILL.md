@@ -36,7 +36,7 @@ Load the full framework reference:
 
 ---
 
-## Step 0: Gather Visual References (required — do not skip)
+## Step 0: Gather Visual References (ask once; reuse the project's own references when they exist)
 
 Before designing anything, ask the user:
 
@@ -295,6 +295,8 @@ Each cycle has a specific focus and a concrete verification checklist. The agent
 **Evidence trail (required):** Before cycle 1, capture a baseline screenshot to `ade_docs/evidence/YYYY-MM-DD-style/00-baseline.png`. Save each cycle's screenshot to the same directory, and narrate each cycle to the user in real time — one line on what's about to change, one line on what the capture shows and what's still weakest. Full convention: `skills/shared/evidence-trail.md`. If no browser is available in this session, state that in the decision log — never silently skip.
 
 ---
+
+> **Technique-neutral rule.** The cycle checklists below list techniques to reach for when the chosen concept asks for them: gradients, a light source, a vignette, grain, blur, hover transforms, ornament, entrance animation. They are not pass requirements. A flat, white, still or purely typographic design that carries its declared concept passes the cycle; write `n/a — [reason]` against any item the concept does not need. Full rule: `skills/shared/technique-neutrality.md`.
 
 ### Cycle 1: Atmosphere Foundation
 **Focus:** Background, color, light source

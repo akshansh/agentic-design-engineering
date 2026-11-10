@@ -2,7 +2,7 @@
 
 **Transform generic UIs into intentional, inhabited digital places.**
 
-Works with **Claude Code**, **Cursor**, **OpenAI Codex**, and **GitHub Copilot** · Current release: **v3.4** (manifest `0.3.4`) · [Changelog](CHANGELOG.md)
+Works with **Claude Code**, **Cursor**, **OpenAI Codex**, and **GitHub Copilot** · Current release: **v3.5** (manifest `0.3.5`) · [Changelog](CHANGELOG.md)
 
 Design doesn’t happen after the code. We build it in — with every agent call, every transformation, every word we choose.
 
@@ -82,7 +82,7 @@ Rewrites UI copy for warm partnership, purpose before action, compassionate erro
 ```mermaid
 flowchart LR
     subgraph Package["Shipped as plugins"]
-        Skills["7 skills<br/>setup · build · style · move · write · audit · compound"]
+        Skills["8 skills<br/>setup · direct · build · style · move · write · audit · compound"]
         Agents["9 specialists<br/>auditors · designers · analyst · voice"]
     end
 
@@ -120,6 +120,7 @@ agentic-design-engineering/
 │   │   └── voice/                        # voice-writer (file: akshansh-voice.md)
 │   ├── skills/
 │   │   ├── ade-setup/                    # readiness check (read-only)
+│   │   ├── ade-direct/                   # taste first: direction + five checks
 │   │   ├── ade-build|style|move|write/   # frameworks + references/
 │   │   ├── ade-audit/ · ade-compound/    # score / full pipeline
 │   │   └── shared/                       # Step 0, handoffs, sound, evidence trail
@@ -223,6 +224,7 @@ After install, in any project:
 | Action | Claude Code / Cursor | Codex |
 |--------|----------------------|-------|
 | Readiness check (read-only) | `/ade:setup` | `$ade-setup` |
+| Taste first: direction + five checks | `/ade:direct` | `$ade-direct` |
 | Structure + accessibility | `/ade:build` | `$ade-build` |
 | Atmosphere + metaphor | `/ade:style` | `$ade-style` |
 | Physics, discovery, easter egg | `/ade:move` | `$ade-move` |
@@ -264,10 +266,10 @@ Dated decision logs in the project's `ade_docs/`, plus baseline and per-cycle sc
 
 | | |
 |---|---|
-| **Marketing version** | v3.3 — *The Agent-Native Repo* |
-| **Manifest version** | `0.3.4` (Claude, Cursor, Codex, marketplace entry) |
+| **Marketing version** | v3.5 — *Taste First* |
+| **Manifest version** | `0.3.5` (Claude, Cursor, Codex, marketplace entry) |
 | **Hosts** | Claude Code, Cursor, OpenAI Codex (App + CLI), GitHub Copilot (VS Code + CLI) |
-| **Skills** | 7 user-invocable (`setup`, `build`, `style`, `move`, `write`, `audit`, `compound`) |
+| **Skills** | 8 user-invocable (`setup`, `direct`, `build`, `style`, `move`, `write`, `audit`, `compound`) |
 | **Specialists** | 9 (4 auditors, 3 designers, 1 analyst, 1 voice) |
 | **Maturity notes** | Evidence capture depends on the host session's browser tooling; the sound layer is opt-in and younger than the visual frameworks; procedures are web-first |
 

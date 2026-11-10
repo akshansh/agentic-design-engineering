@@ -1,5 +1,28 @@
 # Changelog
 
+## v3.5 — Taste First
+
+ADE's author restated what the method is for (10 November 2026): his taste, a thought-first process, the feeling, and the way a piece becomes unmistakably its owner's. It is a brainstorm before work starts, or a pass after. Until now the plugin opened with a codebase scan. This release gives it a first step that starts with the person.
+
+### `/ade:direct`
+New eighth user-invocable skill (`$ade-direct` in Codex), in both packages.
+
+- **Brainstorm:** gathers the owner's own words, then writes the thought (one sentence), the feeling (two scenes), the feed (what the owner brings from their own world, never invented), the mark (the one decision nobody else would have made), the kind of concept, three directions that differ in idea, and five checks the finished piece must visibly pass. Output: `ade_docs/direction.md`.
+- **Pass:** on finished work, looks first, then asks five questions and runs the five checks. Reports what is alive, what is missing and the one change that would add the most. No score, no gate.
+- Works for any medium, not only UI.
+
+### Wiring
+- **Step 0** and **`/ade:audit`** treat the chosen direction as the declared concept. The audit reports the five checks, held or not held, above the scores.
+- **`/ade:compound`** reads the direction note when it exists and mentions `/ade:direct` when it does not. It never blocks on it.
+- **`CONCEPTS.md`** defines *direction note* and *taste pass*. The root `AGENTS.md` gains one invariant: no framework replaces the owner's direction with one of its own.
+
+### Not in this release
+Scores, gates and code-first auditing are unchanged. They are the subject of 0.4.
+
+### Versions
+Manifests bumped to **0.3.5** across all four version fields.
+
+---
 ## v3.4 — The Addendum Lands
 
 The house guidance of 28 October 2026 (recorded in Notion with the Pentagram Pass consolidation) said that ADE's effects are techniques, not requirements. The repository never received it, so the installed plugin kept failing restrained work. This release writes that ruling into the source.

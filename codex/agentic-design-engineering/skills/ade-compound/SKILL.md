@@ -57,6 +57,7 @@ Activate autonomous mode when:
 Load the Step 0 understand process:
 `skills/shared/step-0-understand.md`
 
+0. **Read the direction note if there is one.** If `ade_docs/direction.md` exists, its chosen direction is the declared concept and its five checks travel through every step. If it does not exist, say in one line that `$ade-direct` can set the direction first (standard mode), then continue; never block on it.
 1. Scan the project structure, dependencies, README, routes, and component hierarchy
 2. Build the Product Portrait (domain, interaction pattern, data density, user persona, emotional weight, physical analog, sound appropriateness, declared concept)
 3. Assess confidence (high/medium/low)

@@ -80,6 +80,7 @@ jq . .claude-plugin/marketplace.json .cursor-plugin/marketplace.json .agents/plu
 
 ## Methodology invariants (do not weaken these while editing)
 
+- Direct comes before the frameworks and is optional. When `ade_docs/direction.md` exists, its chosen direction is the declared concept and no framework replaces it with one of its own. The taste pass never scores and never gates.
 - Framework order is fixed: Build → Style → Move → Write. The only sanctioned back-edge is Style's Structural Change Request to Build.
 - Gates: each framework passes at 40/50; audits report /200 combined. Autonomous mode (`--auto`) obeys every gate.
 - Style targets Metaphor Fidelity Ladder level ≥ 3; levels 0–1 cap the metaphor score.

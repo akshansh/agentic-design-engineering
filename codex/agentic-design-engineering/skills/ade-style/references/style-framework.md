@@ -249,11 +249,11 @@ Generic UIs use Inter or system fonts because they're "safe." Place-based UIs ch
 
 ---
 
-### The Sixth Layer — Sound of the Place (optional, unscored)
+### The Sixth Layer — Sound of the Place (optional)
 
 **Every place has an acoustic signature. Most interfaces are mute.**
 
-The five scored dimensions are visual. Sound is the optional sixth atmosphere layer — defined here in Style, implemented as interaction feedback in Move. When the Product Portrait says sound is appropriate (immersive sessions, creative tools, portfolios, archives — not open-plan enterprise dashboards), define the acoustic signature alongside the metaphor:
+The five dimensions are visual. Sound is the optional sixth atmosphere layer — defined here in Style, implemented as interaction feedback in Move. When the Product Portrait says sound is appropriate (immersive sessions, creative tools, portfolios, archives — not open-plan enterprise dashboards), define the acoustic signature alongside the metaphor:
 
 1. **Name the room tone in one line.** "The hush of thick carpet and a ticking brass clock." "The low hum of a ship's air recycler." If you can't name it, the metaphor isn't specific enough yet.
 2. **Derive sounds from the named materials** — the same materials that produced the color palette. Mahogany thumps low. Brass ticks bright. Paper whispers.
@@ -261,27 +261,27 @@ The five scored dimensions are visual. Sound is the optional sixth atmosphere la
 
 Full craft reference — synthesis recipes, the sound grammar, opt-in rules, and audit checklist: `skills/shared/sound-design.md`
 
-**Sound never scores against the /50.** A silent place can be complete. A place with wrong-material sounds cannot.
+**A missing sound layer is never a finding.** A silent place can be complete. A place with wrong-material sounds cannot.
 
 ---
 
-## The Metaphor Fidelity Ladder
+## The Fidelity Ladder
 
 **The most common failure mode of AI-generated "themed" design: a standard interface wearing a costume.**
 
-Ask an AI for a spaceship-themed dashboard and the first generation is usually a normal menu bar, normal cards, normal table — with labels renamed to "Launch" and "Mission Control" and a navy background. That is not a spaceship. That is slop with a sticker on it. The Fidelity Ladder names the levels so both the builder and the auditor can locate exactly where a design stands:
+Ask an AI for a spaceship-themed dashboard and the first generation is usually a normal menu bar, normal cards, normal table — with labels renamed to "Launch" and "Mission Control" and a navy background. That is not a spaceship. That is slop with a sticker on it. The same happens with any kind of concept: a "grammar" that is only a logo in the corner, a "quiet" screen that still carries three banners. The ladder names the levels for every kind:
 
 | Level | Name | What It Looks Like | Verdict |
 |-------|------|--------------------|---------|
-| **0** | Keyword Skin | Standard UI, themed vocabulary only ("Launch" button on a default navbar) | Slop with a costume |
-| **1** | Palette Skin | Themed colors and one texture on stock components | Decoration |
-| **2** | Component Costume | Individual elements redrawn as metaphor objects (buttons look like levers) but layout and navigation are conventional | Surface commitment |
-| **3** | Behavioral Inhabitation | Navigation, loading, errors, and layout OPERATE like the place — a spaceship has a control deck, not a hamburger menu; loading is an airlock cycle, not a spinner | Architecture |
-| **4** | Full Inhabitation | Structure, motion, sound, and copy are all native to the place; a stranger names the metaphor within seconds, and nothing on screen contradicts it | The place IS the product |
+| **0** | Label | The concept appears in words only, on stock patterns ("Launch" on a default navbar) | A costume |
+| **1** | Paint | Colours, one texture or a typeface follow the concept; components are stock | Decoration |
+| **2** | Dressed parts | Elements are redrawn in the concept (buttons as levers, rules drawn in the grammar, marks shaped by the data) but layout and navigation are conventional | Surface commitment |
+| **3** | Changes behaviour | Navigation, loading, errors and layout work by the concept's rules: a spaceship has a control deck, not a hamburger menu; an instrument is operated in its own order; a grammar generates the layout; quiet removes everything but the task | Architecture |
+| **4** | Nothing contradicts it | Structure, motion, sound and copy all follow the concept; a stranger names it within seconds | The concept IS the product |
 
-**Minimum target for any Style transformation: Level 3.** Levels 0–2 are what the Transformability criterion and the Structural Authenticity Check exist to prevent — if the interaction patterns are still generic, the metaphor hasn't moved in yet.
+**Minimum target for any Style transformation: Level 3.** Levels 0–2 are what the Transformability criterion and the Structural Authenticity Check exist to prevent — if the interaction patterns are still generic, the concept hasn't moved in yet.
 
-**The fastest fidelity test:** pick the three most conventional patterns on the page (usually the nav menu, the loading state, and the empty state) and ask — *would this exact pattern exist inside the physical place?* A boardroom library has no hamburger menu; it has a hallway of labeled doors. If all three patterns would survive in any generic app, the design is at Level 2 or below.
+**The fastest fidelity test:** pick the three most conventional patterns on the page (usually the nav menu, the loading state and the empty state) and ask — *would this exact pattern exist under the concept's rules?* A boardroom library has no hamburger menu; it has a hallway of labeled doors. A type-only page has no icon row; its hierarchy is in the setting. If all three patterns would survive in any generic app, the design is at Level 2 or below.
 
 ---
 
@@ -408,7 +408,7 @@ E — Enacted Typography: Does the text have a voice? ........ [ ]
 
 Metaphor sentence: "This feels like _______________"
 Temperature: warm / cool / mixed
-Place score: ___/50 (10 per dimension, aim for 40+)
+Open blockers: ___ (the gate is zero; see skills/shared/review.md)
 ```
 
 ---

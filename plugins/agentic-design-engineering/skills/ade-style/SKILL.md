@@ -1,14 +1,14 @@
 ---
 name: ade:style
-description: "Transform a generic UI into an inhabited place — discover a physical metaphor, build CSS atmosphere layers, and iterate through 5 design cycles until the interface feels like somewhere you want to be."
+description: "Make a generic UI carry a concept — a place, an instrument, a material, a grammar, the data, type alone or quiet. Finds a physical metaphor when the concept is a place, builds the layers it needs, and iterates in design cycles until the concept changes how the interface works."
 argument-hint: "[URL or file path of the page to transform]"
 ---
 
 # /ade:style — Atmosphere Transformation
 
-You are an art director. Your job is to take a generic, functional UI and transform it into a **place** — somewhere with atmosphere, texture, light, and character. Not decoration. Architecture.
+You are an art director. Your job is to take a generic, functional UI and make it carry one concept, all the way into how it works. Most often that concept is a **place** — somewhere with atmosphere, texture, light and character. It can also be an instrument, a material, a grammar, the data, type alone or quiet. Not decoration. Architecture.
 
-**Prerequisite:** Build must pass first (score >= 40). If not, tell the user to run `/ade:build` first.
+**Prerequisite:** Build has no open blocker. If it has, tell the user to run `/ade:build` first.
 
 ## Step 0: Understand the Codebase (if not already done)
 
@@ -21,7 +21,14 @@ If running as part of `ade:compound`, the Product Portrait is already available 
 
 ## Baseline: Run Style Auditor
 
-Before transforming anything, run the `style-auditor` agent on the existing code to establish baseline scores. Record the scores — you'll compare against these after transformation.
+Before transforming anything, capture the page and run the `style-auditor` agent on it. Record its findings and what must survive — you'll compare against these after transformation.
+
+## Which kind of concept
+
+If `ade_docs/direction.md` exists, its direction is the concept and its kind decides the route. Do not replace it with a metaphor of your own.
+
+- **Place**, or no kind chosen yet: run Steps 0–2 below to find the place.
+- **Any other kind** (instrument, material, grammar, data, type, quiet): skip Steps 0–2. Write the concept's rules in a short table — what each screen and element becomes under them — then go to Step 2.5. The kinds and what Style builds for each: `skills/shared/technique-neutrality.md`. The layers in Step 3 are a menu: a type or quiet concept may use none of them.
 
 ## The Core Principle
 
@@ -350,15 +357,14 @@ Each cycle has a specific focus and a concrete verification checklist. The agent
 **Focus:** Consistency, responsiveness, auditor validation
 
 **Verify:**
-- [ ] Run the `style-auditor` on the transformed code — score must be >= 35/50
-- [ ] All 5 Style dimensions must score >= 5/10 individually
+- [ ] Capture at 1440 and 390 px and run the `style-auditor` on the render — no open blocker
 - [ ] Responsive: styles work at mobile width (< 640px) — check for overflow, readability
 - [ ] No global style pollution — all selectors scoped under page class
-- [ ] The metaphor is identifiable: could a stranger name the place from the code alone?
-- [ ] **Fidelity level >= 3** on the Metaphor Fidelity Ladder (see `references/style-framework.md`) — run the three-pattern test: would the navigation, the loading state, and the empty state exist inside the physical place? If all three are generic patterns with themed labels, this is a costume, not a place — return to the Structural Authenticity Check
+- [ ] The concept is identifiable: could a stranger name it from the render alone?
+- [ ] **Fidelity level >= 3** on the Fidelity Ladder (see `references/style-framework.md`) — run the three-pattern test: would the navigation, the loading state and the empty state exist under the concept's rules? If all three are generic patterns with themed labels, this is a costume — return to the Structural Authenticity Check
 - [ ] Final screenshots captured to the evidence trail (desktop 1440px + mobile 390px)
 
-If the style-auditor score is below 35/50, identify the weakest dimension and apply a targeted fix before proceeding.
+If a blocker is open, repair it and look again. After two rounds, stop and report it: the concept may be wrong.
 
 ---
 
@@ -393,23 +399,28 @@ Output a summary:
 ```
 ## Style Transformation Results
 
-**Metaphor:** [one-line description]
+**Concept:** [kind — one-line description]
 **Temperature:** [warm/cool/mixed]
 **Materials:** [list]
-**Fidelity level:** [0-4 on the Metaphor Fidelity Ladder — target >= 3]
+**Fidelity level:** [0-4 on the Fidelity Ladder — target >= 3]
 **Rendering stack:** [CSS / P5.js / Three.js / SVG+GSAP / WebGL — from Step 2.5]
 **Acoustic signature:** [one-line room tone + material sound palette, or "none — reason"]
 **Pages transformed:** [list with scope classes]
 
-### Scores
-| Dimension          | Before | After | Delta  |
-|--------------------|--------|-------|--------|
-| P — Physical Metaphor | /10   | /10  |        |
-| L — Lighting          | /10   | /10  |        |
-| A — Animation         | /10   | /10  |        |
-| C — Color as Material | /10   | /10  |        |
-| E — Enacted Typography| /10   | /10  |        |
-| **Total**             | **/50** | **/50** |    |
+### Review
+**Evidence:** [render-observed: widths and states | source-inspected only]
+**Status:** [Ready within inspected scope | Needs revision | Blocked | Unverified] · **Open blockers:** [0, or list]
+**Direction checks:** [each held / not held / not seen, or "no direction note"]
+
+| Dimension | Before | After |
+|-----------|--------|-------|
+| P — The Concept | [blockers / defects] | [blockers / defects] |
+| L — Lighting | … | … |
+| A — Animation | … | … |
+| C — Color as Material | … | … |
+| E — Enacted Typography | … | … |
+
+Creative integrity: … · Professional craft: …
 
 ### Atmosphere Layers Applied
 - Background: [description]
@@ -435,7 +446,7 @@ Log to `ade_docs/YYYY-MM-DD-style-transformation.md`.
 
 ### Handoff
 
-> Atmosphere is set. Your UI feels like [metaphor]. Want it to feel alive — with physics, feedback loops, and hidden discoveries? Run `/ade:move`.
+> Atmosphere is set. Your UI now carries [concept]. Want it to feel alive — with physics, feedback loops, and hidden discoveries? Run `/ade:move`.
 
 ---
 
@@ -464,4 +475,5 @@ If the result feels "off" but you can't pinpoint why, check these:
 - Do not sacrifice accessibility for aesthetics — contrast must always pass
 - Do not apply atmosphere globally — scope to specific pages
 - Do not stop at cycle 1 — the first version is scaffolding, not design
-- Do not settle for fidelity level 2 or below — themed labels on generic patterns are a costume, not a place
+- Do not settle for fidelity level 2 or below — themed labels on generic patterns are a costume
+- Do not force a place onto a concept of another kind

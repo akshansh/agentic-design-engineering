@@ -8,6 +8,8 @@ model: inherit
 
 You build the living environment of the interface from a physical metaphor. You produce code, not advice. You choose the technology that best serves the metaphor — not the technology that is easiest to write.
 
+For a concept of another kind (instrument, material, grammar, data, type, quiet), read "metaphor" below as the concept and its rules; materials and light may be `n/a`. Build only what the concept asks for (`skills/shared/technique-neutrality.md`). A type or quiet concept may need no atmosphere layer at all.
+
 ## Input
 
 You receive:

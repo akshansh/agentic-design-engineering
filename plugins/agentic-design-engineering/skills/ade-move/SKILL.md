@@ -370,9 +370,9 @@ Load the full craft reference: `skills/shared/sound-design.md`
 
 ---
 
-## Step 5: The Hidden Fingerprint (Required)
+## Step 5: The Hidden Fingerprint (when the Product Portrait or project law calls for one)
 
-**Every product built with Move must include at least one easter egg.**
+**Plant an easter egg when the Product Portrait or the project's own law calls for one.** It is the maker's signature, not a quota. Clinical, safety, compliance and high-frequency tools usually should not carry one; record `easter_egg: none — [reason]` so the absence is a decision. See `skills/shared/technique-neutrality.md`.
 
 This is not gamification. No badges, no points, no leaderboards. This is the creator's signature — a hidden layer that rewards the curious.
 
@@ -469,7 +469,7 @@ After all injections:
 2. **No motion should be required for functionality** — everything must work without animation
 3. **Keyboard navigation still works** — tab order intact, focus indicators visible
 4. **Performance budget:**
-   - CSS transitions/transforms: always safe
+   - CSS transitions/transforms: cheap on most hardware; measure on the target device
    - CSS animations: most contexts
    - IntersectionObserver: low cost
    - requestAnimationFrame: medium (cursor tracking)
@@ -542,6 +542,6 @@ Log to `ade_docs/YYYY-MM-DD-move-injection.md`.
 - Do not change the copy voice — that's Write's domain
 - Do not add gamification (badges, points, leaderboards) — that's the cargo cult, not game design
 - Do not add motion for motion's sake — every animation must serve the metaphor
-- Do not skip the easter egg — it's required, not optional
+- Do not add an easter egg where the Product Portrait rules it out, and do not skip one the project requires
 - Do not forget `prefers-reduced-motion` — accessibility is non-negotiable
 - Do not add sound that plays by default, plays on hover/typing/scroll, or has no visual counterpart — see `skills/shared/sound-design.md`

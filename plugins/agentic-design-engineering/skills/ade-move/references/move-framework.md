@@ -594,7 +594,7 @@ Aliveness has a cost. Set a budget:
 
 | Technique | Performance Impact | When to Use |
 |-----------|-------------------|-------------|
-| CSS transitions/transforms | Negligible | Always safe |
+| CSS transitions/transforms | Usually negligible | Most contexts; measure on the target device |
 | CSS animations | Low | Most contexts |
 | IntersectionObserver reveals | Low | Scroll-based discovery |
 | GSAP / Motion.dev | Very Low | Well-optimized — use freely |

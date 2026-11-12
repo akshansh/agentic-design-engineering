@@ -1,5 +1,50 @@
 # Changelog
 
+## v3.5 — Taste First
+
+ADE's author restated what the method is for (10 November 2026): his taste, a thought-first process, the feeling, and the way a piece becomes unmistakably its owner's. It is a brainstorm before work starts, or a pass after. Until now the plugin opened with a codebase scan. This release gives it a first step that starts with the person.
+
+### `/ade:direct`
+New eighth user-invocable skill (`$ade-direct` in Codex), in both packages.
+
+- **Brainstorm:** gathers the owner's own words, then writes the thought (one sentence), the feeling (two scenes), the feed (what the owner brings from their own world, never invented), the mark (the one decision nobody else would have made), the kind of concept, three directions that differ in idea, and five checks the finished piece must visibly pass. Output: `ade_docs/direction.md`.
+- **Pass:** on finished work, looks first, then asks five questions and runs the five checks. Reports what is alive, what is missing and the one change that would add the most. No score, no gate.
+- Works for any medium, not only UI.
+
+### Wiring
+- **Step 0** and **`/ade:audit`** treat the chosen direction as the declared concept. The audit reports the five checks, held or not held, above the scores.
+- **`/ade:compound`** reads the direction note when it exists and mentions `/ade:direct` when it does not. It never blocks on it.
+- **`CONCEPTS.md`** defines *direction note* and *taste pass*. The root `AGENTS.md` gains one invariant: no framework replaces the owner's direction with one of its own.
+
+### Not in this release
+Scores, gates and code-first auditing are unchanged. They are the subject of 0.4.
+
+### Versions
+Manifests bumped to **0.3.5** across all four version fields.
+
+---
+## v3.4 — The Addendum Lands
+
+House guidance of 28 October 2026 said that ADE's effects are techniques, not requirements. The repository never received it, so the installed plugin kept failing restrained work. This release writes that ruling into the source.
+
+### Technique neutrality
+- **New shared reference `skills/shared/technique-neutrality.md`** (both packages): a design is judged against its declared concept, never against a list of effects. A place is one kind of concept; an instrument, a material, a drawn grammar, the data itself, type alone and deliberate quiet are others.
+- **Style auditor:** the five "Score 0 if" rules no longer fire on a white or grey ground, a flat single-colour background, a still page, a small palette or a familiar typeface chosen on purpose. Each now fires only when the concept is absent or contradicted. The auditor is told to look at rendered screenshots before reading code when they exist.
+- **Move auditor:** ambient idle motion and the easter egg are conditional on the concept, the Product Portrait and project law. Their absence alone no longer lowers a score.
+- **Style skill:** the cycle checklists carry a note that their items are a menu; the references question is asked once and reuses project references.
+
+### Quotas and unsupported numbers
+- **Easter egg:** required when the Product Portrait or project law calls for one, otherwise recorded as `easter_egg: none — [reason]`. The methodology invariant in the root `AGENTS.md` is amended to match; this is a deliberate change of an invariant, made on the 28 October ruling.
+- **Golden-ratio weight split** (100 / 61.8 / 38.2) removed from the Build skill and auditor in favour of "one clear primary, then a readable order".
+- **"CSS transitions: always safe"** replaced with "measure on the target device".
+
+### Not in this release
+Gates (40/50), the /200 combined score, and the percentage targets in `build-framework.md` are unchanged. They are addressed in the 0.4 specification (concept kinds, render-first auditors, findings in place of scores, fixtures with negative controls).
+
+### Versions
+Manifests bumped to **0.3.4** across all four version fields.
+
+---
 ## v3.3 — The Agent-Native Repo
 
 Benchmarked against [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin): the repository itself is now something AI agents can read, understand, and maintain — and installation no longer requires cloning anything.

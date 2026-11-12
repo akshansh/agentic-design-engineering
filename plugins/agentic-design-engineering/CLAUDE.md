@@ -7,6 +7,7 @@ This plugin provides design engineering frameworks for Claude Code. See AGENTS.m
 | Skill | Purpose |
 |-------|---------|
 | `/ade:setup` | Post-install readiness check (stack, evidence capture, history) — run this first |
+| `/ade:direct` | Taste first: the owner's thought, feeling and mark become one direction with five checks |
 | `/ade:build` | UI structure audit + repair (accessibility, hierarchy, emphasis) |
 | `/ade:style` | Atmosphere transformation (generic → inhabited place) |
 | `/ade:move` | Interactivity injection (feedback, discovery, physics, easter eggs) |
@@ -16,7 +17,7 @@ This plugin provides design engineering frameworks for Claude Code. See AGENTS.m
 
 ## Framework Ordering
 
-Always apply in this order: Build (structure) → Style (atmosphere) → Move (interactivity) → Write (copy).
+Direct (taste) comes first when a direction is wanted; it is optional. Then always apply in this order: Build (structure) → Style (atmosphere) → Move (interactivity) → Write (copy).
 
 ## Decision Logging
 

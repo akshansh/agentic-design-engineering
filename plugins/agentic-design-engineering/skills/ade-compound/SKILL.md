@@ -58,6 +58,7 @@ Activate autonomous mode when:
 Load the Step 0 understand process:
 `skills/shared/step-0-understand.md`
 
+0. **Read the direction note if there is one.** If `ade_docs/direction.md` exists, its chosen direction is the declared concept and its five checks travel through every step. If it does not exist, say in one line that `/ade:direct` can set the direction first (standard mode), then continue; never block on it.
 1. Scan the project structure, dependencies, README, routes, and component hierarchy
 2. Build the Product Portrait (domain, interaction pattern, data density, user persona, emotional weight, physical analog, sound appropriateness, declared concept)
 3. Assess confidence (high/medium/low)
@@ -206,7 +207,7 @@ Execute the full Move process using the physics profile from Style.
    - **Vitality** — physics matching the Style metaphor's weight
    - **Emergence** — contextual acknowledgment, data-driven insights
 5. Implement the sound layer (only if Style handed off an acoustic signature — earcons derived from materials, off by default, visible toggle; see `skills/shared/sound-design.md`)
-6. Implement the hidden fingerprint (required — not optional)
+6. Implement the hidden fingerprint when the Product Portrait or project law calls for one (otherwise record `easter_egg: none — [reason]`)
 7. Verify `prefers-reduced-motion` coverage
 8. Verify keyboard navigation still works
 

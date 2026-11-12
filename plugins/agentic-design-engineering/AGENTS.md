@@ -17,6 +17,7 @@ This plugin provides design engineering frameworks that transform generic UIs in
 | `handoff-schema.md` | Structured data contracts between frameworks |
 | `sound-design.md` | The acoustic layer — material-derived earcons, room tone, Web Audio patterns, opt-in rules |
 | `evidence-trail.md` | Screenshot evidence + real-time narration conventions — every run proves its transformation |
+| `technique-neutrality.md` | The rule that effects are techniques, not requirements: judge against the declared concept |
 
 ## Agent Directory
 
@@ -55,6 +56,7 @@ This plugin provides design engineering frameworks that transform generic UIs in
 
 | Skill | Slash Command | Description |
 |-------|---------------|-------------|
+| `ade-direct` | `/ade:direct` | Taste first. Turns the owner's thought, feeling and references into one direction with five checks (`ade_docs/direction.md`); as a pass, asks whether finished work carries them. Any medium. |
 | `ade-build` | `/ade:build` | UI structure audit + repair. Evaluates then fixes accessibility, hierarchy, emphasis, copy, and feedback. |
 | `ade-style` | `/ade:style` | Atmosphere transformation. Discovers metaphor, builds CSS atmosphere, iterates 5 cycles via design-iterator. |
 | `ade-move` | `/ade:move` | Interactivity injection. Identifies core loop, finds dead spots, injects physics and discovery layers, requires easter egg. |

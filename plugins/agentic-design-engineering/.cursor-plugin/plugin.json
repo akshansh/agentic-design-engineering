@@ -1,6 +1,6 @@
 {
   "name": "agentic-design-engineering",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "description": "Transform generic UIs into intentional, inhabited digital places — four interconnected design frameworks (Build, Style, Move, Write) with specialized skills and agents.",
   "author": {
     "name": "Akshansh Chaudhary",
@@ -9,5 +9,12 @@
   "homepage": "https://github.com/akshansh/agentic-design-engineering",
   "repository": "https://github.com/akshansh/agentic-design-engineering",
   "license": "MIT",
-  "keywords": ["design-engineering", "ui-design", "accessibility", "art-direction", "game-design", "frameworks"]
+  "keywords": [
+    "design-engineering",
+    "ui-design",
+    "accessibility",
+    "art-direction",
+    "game-design",
+    "frameworks"
+  ]
 }

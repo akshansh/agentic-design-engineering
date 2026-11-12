@@ -5,7 +5,7 @@ Shared domain vocabulary for Agentic Design Engineering — the terms every skil
 ## The plugin and its parts
 
 - **Framework** — one of the four design disciplines: **Build** (structure & clarity), **Style** (environment & materiality), **Move** (interaction & aliveness), **Write** (language & character). Fixed order: build → style → move → write. The old acronyms (C.L.E.A.R., P.L.A.C.E., A.L.I.V.E.) survive as internal mnemonics inside each framework reference.
-- **Skill** — a user-invocable procedure (`SKILL.md` + optional `references/`). Six framework skills (`ade-build`, `ade-style`, `ade-move`, `ade-write`, `ade-audit`, `ade-compound`) plus `ade-setup`, the post-install readiness check.
+- **Skill** — a user-invocable procedure (`SKILL.md` + optional `references/`). Six framework skills (`ade-build`, `ade-style`, `ade-move`, `ade-write`, `ade-audit`, `ade-compound`) plus `ade-setup`, the post-install readiness check, and `ade-direct`, the taste-first step that sets the direction before any framework runs.
 - **Agent** — a specialized worker with one job: four **auditors** (score, never fix), three **designers** (`metaphor-discoverer`, `atmosphere-builder`, `vitality-injector`), one **analyst** (`codebase-comprehender`), one **voice writer**. In the Codex package agents are converted to specialist skills.
 - **Shared reference** — craft knowledge used by multiple skills, in `skills/shared/`: `step-0-understand.md`, `handoff-schema.md`, `sound-design.md`, `evidence-trail.md`.
 - **The two packages** — the same methodology ships as a Claude Code/Cursor package (`plugins/`) and a Codex package (`codex/`), kept in strict parity (see `AGENTS.md`).
@@ -14,6 +14,8 @@ Shared domain vocabulary for Agentic Design Engineering — the terms every skil
 
 - **Step 0 (Understand)** — runs before any framework touches anything; produces the Product Portrait. Procedure: `skills/shared/step-0-understand.md`.
 - **Product Portrait** — the structured understanding of a project: domain, user persona, emotional weight, physical analog, sound appropriateness, and declared concept. Feeds every framework and gates the sound layer.
+- **Direction note** — `ade_docs/direction.md`, written by `ade-direct`: the owner's words, the thought, the feeling, the feed (what they bring from their own world), the mark (the one decision nobody else would have made), the kind of concept, the chosen direction and five checks. When it exists, its chosen direction is the declared concept.
+- **Taste pass** — `ade-direct` run on finished work: is the thought there, is the feeling there, is it theirs? Reports what is alive and what is missing. Never a score, never a gate.
 - **Declared concept** — what the interface was *supposed to feel like*, stated by the owner. Audits score against it, not against taste: a perfect boardroom library is a failing audit if the owner asked for a spaceship.
 
 ## The pipeline

@@ -19,7 +19,7 @@ Before evaluating or transforming anything, understand what you're looking at. T
 | **Emotional weight** | What are the consequences of getting it wrong? | Life-critical, professional routine, playful exploration, high-stakes decisions |
 | **Physical analog** | If this existed 100 years ago, what would it be? | Inspector's desk, artist's studio, trading floor, librarian's catalog |
 | **Sound appropriateness** | Would this product's users welcome sound? Where and how often is it used? | Immersive/creative (yes), open-plan enterprise desk tool (no), clinical (never — sound is reserved for alarms) |
-| **Declared concept** | Has the owner already stated what this should feel like or be? | "It should feel like a spaceship", an existing metaphor in the decision logs, a brand world — record it verbatim if it exists |
+| **Declared concept** | Has the owner already stated what this should feel like or be? | "It should feel like a spaceship", the chosen direction in `ade_docs/direction.md`, an existing metaphor in the decision logs, a brand world — record it verbatim if it exists |
 
 3. **Rate confidence**: High / Medium / Low
 

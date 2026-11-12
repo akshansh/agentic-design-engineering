@@ -17,7 +17,7 @@ You are a design auditor running the complete ADE evaluation suite. Your job is 
 An audit without knowing the intent can only measure genericness. Before scoring anything:
 
 1. Run Step 0 (`skills/shared/step-0-understand.md`) if no Product Portrait exists yet.
-2. **Recover the declared concept.** Check, in order: what the user said when invoking the audit → `ade_docs/` decision logs (a previous Style run's metaphor) → the Product Portrait's declared-concept field.
+2. **Recover the declared concept.** If `ade_docs/direction.md` exists (written by `/ade:direct`), its chosen direction is the declared concept and its five checks are reported, held or not held, at the top of the report; they do not change the scores. Otherwise check, in order: what the user said when invoking the audit → `ade_docs/` decision logs (a previous Style run's metaphor) → the Product Portrait's declared-concept field.
 3. **If no concept is on record, ask the user ONE question before scoring:**
 
    > *"What was this interface supposed to feel like — what concept, place, or experience were you trying to create? (If there was never an intended concept, say 'none' and I'll audit for genericness and recommend one.)"*

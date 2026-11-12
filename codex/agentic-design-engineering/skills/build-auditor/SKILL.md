@@ -42,7 +42,7 @@ You receive:
 - Exactly ONE primary action per viewport?
 - Primary action is visually dominant (size, color, position)?
 - No competing elements at equal visual weight?
-- Golden ratio weight distribution?
+- One clear primary, then a readable descending order of weight? (judge it on the rendered page; there is no fixed ratio)
 
 ### A — Accessibility (0-10)
 - All interactive elements keyboard-navigable (native HTML)?

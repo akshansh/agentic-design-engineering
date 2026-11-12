@@ -59,7 +59,7 @@ Manifests bumped to **0.3.5** across all four version fields.
 ---
 ## v3.4 — The Addendum Lands
 
-The house guidance of 28 October 2026 (recorded in Notion with the Pentagram Pass consolidation) said that ADE's effects are techniques, not requirements. The repository never received it, so the installed plugin kept failing restrained work. This release writes that ruling into the source.
+House guidance of 28 October 2026 said that ADE's effects are techniques, not requirements. The repository never received it, so the installed plugin kept failing restrained work. This release writes that ruling into the source.
 
 ### Technique neutrality
 - **New shared reference `skills/shared/technique-neutrality.md`** (both packages): a design is judged against its declared concept, never against a list of effects. A place is one kind of concept; an instrument, a material, a drawn grammar, the data itself, type alone and deliberate quiet are others.

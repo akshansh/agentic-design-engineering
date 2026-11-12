@@ -261,7 +261,7 @@ E — Emphasis:      Count primary actions — exactly one? ........ [ ]
 A — Accessibility: Tab through — does it work? ................. [ ]
 R — Reward:        Click everything — feedback present? ........ [ ]
 
-Total score: ___/50 (aim for 40+)
+Open blockers: ___ (the gate is zero; see skills/shared/review.md)
 ```
 
 ---

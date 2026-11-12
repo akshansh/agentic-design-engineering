@@ -4,7 +4,7 @@ This directory stores decision logs from Agentic Design Engineering skill execut
 
 ## How it works
 
-Every `/ade:*` command creates a dated log file in the project's `ade_docs/` directory using the template in `decision-log-template.md`. This ensures that every design decision — Product Portrait, before/after scores with deltas, cross-framework handoffs, gate pass/fail status, metaphor choices, physics profiles, copy rewrites, easter eggs — is documented for reference.
+Every `/ade:*` command creates a dated log file in the project's `ade_docs/` directory using the template in `decision-log-template.md`. This ensures that every design decision — Product Portrait, the direction note's checks, findings before and after, cross-framework handoffs, gate status (open blockers), metaphor choices, physics profiles, copy rewrites, easter eggs — is documented for reference.
 
 ## Template
 
@@ -15,7 +15,7 @@ See `decision-log-template.md` for the full template structure. Skills copy this
 Log files follow this format: `YYYY-MM-DD-<context>.md`
 
 Examples:
-- `2026-03-29-build-audit.md`
+- `2026-03-29-build.md`
 - `2026-03-29-style-transformation.md`
 - `2026-03-29-move-injection.md`
 - `2026-03-29-write-review.md`

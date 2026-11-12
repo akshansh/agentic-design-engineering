@@ -1,6 +1,6 @@
 # The Evidence Trail — Prove the Transformation
 
-**A score in a log says the design improved. A screenshot pair proves it.**
+**A line in a log says the design improved. A screenshot pair proves it.**
 
 Every ADE run must leave behind evidence that a human (or a future agent) can inspect without re-running anything: what the interface looked like before, what was decided, what it looked like after each meaningful step, and why. Decision logs record the *reasoning*; the evidence trail records the *reality*.
 
@@ -32,7 +32,7 @@ Use whatever the environment provides, in this order of preference:
 
 1. **A browser automation tool available in the session** (Playwright/Puppeteer MCP, `ce-test-browser`, or the host's screenshot tool) — screenshot the actual rendered page at desktop width (1440px) and mobile width (390px) for the final state.
 2. **A dev server + headless capture** — if the project has `npm run dev`, boot it, capture, shut it down.
-3. **If no rendering is possible** (headless environment, no browser): record that explicitly in the decision log — *"Evidence: not captured — no browser available in this session. Re-run `/ade:audit` in an interactive session to capture."* Never silently skip.
+3. **If no rendering is possible** (headless environment, no browser): record that explicitly in the decision log — *"Evidence: not captured — no browser available in this session. Re-run `/ade:review` in an interactive session to capture."* Never silently skip. A review without captures is `source-inspected only` and cannot return Ready (`skills/shared/review.md`).
 
 ## What Each Framework Captures
 
@@ -42,7 +42,7 @@ Use whatever the environment provides, in this order of preference:
 | **Style** | Baseline + one per design cycle + final (7 images) — the cycle discipline already demands screenshots; save them instead of discarding |
 | **Move** | Baseline + final. Motion can't be screenshotted — record a short screen capture if tooling allows, otherwise describe each injection's trigger in `notes.md` so a human can reproduce it by hand |
 | **Write** | Before/after copy table in the decision log (text is its own evidence — no images needed) |
-| **Audit** | Baseline screenshot attached to the audit report, so the score has a face |
+| **Review** | 1440 and 390 px captures of every state reviewed, taken before the code is read |
 
 ## Referencing Evidence in Decision Logs
 

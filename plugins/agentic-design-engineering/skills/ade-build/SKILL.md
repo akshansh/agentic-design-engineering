@@ -1,12 +1,12 @@
 ---
 name: ade:build
-description: "Audit and repair UI structure using the Build framework — evaluates copy, layout, emphasis, accessibility, and reward, then fixes violations in priority order."
-argument-hint: "[URL or file path of the page/component to audit]"
+description: "Review and repair UI structure using the Build framework — looks at the rendered page, finds problems in copy, layout, emphasis, accessibility and reward, then fixes them in priority order."
+argument-hint: "[URL or file path of the page/component to repair]"
 ---
 
-# /ade:build — UI Structure Audit + Repair
+# /ade:build — UI Structure Review + Repair
 
-You are a UI structure auditor. Your job is to evaluate a page or component against the Build framework, then **fix what's broken** — not just report findings.
+You review a page or component against the Build framework, then **fix what's broken** — not just report findings.
 
 ## What Build Evaluates
 
@@ -23,34 +23,29 @@ You are a UI structure auditor. Your job is to evaluate a page or component agai
 If running standalone (not as part of `ade:compound`), run Step 0 first:
 Load: `skills/shared/step-0-understand.md`
 
-Build the Product Portrait before evaluating. The product type classification directly determines which context branch to use in the scoring.
+Build the Product Portrait before evaluating. The product type classification decides which context branch applies (bottom of this file). If `ade_docs/direction.md` exists, carry its five checks into the review.
 
 If running as part of `ade:compound`, the Product Portrait is already available — use it.
 
 ---
 
-## Step 1: Read the Page
+## Step 1: Look, then read
 
-Read the target page/component code. Identify:
+Capture the page at 1440 and 390 px in each real state and look before reading code (`skills/shared/review.md`). Then read the target page/component code. Identify:
 - All text content (headings, labels, buttons, errors, empty states)
 - Layout structure (containers, spacing, grid/flex usage)
 - Interactive elements (buttons, links, inputs, navigation)
 - Visual hierarchy (what's biggest, brightest, most prominent)
 - Feedback mechanisms (loading states, success messages, error handling)
 
-## Step 2: Score Each Dimension
+## Step 2: Review Each Dimension
 
-For each dimension, score 0-10 and list specific violations.
+Run the `build-auditor` agent. It returns findings (blocker, defect, opportunity), each with its evidence class, in the form of `skills/shared/review.md`.
 
 Load the full framework reference for evaluation criteria:
 `references/build-framework.md`
 
-### Scoring Guide
-- **9-10**: Excellent. No violations. Delightful.
-- **7-8**: Good. Minor issues that don't block usability.
-- **5-6**: Acceptable. Several issues that degrade experience.
-- **3-4**: Poor. Significant issues that hurt usability.
-- **0-2**: Failing. Critical issues that block users.
+A blocker stops a user: an accessibility failure on a real task, a broken flow. A defect degrades the experience. An opportunity is optional.
 
 ## Step 3: Fix in Priority Order
 
@@ -114,41 +109,46 @@ For each violation found, apply the repair procedure:
 After applying repairs:
 1. Run the project's existing build/lint command (check `package.json` scripts, `Makefile`, or equivalent)
 2. If no build command exists, verify the changes don't introduce syntax errors
-3. Run the `build-auditor` agent again on modified files to confirm score improvement
-4. Re-score each dimension to verify improvement
+3. Capture the page again and run the `build-auditor` agent on it
+4. Confirm each finding you repaired is gone on the render, and nothing in "what must survive" was lost
 
 ## Step 5: Report + Handoff
 
 Output a summary:
 
 ```
-## Build Audit Results
+## Build Results
 
-| Dimension | Before | After | Status |
-|-----------|--------|-------|--------|
-| A — Accessibility | X/10 | Y/10 | [Fixed/Improved/Unchanged] |
-| L — Layout | X/10 | Y/10 | [Fixed/Improved/Unchanged] |
-| C — Copy | X/10 | Y/10 | [Fixed/Improved/Unchanged] |
-| E — Emphasis | X/10 | Y/10 | [Fixed/Improved/Unchanged] |
-| R — Reward | X/10 | Y/10 | [Fixed/Improved/Unchanged] |
+**Evidence:** [render-observed: widths and states | source-inspected only]
+**Status:** [Ready within inspected scope | Needs revision | Blocked | Unverified]
+**Open blockers:** [0, or the list]
 
-**Total: XX/50** (target: 40+)
+| Dimension | Before | After |
+|-----------|--------|-------|
+| A — Accessibility | [blockers / defects] | [blockers / defects] |
+| L — Layout | … | … |
+| C — Copy | … | … |
+| E — Emphasis | … | … |
+| R — Reward | … | … |
 
-### Violations Fixed
-- [list each fix with file:line reference]
+### Repaired
+- [each finding repaired, with file:line and the capture that shows it]
 
-### Remaining Issues
-- [anything that couldn't be auto-fixed]
+### Still open
+- [each remaining finding with severity and repair]
+
+### Judgements
+Creative integrity: … · Professional craft: …
 ```
 
-Log this to `ade_docs/YYYY-MM-DD-build-audit.md`.
+Log this to `ade_docs/YYYY-MM-DD-build.md`.
 
 ### Handoff
 
-If total score is 40+:
+If there is no open blocker:
 > Structure passes. Your UI works correctly and accessibly. Want it to feel like somewhere? Run `/ade:style` to transform the atmosphere.
 
-If total score is below 40:
+If a blocker is still open:
 > Structure needs more work. [List critical remaining issues.] Fix these before moving to atmosphere design.
 
 ## Context Branching

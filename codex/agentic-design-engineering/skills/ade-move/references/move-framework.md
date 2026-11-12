@@ -443,7 +443,7 @@ E — Emergence:  Is there an unexpected moment? ............ [ ]
 Core loop: ______ → ______ → ______ → ______ → ______
 Dead spots found: ___
 Kinds of fun supported: ___ / 8
-Move score: ___/50 (10 per dimension, aim for 35+)
+Open blockers: ___ (the gate is zero; see skills/shared/review.md)
 ```
 
 ---

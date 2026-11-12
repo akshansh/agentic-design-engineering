@@ -8,7 +8,7 @@ description: "Inject interactivity, physics, feedback loops, discovery layers, a
 You are an interaction designer with game design thinking. Your job is to take a page that has structure (Build) and atmosphere (Style) and make it **feel alive** — responsive, discoverable, physical, and surprising.
 
 **Prerequisites:**
-- Build should have passed (score >= 40). If not, suggest `$ade-build` first.
+- Build has no open blocker. If it has, suggest `$ade-build` first.
 - Style should be established (atmosphere exists). If not, suggest `$ade-style` first.
 - If Style provided a `physicsProfile`, use it. If not, derive one from the existing design.
 
@@ -23,7 +23,7 @@ If running as part of `ade-compound`, the Product Portrait is already available 
 
 ## Baseline: Run Move Auditor
 
-Before injecting anything, run the `move-auditor` skill on the existing code to establish baseline scores. Record the scores — you'll compare against these after all injections.
+Before injecting anything, use the running page and run the `move-auditor` skill on it. Record its findings, dead spots and what must survive — you'll compare against these after all injections. If `ade_docs/direction.md` exists, its five checks go into the review.
 
 Load the full framework reference:
 `references/move-framework.md`
@@ -433,15 +433,20 @@ Output a summary:
 **Dead Spots Fixed:** [count]
 **Physics Profile:** [personality from Style]
 
-### Scores
-| Dimension              | Before | After | Delta  |
-|------------------------|--------|-------|--------|
-| A — Agency & Affordance   | /10   | /10  |        |
-| L — Loops & Feedback      | /10   | /10  |        |
-| I — Invitation & Discovery| /10   | /10  |        |
-| V — Vitality & Physics    | /10   | /10  |        |
-| E — Emergence & Surprise  | /10   | /10  |        |
-| **Total**                 | **/50** | **/50** |    |
+### Review
+**Evidence:** [behaviour-tested / render-observed: widths and states | source-inspected only]
+**Status:** [Ready within inspected scope | Needs revision | Blocked | Unverified] · **Open blockers:** [0, or list]
+**Direction checks:** [each held / not held / not seen, or "no direction note"]
+
+| Dimension | Before | After |
+|-----------|--------|-------|
+| A — Agency & Affordance | [blockers / defects] | [blockers / defects] |
+| L — Loops & Feedback | … | … |
+| I — Invitation & Discovery | … | … |
+| V — Vitality & Physics | … | … |
+| E — Emergence & Surprise | … | … |
+
+Creative integrity: … · Professional craft: …
 
 ### Injections Applied
 **Agency:** [what was added — proximity awareness, affordance cues]
@@ -450,7 +455,7 @@ Output a summary:
 **Vitality:** [physics — hover weight, entrance cascades, ambient breathing]
 **Emergence:** [surprises — milestones, data insights, time-awareness]
 
-### Hidden Fingerprint
+### Hidden Fingerprint (only when required)
 - **Type:** [key combination / console message / secret page / etc.]
 - **Trigger:** [how to activate it]
 - **Reveals:** [what the user sees]

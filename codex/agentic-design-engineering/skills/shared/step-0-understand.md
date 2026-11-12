@@ -6,9 +6,11 @@ Before evaluating or transforming anything, understand what you're looking at. T
 
 ## Process
 
-1. **Scan the full project structure** — not just the target page. Read the project tree, package.json (or equivalent), README, route structure, and component hierarchy.
+1. **Read the direction note first, if it exists.** `ade_docs/direction.md` (written by `$ade-direct`) holds the owner's words, the chosen direction, its kind and five checks. Its direction is the declared concept and its kind decides how Style works. Every framework carries the five checks into its review (`skills/shared/review.md`). Do not rewrite or reinterpret them.
 
-2. **Build a Product Portrait** containing:
+2. **Scan the full project structure** — not just the target page. Read the project tree, package.json (or equivalent), README, route structure, and component hierarchy.
+
+3. **Build a Product Portrait** containing:
 
 | Field | Question | Examples |
 |-------|----------|---------|
@@ -21,12 +23,12 @@ Before evaluating or transforming anything, understand what you're looking at. T
 | **Sound appropriateness** | Would this product's users welcome sound? Where and how often is it used? | Immersive/creative (yes), open-plan enterprise desk tool (no), clinical (never — sound is reserved for alarms) |
 | **Declared concept** | Has the owner already stated what this should feel like or be? | "It should feel like a spaceship", the chosen direction in `ade_docs/direction.md`, an existing metaphor in the decision logs, a brand world — record it verbatim if it exists |
 
-3. **Rate confidence**: High / Medium / Low
+4. **Rate confidence**: High / Medium / Low
 
-4. **If confidence is LOW** → Ask the user ONE targeted question. Not open-ended. Specific:
+5. **If confidence is LOW** → Ask the user ONE targeted question. Not open-ended. Specific:
    - *"I see a data-heavy interface with form inputs and status tracking. Is this an internal operations tool or customer-facing? Who uses this daily?"*
 
-5. **If confidence is HIGH** → State the hypothesis and proceed:
+6. **If confidence is HIGH** → State the hypothesis and proceed:
    - *"Based on the project structure, dependencies, and UI patterns, this appears to be an internal pharmaceutical compliance dashboard used by QA teams. Proceeding with enterprise/clinical context."*
 
 ## Output Format
@@ -41,6 +43,8 @@ Before evaluating or transforming anything, understand what you're looking at. T
 **Physical analog:** [specific physical object or place from 100 years ago]
 **Sound appropriateness:** [yes/no/never — with reason]
 **Declared concept:** [verbatim owner intent if stated anywhere — otherwise "none declared"]
+**Concept kind:** [place | instrument | material | grammar | data | type | quiet — from the direction note, or "not chosen"]
+**Direction checks:** [the five checks from the direction note, or "none"]
 **Confidence:** [High/Medium/Low]
 **Context classification:** [emergency|enterprise|consumer|high-frequency|data-heavy|communication|e-commerce|educational]
 ```
@@ -51,11 +55,11 @@ Before evaluating or transforming anything, understand what you're looking at. T
 - The same card layout means something completely different in a finance dashboard vs. a recipe app
 - Style's metaphor discovery is impossible without understanding the product domain
 - Build's context branching requires product understanding
-- The agent can't score meaningfully if it doesn't know what "good" looks like for this specific product
+- The agent can't review meaningfully if it doesn't know what "good" looks like for this specific product
 
 ## How It's Used
 
 - The Product Portrait output is passed forward to ALL subsequent steps as context
 - In `ade-compound`, Step 0 runs once at the beginning and feeds every framework phase
 - In individual skills (`ade-build`, `ade-style`, `ade-move`, `ade-write`), Step 0 runs at the start
-- In `ade-audit`, Step 0 runs once and its context informs all scoring
+- In `ade-review`, Step 0 runs once and its context informs every finding

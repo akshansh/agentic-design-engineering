@@ -23,7 +23,7 @@ If running as part of `ade-compound`, the Product Portrait is already available 
 
 ## Baseline: Run Write Auditor
 
-Before rewriting anything, run the `write-auditor` skill on the existing code to establish baseline scores. Record the scores — you'll compare against these after all rewrites.
+Before rewriting anything, capture the page and run the `write-auditor` skill on it. Record its findings and what must survive — you'll compare against these after all rewrites. If `ade_docs/direction.md` exists, its five checks go into the review.
 
 ---
 
@@ -138,19 +138,9 @@ If the page has a physical metaphor from Style, copy should speak its language.
 | "Search" | "Search the archive" | "Search the catalog" |
 | "Not found" | "Not in the archive" | "Not in the visible sky" |
 
-### Scoring Summary
+### Severity
 
-When scoring (for baseline or final assessment), use these criteria per principle:
-
-| Score | Meaning |
-|-------|---------|
-| 9-10 | Excellent — copy is warm, specific, consistent, and inhabits the voice |
-| 7-8 | Good — minor issues, mostly intentional copy with a few generic spots |
-| 5-6 | Acceptable — mixed quality, some warm copy alongside generic defaults |
-| 3-4 | Poor — mostly generic or cold copy, few intentional moments |
-| 0-2 | Failing — copy sounds like system defaults, error codes, or generic AI |
-
-**Total out of 70.** Target: 40+ for `readyForShip`. Normalize to /50 for cross-framework comparison: `Math.round(total * 50 / 70)`.
+A **blocker** is copy that leaves a user with no way forward or misleads them about what an action does. A **defect** breaks a principle. An **opportunity** would make good copy better. Form and status: `skills/shared/review.md`.
 
 ---
 
@@ -193,17 +183,11 @@ Output a summary:
 **Rewrites made:** [count]
 **Voice consistency:** [consistent/needs-work]
 
-### Scores
-| Principle              | Before | After | Delta  |
-|------------------------|--------|-------|--------|
-| 1 — Partnership           | /10   | /10  |        |
-| 2 — Simplification        | /10   | /10  |        |
-| 3 — Purpose               | /10   | /10  |        |
-| 4 — Invitation            | /10   | /10  |        |
-| 5 — Connection            | /10   | /10  |        |
-| 6 — Compassion            | /10   | /10  |        |
-| 7 — Metaphor Language     | /10   | /10  |        |
-| **Total**                 | **/70** | **/70** |    |
+### Review
+**Evidence:** [render-observed: widths and states | source-inspected only]
+**Status:** [Ready within inspected scope | Needs revision | Blocked | Unverified] · **Open blockers:** [0, or list]
+**Findings before → after:** [blockers / defects / opportunities, before and after]
+Creative integrity: … · Professional craft: …
 
 ### Changes
 | Element | Before | After | Principle |
@@ -220,7 +204,7 @@ Log to `ade_docs/YYYY-MM-DD-write-review.md`.
 
 ### Handoff
 
-> Copy now sounds intentional. Your interface works (Build), feels like somewhere (Style), is alive (Move), and speaks with a human voice (Write). Run `$ade-audit` for a final combined score.
+> Copy now sounds intentional. Your interface works (Build), feels like somewhere (Style), is alive (Move), and speaks with a human voice (Write). Run `$ade-review` for a final review of all four.
 
 ---
 

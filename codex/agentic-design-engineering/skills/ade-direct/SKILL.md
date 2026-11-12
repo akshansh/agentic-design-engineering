@@ -18,7 +18,7 @@ Narrate as you go: one line before each step, one line after (`skills/shared/evi
 
 ## What this skill is not
 
-- Not a craft audit. `$ade-audit` does that.
+- Not a craft review. `$ade-review` does that, and an outside-in craft review, if the owner uses one, holds the result against leading studios.
 - Not a survey of other people's design. No competitor moodboards here. The feed is the owner's own world.
 
 ---
@@ -131,9 +131,11 @@ Then run the five checks from `ade_docs/direction.md`, if it exists. Report each
 
 ## How the rest of ADE uses the direction note
 
-- **Step 0** records the chosen direction as the **declared concept**, verbatim.
-- **Style** starts from it. When the kind is Place, metaphor discovery is seeded with it. For any other kind, Style builds what the concept asks for and nothing else (`skills/shared/technique-neutrality.md`).
-- **`$ade-audit`** reports the five checks, held or not held, above the scores.
+- **Step 0** reads it first and records the chosen direction as the **declared concept**, verbatim, with its kind and five checks.
+- **Build, Move and Write** carry the five checks into their reviews. A check not held is a blocker (`skills/shared/review.md`).
+- **Style** starts from it. When the kind is Place, metaphor discovery is seeded with it. For any other kind, Style skips metaphor discovery and builds what the concept asks for and nothing else (`skills/shared/technique-neutrality.md`).
+- **`$ade-review`** and **`$ade-compound`** report the five checks first, each held, not held or not seen.
+- **An outside-in craft review**, if the owner uses one, reads the note as the record of what must be protected before it judges the work.
 - No framework replaces the owner's direction with one of its own. If a framework cannot carry it, it says why and asks.
 
 ## What NOT to do

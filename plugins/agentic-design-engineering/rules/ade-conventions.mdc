@@ -1,5 +1,5 @@
 ---
-description: Agentic Design Engineering framework conventions — ordering, decision logging, and quality gates
+description: Agentic Design Engineering framework conventions — ordering, decision logging, review and gates
 alwaysApply: true
 ---
 
@@ -11,16 +11,16 @@ Always apply frameworks in this order: **Build** (structure) → **Style** (atmo
 - Build must pass before Style is applied (can't build atmosphere on a broken layout)
 - Style should be established before Move is injected (can't animate without materiality)
 - Move should complete before Write (can't write metaphor copy before the metaphor exists)
-- Each framework gates the next — scores must pass 40/50 before proceeding
+- Each framework gates the next — no open blocker before proceeding
 
 ## Step 0: Understand
-Every skill execution begins with Step 0 — building a Product Portrait that understands the domain, user persona, and emotional weight of the codebase before evaluation or transformation.
+Every skill execution begins with Step 0 — reading `ade_docs/direction.md` if it exists, then building a Product Portrait that understands the domain, user persona, and emotional weight of the codebase before evaluation or transformation.
 
 ## Decision Logging
 Every ADE skill execution MUST log decisions to `ade_docs/YYYY-MM-DD-<context>.md` in the project directory. What gets decided gets documented.
 
-## Quality Gates
-If a framework scores below 40/50, it blocks the next step. After 2 repair attempts, fallback strategies kick in — document what couldn't be fixed and proceed with a warning.
+## Review and Gates
+Reviews look at the render first (1440 and 390 px) and report findings (blocker, defect, opportunity), two judgements and a status. No scores. A review without captures says "source-inspected only" and cannot return Ready. An open blocker blocks the next step. After 2 repair rounds, fallback strategies kick in — document what couldn't be fixed and proceed with a warning. Full form: `skills/shared/review.md`.
 
-## Easter Egg Requirement
-Every Move transformation MUST include at least one hidden fingerprint — the creator's signature in the work, discoverable but not obvious.
+## Easter Egg
+Move plants a hidden fingerprint when the Product Portrait or project law calls for one; otherwise it records `easter_egg: none — [reason]`.

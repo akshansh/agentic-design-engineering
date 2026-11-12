@@ -1,5 +1,50 @@
 # Changelog
 
+## v4.0 — A Review, Not a Score
+
+ADE is the owner's taste working from the inside out. A number out of 200 could not say what was wrong or how sure the auditor was, and it let a strong part pay for a broken one. This release replaces it with a review, makes every auditor look at the page before reading its code, and lets Style build concepts that are not places.
+
+### A review replaces the score
+- **New shared reference `skills/shared/review.md`** (both packages): findings (blocker, defect, opportunity), each with where it was seen, its evidence class and the exact repair; what must survive; two judgements that never offset (creative integrity, professional craft); a status (Ready within inspected scope, Needs revision, Blocked, Unverified).
+- **New `/ade:review`** (`$ade-review` in Codex) runs the four auditors and writes one review. **`/ade:audit` stays as an alias for 0.4.x** and is removed in 0.5.0.
+- **The gate is no open blocker.** The 40/50 gate, the /50 and /70 tables and the /200 total are gone from every skill, auditor, handoff, template and rule in both packages. Two repair rounds and the fallbacks are unchanged.
+- The metaphor-discoverer still ranks its options with its five-criteria rubric. That chooses between ideas; it does not judge finished work.
+
+### Look first
+- Every auditor is given renders at 1440 and 390 px in each real state and reads code only to locate a repair. With no capture the review says `source-inspected only` and cannot return Ready.
+- The review checks for defaults nobody chose and for five habits that recur in agent-made work: a generated room standing in for the real place, one page shell shared across products, one placeholder repeated, the small end of the size ladder never shown, and build marks left on the reader's page.
+
+### Concepts beyond a place
+- `technique-neutrality.md` lists the seven kinds (place, instrument, material, grammar, data, type, quiet) and what Style builds for each. Style takes the kind from the direction note and runs metaphor discovery only for a place.
+- **The Fidelity Ladder is reworded for every kind:** 0 label, 1 paint, 2 dressed parts, 3 changes behaviour, 4 nothing contradicts it. Level 3 stays the floor.
+
+### The direction note is read everywhere
+Step 0 reads `ade_docs/direction.md` first. Build, Style, Move, Write, Review and Compound carry its five checks; a check not held is a blocker.
+
+### Works with an outside-in craft review
+`review.md` and the README say how ADE hands over to a review that holds work against leading studios: ADE first, then the direction note and the review, each finding marked with its evidence class.
+
+### Invariants changed
+Root `AGENTS.md`: "each framework passes at 40/50; audits report /200" becomes "reviews, not scores; the gate is no open blocker", plus a new look-first invariant and the seven kinds. The Cursor rule's unconditional easter egg requirement, missed in v3.4, now matches the amended invariant.
+
+### Fixes from review (before merge)
+- A direction check not held blocks only the framework that owns it, and the final review; earlier it is reported. The direction note names each check's owner.
+- Fidelity Ladder level 3 for a still piece or a cover: every element present follows the concept; patterns that do not exist are `n/a`.
+- Move: a dead spot is a finding only when there is no perceivable feedback or the response contradicts the concept. Stillness on purpose is not one.
+- Generated-look findings carry a severity: a defect, or a blocker when a generated picture stands in for a real place, person or product, or poses as a photograph.
+- Handoffs carry the kind and the direction checks; `minimal` physics for still concepts; `none — [reason]` for the easter egg in the compound log.
+- The last golden-ratio splits and the "> 90% follow the intended path" target are gone from `build-framework.md`.
+- Compound skips the feeling questions when a direction note exists; Move's handoff no longer promises a hidden signature; style diagnostics speak in the concept's terms.
+- The taste pass asks questions a render can answer.
+- README names the Codex voice skill `$voice-writer`.
+
+### Not in this release
+No fixtures yet, so nothing proves an auditor finds what it should or leaves good work alone. The render-first rule is written but has not been run on a page whose CSS looks rich and renders broken. Not run inside a host.
+
+### Versions
+Manifests bumped to **0.4.0** across all four version fields.
+
+---
 ## v3.5 — Taste First
 
 ADE's author restated what the method is for (10 November 2026): his taste, a thought-first process, the feeling, and the way a piece becomes unmistakably its owner's. It is a brainstorm before work starts, or a pass after. Until now the plugin opened with a codebase scan. This release gives it a first step that starts with the person.

@@ -19,7 +19,7 @@ Narrate as you go: one line before each step, one line after (`skills/shared/evi
 
 ## What this skill is not
 
-- Not a craft audit. `/ade:audit` does that.
+- Not a craft review. `/ade:review` does that, and an outside-in craft review, if the owner uses one, holds the result against leading studios.
 - Not a survey of other people's design. No competitor moodboards here. The feed is the owner's own world.
 
 ---
@@ -79,7 +79,7 @@ Keep the two that were not chosen, with the reason.
 
 ### Step 8: Five checks
 
-Write five checks from the chosen direction. Each is one thing the finished piece must visibly do, phrased so it can fail ("the ledger is the first thing the eye lands on at 390 px", not "feels trustworthy").
+Write five checks from the chosen direction. Each is one thing the finished piece must visibly do, phrased so it can fail ("the ledger is the first thing the eye lands on at 390 px", not "feels trustworthy"). For software, name the framework that owns each check: Build (structure), Style (the concept's look), Move (response and motion) or Write (words). That framework, and the final review, gate on it.
 
 ### Step 9: Write the direction note
 
@@ -103,11 +103,11 @@ Save `ade_docs/direction.md`:
 - [direction C] — [why not]
 
 ## Five checks
-1. …
-2. …
-3. …
-4. …
-5. …
+1. … — owner: [Build | Style | Move | Write]
+2. … — owner: …
+3. … — owner: …
+4. … — owner: …
+5. … — owner: …
 
 **Evidence:** [paths to the three studies in ade_docs/evidence/, or "not captured"]
 ```
@@ -120,8 +120,8 @@ Look first. Open the real thing at the size it is used and capture it (`skills/s
 
 1. Is the thought there? Could a stranger say it?
 2. Is the feeling there in the first five seconds?
-3. Is there one moment that moves, with stillness around it?
-4. Is it kind? Is anything complicated that could be simple?
+3. Is there one moment that holds the eye, with quiet around it? (A still piece can have it.)
+4. Is anything harder to read or use than it needs to be? Name it.
 5. Is it theirs? Is the mark there, once?
 
 Then run the five checks from `ade_docs/direction.md`, if it exists. Report each as held or not held.
@@ -132,9 +132,11 @@ Then run the five checks from `ade_docs/direction.md`, if it exists. Report each
 
 ## How the rest of ADE uses the direction note
 
-- **Step 0** records the chosen direction as the **declared concept**, verbatim.
-- **Style** starts from it. When the kind is Place, metaphor discovery is seeded with it. For any other kind, Style builds what the concept asks for and nothing else (`skills/shared/technique-neutrality.md`).
-- **`/ade:audit`** reports the five checks, held or not held, above the scores.
+- **Step 0** reads it first and records the chosen direction as the **declared concept**, verbatim, with its kind and five checks.
+- **Build, Style, Move and Write** carry the five checks into their reviews. A check not held is a blocker only in the framework that owns it, and in the final review; earlier it is reported, not gated (`skills/shared/review.md`).
+- **Style** starts from it. When the kind is Place, metaphor discovery is seeded with it. For any other kind, Style skips metaphor discovery and builds what the concept asks for and nothing else (`skills/shared/technique-neutrality.md`).
+- **`/ade:review`** and **`/ade:compound`** report the five checks first, each held, not held or not seen.
+- **An outside-in craft review**, if the owner uses one, reads the note as the record of what must be protected before it judges the work.
 - No framework replaces the owner's direction with one of its own. If a framework cannot carry it, it says why and asks.
 
 ## What NOT to do

@@ -12,7 +12,7 @@ Design doesn’t happen after the code. We build it in — with every agent call
 
 Agentic Design Engineering (ADE) is a design methodology, shipped as plugins for AI coding agents, that turns default-looking interfaces into spaces that feel crafted, inhabited, and distinctly human.
 
-Four frameworks — **Build**, **Style**, **Move**, **Write** — plus readiness, audit, and compound skills. Not a component library. Not a Venus ops app with auth, routes, or a database. A design philosophy with teeth: scored gates, repair loops, decision logs, and screenshot evidence.
+Four frameworks — **Build**, **Style**, **Move**, **Write** — plus readiness, direction, review and compound skills. Not a component library. Not a Venus ops app with auth, routes, or a database. A design philosophy with teeth: render-first reviews, gates on open blockers, repair loops, decision logs, and screenshot evidence.
 
 This README serves two readers equally: a human developer arriving fresh, and an AI agent that needs accurate context before touching the code. Shared vocabulary lives in [`CONCEPTS.md`](CONCEPTS.md) — read it before editing any skill. Authoring rules for this repo live in [`AGENTS.md`](AGENTS.md).
 
@@ -36,7 +36,7 @@ We built ADE to change that. Theme is not a costume of labels on a hamburger men
 
 ## How it works
 
-Every run starts with **Step 0 — Understand**: the agent builds a Product Portrait (domain, persona, emotional weight, physical analog, sound appropriateness, declared concept) before changing anything. Then the four frameworks run in fixed order. Each gates the next at **40/50**. A full audit reports **/200**. The only sanctioned back-edge is Style's Structural Change Request to Build — when a metaphor cannot inhabit the current information architecture, structure changes first. Reskins are not transformations.
+Every run starts with **Step 0 — Understand**: the agent builds a Product Portrait (domain, persona, emotional weight, physical analog, sound appropriateness, declared concept) before changing anything. Then the four frameworks run in fixed order. Each ends with a review taken on the render, and gates the next on **no open blocker**. Reviews report findings, two judgements and a status, never a score. The only sanctioned back-edge is Style's Structural Change Request to Build — when a metaphor cannot inhabit the current information architecture, structure changes first. Reskins are not transformations.
 
 ```mermaid
 graph TD
@@ -57,19 +57,19 @@ graph TD
 
 *"Before anything else, the interface must be usable."*
 
-Audits and repairs five dimensions: **C**opy, **L**ayout, **E**mphasis, **A**ccessibility, **R**eward. Accessibility issues are fixed first, always. Context-branched for eight product types.
+Reviews and repairs five dimensions: **C**opy, **L**ayout, **E**mphasis, **A**ccessibility, **R**eward. Accessibility issues are fixed first, always. Context-branched for eight product types.
 
 ### Style — Atmosphere & Art Direction
 
 *"Every application inhabits a place. Your job is to discover which place, then build it."*
 
-Physical metaphors with real materials, light, temperature, and acoustic signature. Selects the rendering stack the metaphor demands (layered CSS, P5.js, Three.js, SVG+GSAP, WebGL shaders). Enforces the **Metaphor Fidelity Ladder**: target level ≥ 3 (behavioral inhabitation). Levels 0–1 are costumes and cap the metaphor score.
+A place is one kind of concept: physical metaphors with real materials, light, temperature, and acoustic signature. The others are an instrument, a material, a drawn grammar, the data, type alone and quiet, and Style builds whichever the direction names. Selects the rendering stack the concept demands (layered CSS, P5.js, Three.js, SVG+GSAP, WebGL shaders). Enforces the **Fidelity Ladder** for every kind: target level ≥ 3 (the concept changes behaviour). Levels 0–1 are costumes.
 
 ### Move — Interactivity & Game Design Thinking
 
 *"You can take almost anything, and looking at it the right way, make it a fascinating interactive experience." — Will Wright*
 
-Micro-interactions, physics matched to the metaphor, discovery layers, an opt-in sound layer of material-derived earcons, and a **required easter egg** — the creator's hidden signature.
+Micro-interactions, physics matched to the metaphor, discovery layers, an opt-in sound layer of material-derived earcons, and an easter egg where the project calls for one — the creator's hidden signature.
 
 ### Write — Intentional Communication
 
@@ -82,7 +82,7 @@ Rewrites UI copy for warm partnership, purpose before action, compassionate erro
 ```mermaid
 flowchart LR
     subgraph Package["Shipped as plugins"]
-        Skills["8 skills<br/>setup · direct · build · style · move · write · audit · compound"]
+        Skills["8 skills<br/>setup · direct · build · style · move · write · review · compound"]
         Agents["9 specialists<br/>auditors · designers · analyst · voice"]
     end
 
@@ -122,9 +122,10 @@ agentic-design-engineering/
 │   │   ├── ade-setup/                    # readiness check (read-only)
 │   │   ├── ade-direct/                   # taste first: direction + five checks
 │   │   ├── ade-build|style|move|write/   # frameworks + references/
-│   │   ├── ade-audit/ · ade-compound/    # score / full pipeline
+│   │   ├── ade-review/ · ade-compound/   # review / full pipeline
+│   │   ├── ade-audit/                    # old name for ade-review (0.4.x)
 │   │   └── shared/                       # Step 0, handoffs, sound, evidence trail
-│   ├── rules/ade-conventions.mdc         # Cursor: order + gates
+│   ├── rules/ade-conventions.mdc         # Cursor: order, review, gates
 │   └── docs/                             # decision-log template
 │
 ├── codex/agentic-design-engineering/     # OpenAI Codex package (mirror)
@@ -217,7 +218,7 @@ After install, in any project:
 /ade:setup
 ```
 
-(`$ade-setup` on Codex.) Read-only: rendering stack, evidence-capture tier, prior `ade_docs/` history, sound feasibility — then recommends `/ade:audit`, `/ade:compound`, or `/ade:build`.
+(`$ade-setup` on Codex.) Read-only: rendering stack, evidence-capture tier, prior `ade_docs/` history, sound feasibility — then recommends `/ade:review`, `/ade:compound`, or `/ade:build`.
 
 ### Commands
 
@@ -226,23 +227,25 @@ After install, in any project:
 | Readiness check (read-only) | `/ade:setup` | `$ade-setup` |
 | Taste first: direction + five checks | `/ade:direct` | `$ade-direct` |
 | Structure + accessibility | `/ade:build` | `$ade-build` |
-| Atmosphere + metaphor | `/ade:style` | `$ade-style` |
-| Physics, discovery, easter egg | `/ade:move` | `$ade-move` |
+| Concept + atmosphere | `/ade:style` | `$ade-style` |
+| Physics, discovery, easter egg where required | `/ade:move` | `$ade-move` |
 | UI copy | `/ade:write` | `$ade-write` |
-| Score all four (read-only) | `/ade:audit` | `$ade-audit` |
+| Review all four (read-only) | `/ade:review` | `$ade-review` |
 | Full pipeline | `/ade:compound` | `$ade-compound` |
 
 `/ade:compound` has two modes. **Standard** pauses at metaphor choice and structural approval. **Autonomous** (`--auto`, or "surprise me") self-selects and logs reasoning. Gates apply in both.
 
-`/ade:audit` recovers the **declared concept** — what this was supposed to feel like — and scores against that intent. A perfect boardroom is a failing audit if you asked for a spaceship.
+`/ade:review` recovers the **declared concept** — what this was supposed to feel like — and reviews against that intent. A perfect boardroom is a failing review if you asked for a spaceship. It looks at renders at 1440 and 390 px before reading code; with no capture it says "source-inspected only" and cannot return Ready. `/ade:audit` still works as its old name until 0.5.0.
+
+**Works with an outside-in craft review.** ADE is inside-out: the owner's taste decides what the work is. If you also use a review that holds work against leading studios, run ADE first and hand it `ade_docs/direction.md` and the ADE review. Each finding carries its evidence class, so it knows what was seen on a render and what was read from source.
 
 ### The nine specialists
 
 | Agent | Role |
 |-------|------|
 | `codebase-comprehender` | Product Portrait before evaluation |
-| `build-auditor` | Build scores + file:line findings (never fixes) |
-| `style-auditor` | Atmosphere, fidelity level, intent match |
+| `build-auditor` | Build findings with file:line (never fixes) |
+| `style-auditor` | The concept (any kind), fidelity level, intent match |
 | `move-auditor` | Dead spots, easter egg, sound compliance |
 | `write-auditor` | Seven voice principles |
 | `metaphor-discoverer` | Ranked metaphors with materials, light, acoustics, Transformability |
@@ -250,11 +253,11 @@ After install, in any project:
 | `vitality-injector` | Physics patches (GSAP, Motion.dev, or CSS) |
 | `voice-writer` | Warm copy rewrites; custom voice profiles |
 
-Claude Code / Cursor run these as dedicated agents. Codex exposes them as skills (`$build-auditor`, `$akshansh-voice`, …).
+Claude Code / Cursor run these as dedicated agents. Codex exposes them as skills (`$build-auditor`, `$voice-writer`, …).
 
 ### For AI agents maintaining this repo
 
-Read [`AGENTS.md`](AGENTS.md) and [`CONCEPTS.md`](CONCEPTS.md) first. Parity is mandatory: every skill/agent content change lands in both packages. Behavior changes bump all four manifest versions (`0.3.y` ↔ marketing `v3.y`) and add a `CHANGELOG.md` entry. Do not invent terms — use the vocabulary in `CONCEPTS.md`.
+Read [`AGENTS.md`](AGENTS.md) and [`CONCEPTS.md`](CONCEPTS.md) first. Parity is mandatory: every skill/agent content change lands in both packages. Behavior changes bump all four manifest versions (`0.x.y` ↔ marketing `vx.y`) and add a `CHANGELOG.md` entry. Do not invent terms — use the vocabulary in `CONCEPTS.md`.
 
 ### Evidence every run leaves
 
@@ -266,10 +269,10 @@ Dated decision logs in the project's `ade_docs/`, plus baseline and per-cycle sc
 
 | | |
 |---|---|
-| **Marketing version** | v3.5 — *Taste First* |
-| **Manifest version** | `0.3.5` (Claude, Cursor, Codex, marketplace entry) |
+| **Marketing version** | v4.0 — *A Review, Not a Score* |
+| **Manifest version** | `0.4.0` (Claude, Cursor, Codex, marketplace entry) |
 | **Hosts** | Claude Code, Cursor, OpenAI Codex (App + CLI), GitHub Copilot (VS Code + CLI) |
-| **Skills** | 8 user-invocable (`setup`, `direct`, `build`, `style`, `move`, `write`, `audit`, `compound`) |
+| **Skills** | 8 user-invocable (`setup`, `direct`, `build`, `style`, `move`, `write`, `review`, `compound`), plus `audit` as an alias of `review` for 0.4.x |
 | **Specialists** | 9 (4 auditors, 3 designers, 1 analyst, 1 voice) |
 | **Maturity notes** | Evidence capture depends on the host session's browser tooling; the sound layer is opt-in and younger than the visual frameworks; procedures are web-first |
 
@@ -298,7 +301,7 @@ Existing apps are the primary case. Step 0 reads the codebase first; Build repai
 A design system standardizes components. ADE makes *this* app feel like *somewhere specific* — with gates, logs, and evidence instead of taste-only review.
 
 **Will it fight my agent's autonomy?**
-Standard mode pauses on metaphor and structural approval. Autonomous mode decides and documents. No mode skips a quality gate.
+Standard mode pauses on metaphor and structural approval. Autonomous mode decides and documents. No mode skips a gate.
 
 ---
 

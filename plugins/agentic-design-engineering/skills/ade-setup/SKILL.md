@@ -29,7 +29,7 @@ The evidence trail (`skills/shared/evidence-trail.md`) needs screenshots. Determ
 
 1. **Full capture** — a browser automation tool is available in the session (Playwright/Puppeteer, a browser or screenshot MCP tool, or the host's built-in browser). Confirm by checking the tools available to you, not by guessing.
 2. **Dev-server capture** — no dedicated tool, but the project has a dev server and the session can drive a headless browser.
-3. **No capture** — headless environment, no browser. ADE runs still work, but every decision log will record "evidence: not captured" and the transformation should be re-audited later in an interactive session.
+3. **No capture** — headless environment, no browser. ADE runs still work, but every decision log will record "evidence: not captured" and reviews will say `source-inspected only` and cannot return Ready until the work is looked at in an interactive session.
 
 Report the tier and what it means for the run.
 
@@ -77,7 +77,7 @@ Output exactly this structure:
 
 Recommend:
 
-- `/ade:audit` — if the project already has deliberate design or prior ADE history (score before touching).
+- `/ade:review` — if the project already has deliberate design or prior ADE history (look before touching).
 - `/ade:compound` — if the interface is functional but generic and the user wants the full transformation.
 - `/ade:build` — if Check 5 or a quick look revealed obvious structural/accessibility problems worth fixing before any atmosphere work.
 

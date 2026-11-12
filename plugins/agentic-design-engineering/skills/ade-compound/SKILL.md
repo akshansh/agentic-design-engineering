@@ -10,7 +10,7 @@ You are the lead designer orchestrating a complete transformation. Your job is t
 
 This is the flagship skill. It runs all four frameworks in strict order, with each step handing off constraints and context to the next.
 
-**Narrate and evidence the whole run.** Before each framework phase, tell the user in one or two lines what is about to happen and why; after it, what changed and what the scores say. Capture a baseline screenshot before Build touches anything and save every framework's captures to `ade_docs/evidence/` (see `skills/shared/evidence-trail.md`). The user should be able to watch the transformation happen and inspect the proof afterward — never work silently and dump a report at the end.
+**Narrate and evidence the whole run.** Before each framework phase, tell the user in one or two lines what is about to happen and why; after it, what changed and what the review found. Capture a baseline screenshot before Build touches anything and save every framework's captures to `ade_docs/evidence/` (see `skills/shared/evidence-trail.md`). The user should be able to watch the transformation happen and inspect the proof afterward — never work silently and dump a report at the end.
 
 ---
 
@@ -40,9 +40,9 @@ The agent asks for user input at key decision points:
 ### Autonomous Mode (`--auto` or "surprise me" or "just do it")
 The agent makes all decisions independently:
 - **Step 0:** Runs with high-confidence threshold. If confidence is high, proceeds. If low, asks ONE question and proceeds regardless of answer.
-- **Style:** Skips user metaphor selection. The `metaphor-discoverer` generates 3 options, scores them using its rubric, selects the highest-scoring option, and documents its reasoning in the decision log.
-- **Write:** Uses all 7 principles. If Style established a metaphor, principle 7 (metaphor language) activates automatically. If no metaphor, principle 7 scores on distinctive character.
-- **All gates still apply.** Autonomous doesn't mean careless. Scores must still pass thresholds.
+- **Style:** Uses the direction note's concept and kind when one exists. Otherwise, for a place, the `metaphor-discoverer` generates 3 options, ranks them with its rubric, selects the strongest, and documents its reasoning in the decision log.
+- **Write:** Uses all 7 principles. If Style established a metaphor, principle 7 (metaphor language) activates automatically. If no metaphor, principle 7 asks only whether the copy has a character of its own.
+- **All gates still apply.** Autonomous doesn't mean careless. No step proceeds with an open blocker.
 
 Activate autonomous mode when:
 - User explicitly says "surprise me", "just do it", or "make it not look like everything else"
@@ -72,39 +72,37 @@ Load the Step 0 understand process:
 
 ## Gate Rule
 
-**If any step scores below 40/50, it blocks the next step.**
-
-Do not proceed to Style if Build scores below 40. Do not proceed to Move if Style scores below 40. Fix first, then continue.
+**The gate is no open blocker.** Each framework ends with its auditor's review, taken on the render (`skills/shared/review.md`). If a blocker is open, it blocks the next step. Defects travel forward in the log.
 
 When a gate blocks:
-1. Report the score and the critical violations
-2. Apply the fixes within that framework's scope
-3. Re-score to confirm >= 40
+1. Report the blockers, each with where it was seen and its evidence class
+2. Repair them within that framework's scope
+3. Capture again and re-run the auditor
 4. Only then proceed to the next step
 
 ### Retry Limits
 
-**Maximum 2 repair attempts per gate failure.** If the score doesn't improve after 2 focused repair passes:
+**Maximum 2 repair rounds per blocked gate.** If a blocker is still open after 2 focused rounds:
 
-1. Log the blocking issues clearly in the decision log
-2. Flag the specific violations that couldn't be resolved and WHY
-3. Apply the fallback strategy for that framework (see below)
-4. Proceed to the next framework with a warning
+1. Log it in the decision log with what was tried and why it did not work
+2. Apply the fallback for that framework (below)
+3. Proceed with a warning, and say in the final report that the work is not Ready
+4. If the blocker is the concept itself, stop and suggest `/ade:direct` instead of pushing on
 
 ### Fallback Strategies
 
-| Framework | Fallback | Reduced Target |
-|-----------|----------|---------------|
-| **Build** | If accessibility can't be fully fixed (e.g., third-party component limitations), document the exceptions and proceed | 35/50 instead of 40/50 |
-| **Style** | If the metaphor isn't convincing after 2 cycles of repair, commit to the strongest version achieved | Note as "draft atmosphere — iteration recommended" |
-| **Move** | If physics can't be injected (framework constraints like CSS-in-JS limitations), apply the subset that IS possible | List what was blocked and why |
-| **Write** | If the codebase has hardcoded strings the agent can't edit (e.g., third-party components), list them as manual tasks | Document untouchable strings |
+| Framework | Fallback | What gets logged |
+|-----------|----------|------------------|
+| **Build** | If accessibility can't be fully fixed (e.g., third-party component limitations), document the exceptions and proceed | Each exception as an open blocker, with the component and the reason |
+| **Style** | If the concept isn't convincing after 2 rounds of repair, commit to the strongest version achieved | "Draft atmosphere — iteration recommended" |
+| **Move** | If physics can't be injected (framework constraints like CSS-in-JS limitations), apply the subset that IS possible | What was blocked and why |
+| **Write** | If the codebase has hardcoded strings the agent can't edit (e.g., third-party components), list them as manual tasks | The untouchable strings |
 
 ### Decision Log Entry for Gate Failures
 
-Every gate failure MUST log:
-- Which framework failed and the score
-- What was attempted in each repair pass
+Every blocked gate MUST log:
+- Which framework, and each open blocker
+- What was attempted in each repair round
 - Why the repair didn't succeed
 - Which fallback was applied
 - What the user should manually address later
@@ -113,13 +111,13 @@ Every gate failure MUST log:
 
 ## Step 1: Run /ade:build — Fix Structure
 
-Execute the full Build audit and repair process.
+Execute the full Build review and repair process.
 
 **Priority order: A → L → C → E → R** (Accessibility first, always.)
 
-1. Read the page and score all five dimensions
-2. Fix violations in priority order
-3. Re-score to confirm the repair
+1. Capture the page, then review all five dimensions
+2. Fix findings in priority order
+3. Capture again and re-review to confirm the repair
 4. Produce the Build report
 
 **What to pass forward to Style:**
@@ -127,23 +125,25 @@ Execute the full Build audit and repair process.
 - Any structural constraints that affect atmosphere (e.g., dense data tables, long-form content)
 - The primary user action identified in the Emphasis dimension
 
-**Gate check:** Build total must be >= 40/50 to proceed.
+**Gate check:** no open blocker in Build.
 
-If below 40:
-> Build scored [X]/50. Fixing [list critical issues] before proceeding to atmosphere design.
+If one is open:
+> Build has [N] open blockers: [list]. Fixing them before atmosphere design.
 
-Apply fixes, re-score, then continue.
+Apply fixes, re-review, then continue.
 
 ---
 
 ## Step 2: Gather Context → Run /ade:style — Build Atmosphere
 
-Before running Style, ask the user two questions:
+Before running Style, ask the user two questions, **unless `ade_docs/direction.md` exists**. The note already holds the feeling and the feed; use it and skip the questions:
 
 > 1. **How should someone feel when they use this?** Not what it should look like — how should it feel?
 > 2. **Show me 3-5 references** — not UIs specifically. A room, a film, an object, a texture. Anything that evokes the feeling you're after.
 
 If the user says "just do it" or "surprise me," derive the metaphor from the product domain. Note that results are better with references.
+
+**If the direction note names a kind other than a place** (instrument, material, grammar, data, type, quiet), skip the two questions and steps 1–3 below: Style writes the concept's rules and goes to the rendering stack. See "Which kind of concept" in `skills/ade-style/SKILL.md`.
 
 Then execute the full Style process:
 
@@ -157,7 +157,7 @@ After element mapping, Style runs its **Structural Authenticity Check**. If the 
 
 1. Style generates a **Structural Change Request** (specific changes needed + why + accessibility constraints)
 2. **Return to Build** — execute Build's structural repair with the Structural Change Request as requirements
-3. Build makes structural changes, re-verifies accessibility, re-scores
+3. Build makes structural changes, re-verifies accessibility, re-reviews
 4. **Return to Style** — proceed with atmosphere implementation on the new structure
 
 This loop counts as a second pass of Build. Log it in the decision log as "Build v2 — Structural Changes for Style."
@@ -171,25 +171,26 @@ This loop counts as a second pass of Build. Log it in the decision log as "Build
 4. **Select the rendering stack** — choose the technology that authentically serves the metaphor (CSS / P5.js / Three.js / SVG+GSAP / WebGL). Record the choice and rationale in the decision log.
 5. Build the atmosphere using the chosen rendering stack
 6. Derive colors from materials, not hex pickers
-7. Iterate through 5 design cycles (mandatory — cycle 1 is scaffolding, not design), saving each cycle's screenshot to the evidence trail and verifying **fidelity level >= 3** in cycle 5 (no themed labels on generic patterns)
+7. Iterate through 5 design cycles (mandatory — cycle 1 is scaffolding, not design), saving each cycle's screenshot to the evidence trail and verifying **fidelity level >= 3** in cycle 5 (no themed labels on generic patterns; where a pattern does not exist (a still piece, a cover), Level 3 means every element present is set by the concept's rules; mark the missing patterns n/a)
 8. Set the Move constraints based on the metaphor's weight and rendering stack — including the **acoustic signature** (room tone + material sounds) if the Product Portrait allows sound, or an explicit `none — [reason]`
 
 **What to pass forward to Move:**
-- The chosen metaphor and its one-line description
+- The concept kind and the concept in one line (the chosen metaphor, for a place)
+- The direction checks, each held / not held / not seen, with its owner
 - The fidelity level achieved (0-4)
 - The rendering stack chosen and why
-- The physics personality (weighty/floating/snappy/organic/mechanical)
+- The physics personality (weighty/floating/snappy/organic/mechanical/minimal)
 - Recommended spring tension and mass
 - The acoustic signature (or "none — reason")
 - The material palette and color derivations
 - Which libraries are already installed (so Move doesn't duplicate)
 
-**Gate check:** Style total must be >= 40/50 to proceed.
+**Gate check:** no open blocker in Style.
 
-If below 40:
-> Style scored [X]/50. The atmosphere isn't convincing enough yet. Fixing [list critical issues] before injecting interactivity.
+If one is open:
+> Style has [N] open blockers: [list]. The concept isn't carried yet. Fixing them before injecting interactivity.
 
-Apply fixes, re-score, then continue.
+Apply fixes, re-review, then continue.
 
 ---
 
@@ -217,12 +218,12 @@ Execute the full Move process using the physics profile from Style.
 - The easter egg description (so Write doesn't accidentally rewrite its trigger text)
 - The sound toggle location and label (so Write can polish it in the place's language without breaking it)
 
-**Gate check:** Move total must be >= 40/50 to proceed.
+**Gate check:** no open blocker in Move.
 
-If below 40:
-> Move scored [X]/50. The interface doesn't feel alive yet. Fixing [list critical issues] before the voice pass.
+If one is open:
+> Move has [N] open blockers: [list]. Fixing them before the voice pass.
 
-Apply fixes, re-score, then continue.
+Apply fixes, re-review, then continue.
 
 ---
 
@@ -275,7 +276,7 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 ---
 
 ### Build — Structure
-**Score:** [before] → [after] /50
+**Review:** [findings before] → [after] · open blockers: [N]
 **Product type:** [classification]
 **Primary action:** [identified emphasis]
 **Key fixes:** [list]
@@ -283,7 +284,8 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 ---
 
 ### Style — Atmosphere
-**Score:** [before] → [after] /50
+**Review:** [findings before] → [after] · open blockers: [N]
+**Concept kind:** [place / instrument / material / grammar / data / type / quiet]
 **Feeling:** [user's words]
 **Metaphor:** [chosen metaphor — one line]
 **Temperature:** [warm/cool/mixed]
@@ -300,12 +302,12 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 ---
 
 ### Move — Interactivity
-**Score:** [before] → [after] /50
+**Review:** [findings before] → [after] · open blockers: [N]
 **Core loop:** [action → response → discovery → next action]
 **Dead spots fixed:** [count]
 **Physics profile:** [personality, spring tension, mass]
 **Injections:** [Agency / Loops / Invitation / Vitality / Emergence summary]
-**Hidden fingerprint:**
+**Hidden fingerprint:** [none — reason, or:]
 - Type: [key combination / console message / secret page]
 - Trigger: [how to activate]
 - Reveals: [what the user sees]
@@ -337,38 +339,32 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 
 ---
 
-### Final Scores
+### Final Review
 
-| Framework | Score | Status |
-|-----------|-------|--------|
-| Build | /50 | [Pass/Fail] |
-| Style | /50 | [Pass/Fail] |
-| Move | /50 | [Pass/Fail] |
-| Write | /70 (normalized: /50) | [Pass/Fail] |
-| **Combined** | **/200** | |
+Run `/ade:review` on the result and paste its report here: direction checks, what must survive, findings, two judgements, status.
 ```
 
 ---
 
 ## Step 6: Final Verdict
 
-After all four frameworks complete:
+Report the status from the final review, and what was not seen.
 
-**If combined score is 160+:**
-> Transformation complete. Your interface works (Build), feels like [metaphor] (Style), responds with [physics personality] (Move), and speaks with intention (Write). Run `/ade:audit` anytime to re-evaluate.
+**Ready within inspected scope:**
+> Transformation complete. Your interface works (Build), carries [concept] (Style), responds with [physics personality] (Move), and speaks with intention (Write). Not seen: [list]. Run `/ade:review` anytime to look again.
 
-**If combined score is 120-159:**
-> Transformation complete with room for polish. [List the P2/P3 recommendations.] Consider a focused pass on the weakest framework.
+**Needs revision:**
+> Transformation complete with work left. [The open defects that matter most, with repairs.]
 
-**If combined score is below 120:**
-> Transformation hit some walls. [List what blocked progress and what still needs work.] Run `/ade:audit` after addressing the remaining issues.
+**Blocked or Unverified:**
+> Transformation hit some walls. [What blocked progress, or what could not be seen.] Run `/ade:review` after addressing them.
 
 ---
 
 ## What NOT to Do
 
 - Do not skip frameworks or reorder the sequence — the chain matters
-- Do not proceed past a gate failure without fixing and re-scoring
+- Do not proceed past an open blocker without fixing and re-reviewing
 - Do not let Style override Build's accessibility fixes
 - Do not let Move break Build's structure or Style's atmosphere
 - Do not let Write rewrite the easter egg trigger or Style's metaphor copy

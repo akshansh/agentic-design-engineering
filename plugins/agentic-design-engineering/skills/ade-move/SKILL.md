@@ -9,7 +9,7 @@ argument-hint: "[URL or file path of the page to bring alive]"
 You are an interaction designer with game design thinking. Your job is to take a page that has structure (Build) and atmosphere (Style) and make it **feel alive** — responsive, discoverable, physical, and surprising.
 
 **Prerequisites:**
-- Build should have passed (score >= 40). If not, suggest `/ade:build` first.
+- Build has no open blocker. If it has, suggest `/ade:build` first.
 - Style should be established (atmosphere exists). If not, suggest `/ade:style` first.
 - If Style provided a `physicsProfile`, use it. If not, derive one from the existing design.
 
@@ -24,7 +24,7 @@ If running as part of `ade:compound`, the Product Portrait is already available 
 
 ## Baseline: Run Move Auditor
 
-Before injecting anything, run the `move-auditor` agent on the existing code to establish baseline scores. Record the scores — you'll compare against these after all injections.
+Before injecting anything, use the running page and run the `move-auditor` agent on it. Record its findings, dead spots and what must survive — you'll compare against these after all injections. If `ade_docs/direction.md` exists, its five checks go into the review.
 
 Load the full framework reference:
 `references/move-framework.md`
@@ -119,13 +119,13 @@ Use these as starting patterns — adapt to the specific codebase:
 | **Archive/reference** | Browse collection → Select item → Read/study → Notice pattern → Browse for more |
 | **Monitoring/ops** | Scan status → Detect anomaly → Drill into detail → Respond/resolve → Return to scan |
 
-The core loop is the heartbeat of the product. Dead spots in the core loop are always **critical severity** — they break the rhythm the user relies on.
+The core loop is the heartbeat of the product. A core-loop action with no perceivable feedback is always **critical** — it breaks the rhythm the user relies on.
 
 ---
 
 ## Step 3: Find the Dead Spots
 
-Scan the code for these lifelessness patterns:
+Scan the running page, then the code, for these patterns. Each is a **candidate**. It becomes a dead spot only when the user gets no perceivable feedback, or the response contradicts the concept. A plain colour change on hover, an instant state change or a page with no `@keyframes` is not a dead spot when the concept is still or quiet on purpose; record it as `n/a — still on purpose`.
 
 ### Code-Level Dead Spot Detection
 
@@ -143,9 +143,9 @@ Scan the code for these lifelessness patterns:
 | No `prefers-reduced-motion` | Inaccessible motion | Motion exists but excludes users |
 
 For each dead spot found, note the file:line and classify:
-- **Critical dead spot**: Core loop has no feedback (e.g., clicking a card has no response)
-- **Major dead spot**: Important interaction feels flat (e.g., hover does nothing physical)
-- **Minor dead spot**: Edge case lacks polish (e.g., empty state has no character)
+- **Critical dead spot** (blocker): the core loop has no perceivable feedback (e.g., clicking a card has no response)
+- **Major dead spot** (defect): an important interaction gives no perceivable feedback, or its response contradicts the concept (e.g., a weighty concept with a bouncy hover)
+- **Minor dead spot** (opportunity): an edge case lacks polish (e.g., empty state has no character)
 
 ---
 
@@ -492,15 +492,20 @@ Output a summary:
 **Dead Spots Fixed:** [count]
 **Physics Profile:** [personality from Style]
 
-### Scores
-| Dimension              | Before | After | Delta  |
-|------------------------|--------|-------|--------|
-| A — Agency & Affordance   | /10   | /10  |        |
-| L — Loops & Feedback      | /10   | /10  |        |
-| I — Invitation & Discovery| /10   | /10  |        |
-| V — Vitality & Physics    | /10   | /10  |        |
-| E — Emergence & Surprise  | /10   | /10  |        |
-| **Total**                 | **/50** | **/50** |    |
+### Review
+**Evidence:** [behaviour-tested / render-observed: widths and states | source-inspected only]
+**Status:** [Ready within inspected scope | Needs revision | Blocked | Unverified] · **Open blockers:** [0, or list]
+**Direction checks:** [each held / not held / not seen, or "no direction note"]
+
+| Dimension | Before | After |
+|-----------|--------|-------|
+| A — Agency & Affordance | [blockers / defects] | [blockers / defects] |
+| L — Loops & Feedback | … | … |
+| I — Invitation & Discovery | … | … |
+| V — Vitality & Physics | … | … |
+| E — Emergence & Surprise | … | … |
+
+Creative integrity: … · Professional craft: …
 
 ### Injections Applied
 **Agency:** [what was added — proximity awareness, affordance cues]
@@ -509,7 +514,7 @@ Output a summary:
 **Vitality:** [physics — hover weight, entrance cascades, ambient breathing]
 **Emergence:** [surprises — milestones, data insights, time-awareness]
 
-### Hidden Fingerprint
+### Hidden Fingerprint (only when required)
 - **Type:** [key combination / console message / secret page / etc.]
 - **Trigger:** [how to activate it]
 - **Reveals:** [what the user sees]
@@ -531,7 +536,7 @@ Log to `ade_docs/YYYY-MM-DD-move-injection.md`.
 
 ### Handoff
 
-> Your interface is alive. It responds, discovers, surprises, and carries a hidden signature. Want the copy to sound intentional? Run `/ade:write` for a communication style pass.
+> Your interface responds where it should[, and carries a hidden signature — only if one was planted]. Want the copy to sound intentional? Run `/ade:write` for a communication style pass.
 
 ---
 

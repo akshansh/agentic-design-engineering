@@ -135,7 +135,7 @@ Apply fixes, re-review, then continue.
 
 ## Step 2: Gather Context → Run $ade-style — Build Atmosphere
 
-Before running Style, ask the user two questions:
+Before running Style, ask the user two questions, **unless `ade_docs/direction.md` exists**. The note already holds the feeling and the feed; use it and skip the questions:
 
 > 1. **How should someone feel when they use this?** Not what it should look like — how should it feel?
 > 2. **Show me 3-5 references** — not UIs specifically. A room, a film, an object, a texture. Anything that evokes the feeling you're after.
@@ -166,14 +166,15 @@ Log this as "Build v2 — Structural Changes for Style" in the decision log.
 4. **Select the rendering stack** — choose the technology that authentically serves the metaphor (CSS / P5.js / Three.js / SVG+GSAP / WebGL). Record the choice and rationale.
 5. Build the atmosphere using the chosen rendering stack
 6. Derive colors from materials, not hex pickers
-7. Iterate through 5 design cycles (mandatory — cycle 1 is scaffolding, not design), saving each cycle's screenshot to the evidence trail and verifying **fidelity level >= 3** in cycle 5 (no themed labels on generic patterns)
+7. Iterate through 5 design cycles (mandatory — cycle 1 is scaffolding, not design), saving each cycle's screenshot to the evidence trail and verifying **fidelity level >= 3** in cycle 5 (no themed labels on generic patterns; where a pattern does not exist (a still piece, a cover), Level 3 means every element present is set by the concept's rules; mark the missing patterns n/a)
 8. Set the Move constraints based on the metaphor's weight and rendering stack — including the **acoustic signature** (room tone + material sounds) if the Product Portrait allows sound, or an explicit `none — [reason]`
 
 **What to pass forward to Move:**
-- The chosen metaphor and its one-line description
+- The concept kind and the concept in one line (the chosen metaphor, for a place)
+- The direction checks, each held / not held / not seen, with its owner
 - The fidelity level achieved (0-4)
 - The rendering stack chosen and why
-- The physics personality (weighty/floating/snappy/organic/mechanical)
+- The physics personality (weighty/floating/snappy/organic/mechanical/minimal)
 - Recommended spring tension and mass
 - The acoustic signature (or "none — reason")
 - The material palette and color derivations
@@ -298,7 +299,7 @@ Create a comprehensive transformation log at `ade_docs/YYYY-MM-DD-transform.md`:
 **Dead spots fixed:** [count]
 **Physics profile:** [personality, spring tension, mass]
 **Injections:** [Agency / Loops / Invitation / Vitality / Emergence summary]
-**Hidden fingerprint:**
+**Hidden fingerprint:** [none — reason, or:]
 - Type: [key combination / console message / secret page]
 - Trigger: [how to activate]
 - Reveals: [what the user sees]

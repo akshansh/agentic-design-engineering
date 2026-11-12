@@ -253,7 +253,7 @@ After install, in any project:
 | `vitality-injector` | Physics patches (GSAP, Motion.dev, or CSS) |
 | `voice-writer` | Warm copy rewrites; custom voice profiles |
 
-Claude Code / Cursor run these as dedicated agents. Codex exposes them as skills (`$build-auditor`, `$akshansh-voice`, …).
+Claude Code / Cursor run these as dedicated agents. Codex exposes them as skills (`$build-auditor`, `$voice-writer`, …).
 
 ### For AI agents maintaining this repo
 

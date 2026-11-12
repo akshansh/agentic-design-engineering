@@ -361,7 +361,7 @@ Each cycle has a specific focus and a concrete verification checklist. The agent
 - [ ] Responsive: styles work at mobile width (< 640px) — check for overflow, readability
 - [ ] No global style pollution — all selectors scoped under page class
 - [ ] The concept is identifiable: could a stranger name it from the render alone?
-- [ ] **Fidelity level >= 3** on the Fidelity Ladder (see `references/style-framework.md`) — run the three-pattern test: would the navigation, the loading state and the empty state exist under the concept's rules? If all three are generic patterns with themed labels, this is a costume — return to the Structural Authenticity Check
+- [ ] **Fidelity level >= 3** on the Fidelity Ladder (see `references/style-framework.md`) — run the three-pattern test: would the navigation, the loading state and the empty state exist under the concept's rules? If all three are generic patterns with themed labels, this is a costume — return to the Structural Authenticity Check. Where a pattern does not exist (a still piece, a cover), Level 3 means every element present is set by the concept's rules; mark the missing patterns n/a.
 - [ ] Final screenshots captured to the evidence trail (desktop 1440px + mobile 390px)
 
 If a blocker is open, repair it and look again. After two rounds, stop and report it: the concept may be wrong.

@@ -279,7 +279,7 @@ Ask an AI for a spaceship-themed dashboard and the first generation is usually a
 | **3** | Changes behaviour | Navigation, loading, errors and layout work by the concept's rules: a spaceship has a control deck, not a hamburger menu; an instrument is operated in its own order; a grammar generates the layout; quiet removes everything but the task | Architecture |
 | **4** | Nothing contradicts it | Structure, motion, sound and copy all follow the concept; a stranger names it within seconds | The concept IS the product |
 
-**Minimum target for any Style transformation: Level 3.** Levels 0–2 are what the Transformability criterion and the Structural Authenticity Check exist to prevent — if the interaction patterns are still generic, the concept hasn't moved in yet.
+**Minimum target for any Style transformation: Level 3.** Levels 0–2 are what the Transformability criterion and the Structural Authenticity Check exist to prevent — if the interaction patterns are still generic, the concept hasn't moved in yet. Where a pattern does not exist (a still piece, a cover), Level 3 means every element present is set by the concept's rules; mark the missing patterns n/a.
 
 **The fastest fidelity test:** pick the three most conventional patterns on the page (usually the nav menu, the loading state and the empty state) and ask — *would this exact pattern exist under the concept's rules?* A boardroom library has no hamburger menu; it has a hallway of labeled doors. A type-only page has no icon row; its hierarchy is in the setting. If all three patterns would survive in any generic app, the design is at Level 2 or below.
 

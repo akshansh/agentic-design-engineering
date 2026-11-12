@@ -116,13 +116,13 @@ For each dead spot found, return:
 }
 ```
 
-Findings use the shape in `skills/shared/review.md`. Each dead spot is also a finding.
+Findings use the shape in `skills/shared/review.md`. A dead spot is a finding only when the user gets no perceivable feedback, or the response contradicts the concept. Stillness the concept asks for goes in the map as `n/a — still on purpose`, not in the findings.
 
 ## Rules
 
 - **Check the easter egg against the Product Portrait and project law.** Required and missing is a defect. Ruled out or not called for, its absence is not a finding.
 - Physics alignment with Style is critical. If Style said "weighty" but hover feels "bouncy," flag it.
-- A dead spot in the core loop is a blocker.
+- A dead spot in the core loop (no perceivable feedback on its main action) is a blocker.
 - Be specific about what "dead" means: "feels like a spreadsheet cell" is diagnostic. "No animation" is just observation.
 - Motion cannot be judged from code. If you could not run the page, say `source-inspected only`; `status` cannot be Ready.
 - The 8 kinds of fun (from MDA framework) help assess what types of engagement exist.

@@ -119,13 +119,13 @@ Use these as starting patterns — adapt to the specific codebase:
 | **Archive/reference** | Browse collection → Select item → Read/study → Notice pattern → Browse for more |
 | **Monitoring/ops** | Scan status → Detect anomaly → Drill into detail → Respond/resolve → Return to scan |
 
-The core loop is the heartbeat of the product. Dead spots in the core loop are always **critical severity** — they break the rhythm the user relies on.
+The core loop is the heartbeat of the product. A core-loop action with no perceivable feedback is always **critical** — it breaks the rhythm the user relies on.
 
 ---
 
 ## Step 3: Find the Dead Spots
 
-Scan the code for these lifelessness patterns:
+Scan the running page, then the code, for these patterns. Each is a **candidate**. It becomes a dead spot only when the user gets no perceivable feedback, or the response contradicts the concept. A plain colour change on hover, an instant state change or a page with no `@keyframes` is not a dead spot when the concept is still or quiet on purpose; record it as `n/a — still on purpose`.
 
 ### Code-Level Dead Spot Detection
 
@@ -143,9 +143,9 @@ Scan the code for these lifelessness patterns:
 | No `prefers-reduced-motion` | Inaccessible motion | Motion exists but excludes users |
 
 For each dead spot found, note the file:line and classify:
-- **Critical dead spot**: Core loop has no feedback (e.g., clicking a card has no response)
-- **Major dead spot**: Important interaction feels flat (e.g., hover does nothing physical)
-- **Minor dead spot**: Edge case lacks polish (e.g., empty state has no character)
+- **Critical dead spot** (blocker): the core loop has no perceivable feedback (e.g., clicking a card has no response)
+- **Major dead spot** (defect): an important interaction gives no perceivable feedback, or its response contradicts the concept (e.g., a weighty concept with a bouncy hover)
+- **Minor dead spot** (opportunity): an edge case lacks polish (e.g., empty state has no character)
 
 ---
 
@@ -536,7 +536,7 @@ Log to `ade_docs/YYYY-MM-DD-move-injection.md`.
 
 ### Handoff
 
-> Your interface is alive. It responds, discovers, surprises, and carries a hidden signature. Want the copy to sound intentional? Run `/ade:write` for a communication style pass.
+> Your interface responds where it should[, and carries a hidden signature — only if one was planted]. Want the copy to sound intentional? Run `/ade:write` for a communication style pass.
 
 ---
 

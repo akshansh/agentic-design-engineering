@@ -12,7 +12,7 @@ A number out of 50 hid what was wrong and let a strong part pay for a broken one
 
 ## 2. Read what is given
 
-- **The direction note** (`ade_docs/direction.md`, from `$ade-direct`), if it exists. Its chosen direction is the declared concept. Its kind (place, instrument, material, grammar, data, type, quiet) sets what the checks mean. Its five checks are reported first, each `held`, `not held` or `not seen`. A check not held is a blocker.
+- **The direction note** (`ade_docs/direction.md`, from `$ade-direct`), if it exists. Its chosen direction is the declared concept. Its kind (place, instrument, material, grammar, data, type, quiet) sets what the checks mean. Its five checks are reported first, each `held`, `not held` or `not seen`. A check not held is a blocker only in the framework that owns it, and in the final review. Earlier it is reported, not gated. Each check names its owner in the note; if it does not, the owner is the framework whose dimension the check describes (structure → Build, the concept's look → Style, response and motion → Move, words → Write).
 - The Product Portrait and any project law. Project law outranks this file.
 
 ## 3. Findings
@@ -55,7 +55,7 @@ Between frameworks the gate is **no open blocker**. Defects travel forward in th
 
 ## 7. Generated-look checks
 
-Raise a finding for any default nobody chose: everything centred; rows of identical rounded cards; a gradient or glow with no job; a generic icon set; stock flat-vector people; copy that could sit on any website; one layout repeated down the page; pictures that read as generated.
+Raise a finding for any default nobody chose. It is a **defect** by default, and a **blocker** when a generated picture stands in for a real place, person or product, or is presented as a photograph. Defaults: everything centred; rows of identical rounded cards; a gradient or glow with no job; a generic icon set; stock flat-vector people; copy that could sit on any website; one layout repeated down the page; pictures that read as generated.
 
 Five habits recur in agent-made work. Check for each:
 

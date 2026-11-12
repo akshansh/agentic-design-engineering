@@ -27,6 +27,17 @@ Step 0 reads `ade_docs/direction.md` first. Build, Style, Move, Write, Review an
 ### Invariants changed
 Root `AGENTS.md`: "each framework passes at 40/50; audits report /200" becomes "reviews, not scores; the gate is no open blocker", plus a new look-first invariant and the seven kinds. The Cursor rule's unconditional easter egg requirement, missed in v3.4, now matches the amended invariant.
 
+### Fixes from review (before merge)
+- A direction check not held blocks only the framework that owns it, and the final review; earlier it is reported. The direction note names each check's owner.
+- Fidelity Ladder level 3 for a still piece or a cover: every element present follows the concept; patterns that do not exist are `n/a`.
+- Move: a dead spot is a finding only when there is no perceivable feedback or the response contradicts the concept. Stillness on purpose is not one.
+- Generated-look findings carry a severity: a defect, or a blocker when a generated picture stands in for a real place, person or product, or poses as a photograph.
+- Handoffs carry the kind and the direction checks; `minimal` physics for still concepts; `none — [reason]` for the easter egg in the compound log.
+- The last golden-ratio splits and the "> 90% follow the intended path" target are gone from `build-framework.md`.
+- Compound skips the feeling questions when a direction note exists; Move's handoff no longer promises a hidden signature; style diagnostics speak in the concept's terms.
+- The taste pass asks questions a render can answer.
+- README names the Codex voice skill `$voice-writer`.
+
 ### Not in this release
 No fixtures yet, so nothing proves an auditor finds what it should or leaves good work alone. The render-first rule is written but has not been run on a page whose CSS looks rich and renders broken. Not run inside a host.
 

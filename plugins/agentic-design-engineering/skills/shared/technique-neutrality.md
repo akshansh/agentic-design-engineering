@@ -26,7 +26,7 @@ ADE's frameworks describe many techniques: layered gradients, a directional ligh
 
 ## What still holds
 
-- The Fidelity Ladder: whatever the kind, the concept must change how the interface behaves (level 3), not only how it is painted.
+- The Fidelity Ladder: whatever the kind, the concept must change how the interface behaves (level 3), not only how it is painted. Where a pattern does not exist (a still piece, a cover), Level 3 means every element present is set by the concept's rules; mark the missing patterns n/a.
 - Accessibility, real task flows and honest evidence are never optional.
 - Sound stays opt-in and off by default.
 - Project law outranks this file: if a project requires an easter egg, a texture or a motion signature, that requirement stands for that project.

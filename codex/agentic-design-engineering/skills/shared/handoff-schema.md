@@ -32,13 +32,14 @@ After Style completes, pass forward:
 - **materials:** [named physical materials, when the kind has them — e.g., mahogany, brass, aged paper, leather — or "n/a"]
 - **fidelity_level:** [0-4 on the Fidelity Ladder — Move should push behavior further toward the concept, never back toward generic]
 - **rendering_stack:** [CSS | P5.js | PixiJS | Three.js | SVG+GSAP | WebGL shaders — Move must build on this, not add a competing renderer]
-- **physics_personality:** [weighty | floating | snappy | organic | mechanical]
+- **physics_personality:** [weighty | floating | snappy | organic | mechanical | minimal — state changes only, for a still, type or quiet concept]
 - **spring_tension:** [high | medium | low]
 - **mass:** [heavy | medium | light]
 - **acoustic_signature:** [one-line room tone + material → sound notes, or "none — reason"] — Move implements earcons from this (see `skills/shared/sound-design.md`)
 - **color_palette:** [material → hex mappings — e.g., mahogany → #2a1c14, brass → #c9a44a]
 - **scoped_classes:** [list of page scope CSS classes created — e.g., .boardroom-page]
 - **evidence_dir:** [path to this run's evidence folder — e.g., ade_docs/evidence/2026-07-05-style/]
+- **direction_checks:** [passed through from Build, each held / not held / not seen, with its owner — or "no direction note"]
 - **review:** [status; open blockers must be 0; open defects carried forward]
 ```
 

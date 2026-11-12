@@ -49,7 +49,7 @@ Run the three-pattern test — would the navigation, the loading state and the e
 | 0 — Label | The concept appears in words only, on stock patterns |
 | 1 — Paint | Colours, texture or type follow it; components are stock |
 | 2 — Dressed parts | Elements are redrawn in the concept; layout and navigation still conventional |
-| 3 — Changes behaviour | Navigation, loading, errors and layout work by the concept's rules |
+| 3 — Changes behaviour | Navigation, loading, errors and layout work by the concept's rules. Where a pattern does not exist (a still piece, a cover), Level 3 means every element present is set by the concept's rules; mark the missing patterns n/a. |
 | 4 — Nothing contradicts it | Structure, motion, sound and copy all follow it; a stranger names it in seconds |
 
 ### L — Lighting & Atmosphere
@@ -91,8 +91,8 @@ For each dimension with a blocker or defect, give a specific diagnosis:
 
 | Symptom | Diagnosis | Recommended Fix |
 |---------|-----------|-----------------|
-| Flat despite colors | No light source | Add radial gradient for directional light |
-| Generic despite texture | No metaphor | Define specific physical place first |
+| Flat despite colors | The concept asks for depth and has none | Give it the depth the concept names (for a place, a light source; for a grammar, the rule's own layering) |
+| Generic despite texture | No concept | Name the concept and its kind first (`/ade:direct`) |
 | Metaphor present but weak | Surface-level application | Map every UI element to physical analog |
 | Good metaphor, wrong feeling | Temperature mismatch | Shift gradient hues to match intended warmth/cool |
 | Beautiful but broken | Contrast failures | Increase text brightness, add text-shadow for legibility |

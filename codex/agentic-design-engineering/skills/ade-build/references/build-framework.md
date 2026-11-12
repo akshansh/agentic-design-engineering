@@ -81,20 +81,11 @@ Spacing communicates relationship. Closer = more related. Further = less related
 | `--space-8` | 4rem (64px) | Public | Between pages/views |
 | `--space-9` | 6rem (96px) | Monumental | Hero to content |
 
-### Visual Hierarchy Mathematics
+### Visual Hierarchy
 
-Golden ratio-based typescale:
-- h1: 2.618rem (phi squared)
-- h2: 1.618rem (phi)
-- h3: 1rem (base)
-- body: 1rem
-- small: 0.618rem (1/phi)
+Headings step down clearly in size and weight: h1 largest, then h2, then h3 and body. Pick the scale for the content and the concept; there is no fixed ratio.
 
-Attention weight distribution:
-- Primary: 100% visual weight
-- Secondary: 61.8% (phi inverse)
-- Tertiary: 38.2% (phi squared inverse)
-- Quaternary: 23.6% (phi cubed inverse)
+Attention: one clear primary, then a readable descending order of weight. Judge it on the rendered page.
 
 ### Evaluation Criteria
 
@@ -125,17 +116,17 @@ Primary Action (The Star)
 ├── Visual weight: 100%
 ├── Color: Highest contrast, brand color
 ├── Size: Largest interactive element
-├── Position: Above fold, golden ratio placement
+├── Position: Where the eye lands first on the render
 └── Treatment: Filled, bold, prominent
 
 Secondary Actions (Supporting Cast)
-├── Visual weight: 61.8%
+├── Visual weight: clearly below the primary
 ├── Color: Neutral with accent
 ├── Size: Clearly smaller than primary
 └── Treatment: Outline, ghost, or text button
 
 Tertiary Actions (Chorus)
-├── Visual weight: 38.2%
+├── Visual weight: below the secondary
 ├── Color: Text-based, subtle
 ├── Size: Standard text
 └── Treatment: Underlined link or plain text
@@ -147,8 +138,8 @@ Tertiary Actions (Chorus)
 |-----------|--------|--------|
 | Primary actions per viewport | Count of filled/prominent buttons | Exactly 1 |
 | Contrast ratio (primary) | Against background | > 4.5:1 |
-| Visual weight hierarchy | Golden ratio distribution | Descending |
-| Attention flow | Users follow intended path | > 90% |
+| Visual weight hierarchy | One primary, then a readable order | Descending |
+| Attention flow | On the render, the eye lands on the primary first | Yes |
 | Competing elements | Elements at equal visual weight | 0 |
 
 ---
@@ -285,7 +276,7 @@ const benchmarks = {
   emphasis: {
     primaryActions: "Exactly 1 per viewport",
     contrast: "> 4.5:1 normal, > 3:1 large",
-    hierarchy: "Golden ratio weight distribution"
+    hierarchy: "One primary, then a readable descending order"
   },
   accessibility: {
     wcag: "100% WCAG 2.1 AA",

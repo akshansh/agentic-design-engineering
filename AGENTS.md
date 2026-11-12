@@ -2,7 +2,7 @@
 
 This file is **authoring context** for agents working on this source repository. If you are an agent *using* the installed ADE plugin inside someone's project, this file does not apply to you — your instructions live in the installed plugin's own `AGENTS.md`/`CLAUDE.md` and each skill's `SKILL.md`.
 
-Shared domain vocabulary lives in `CONCEPTS.md`. Read it before editing any skill or agent — the frameworks use precise terms (Product Portrait, declared concept, Fidelity Ladder, Transformability) that must stay consistent across every file.
+Shared domain vocabulary lives in `CONCEPTS.md`. Read it before editing any skill or agent — the frameworks use precise terms (Product Portrait, declared concept, concept kind, Fidelity Ladder, review, Transformability) that must stay consistent across every file.
 
 ## What this repo is
 
@@ -17,7 +17,7 @@ codex/agentic-design-engineering/     OpenAI Codex package (skills only — agen
 scripts/install-codex.sh              Legacy local-marketplace installer for Codex
 docs/                                 README assets
 CONCEPTS.md                           Shared domain vocabulary
-CHANGELOG.md                          Release notes (marketing versions: v3.x)
+CHANGELOG.md                          Release notes (marketing versions: vX.Y)
 ```
 
 ## The parity rule (most important)
@@ -46,7 +46,7 @@ diff -rq plugins/agentic-design-engineering/skills codex/agentic-design-engineer
 - Every skill is a directory with a `SKILL.md`. Required frontmatter: `name`, `description` (plus `argument-hint` in the Claude/Cursor package).
 - Large craft knowledge goes in the skill's `references/` subdirectory, loaded by backtick path — keep `SKILL.md` procedural (steps, gates, report templates).
 - Cross-skill shared knowledge lives in `skills/shared/` and is referenced by package-root-relative path (e.g. `skills/shared/step-0-understand.md`). If you add a shared reference, register it in the package `AGENTS.md` table.
-- Agent files (Claude/Cursor package only) are single `.md` files with `name` + `description` frontmatter; output must be structured (JSON or scored findings). Auditors score, never fix.
+- Agent files (Claude/Cursor package only) are single `.md` files with `name` + `description` frontmatter; output must be structured JSON. Auditors return a review in the form of `skills/shared/review.md` and never fix.
 - Skills must narrate in real time and leave an evidence trail — see `skills/shared/evidence-trail.md`. Never author a skill that works silently and dumps a report at the end.
 - Write for any host: no host-specific environment variables in skill content; the Codex package must work with no agent runner.
 
@@ -59,7 +59,7 @@ Two version schemes coexist deliberately:
   2. `plugins/agentic-design-engineering/.cursor-plugin/plugin.json`
   3. `codex/agentic-design-engineering/.codex-plugin/plugin.json`
   4. `.claude-plugin/marketplace.json` (the plugin entry's `version`)
-- **Marketing version** (`v3.x`) names the release in `CHANGELOG.md` and the README. Mapping: manifest `0.3.y` ↔ marketing `v3.y`.
+- **Marketing version** (`vX.Y`) names the release in `CHANGELOG.md` and the README. Mapping: manifest `0.X.Y` ↔ marketing `vX.Y` (0.3.5 ↔ v3.5, 0.4.0 ↔ v4.0).
 
 Any behavior change to skills, agents, or references bumps the manifest patch version in all four files and adds a `CHANGELOG.md` entry at the top. Validation:
 
@@ -80,10 +80,11 @@ jq . .claude-plugin/marketplace.json .cursor-plugin/marketplace.json .agents/plu
 
 ## Methodology invariants (do not weaken these while editing)
 
-- Direct comes before the frameworks and is optional. When `ade_docs/direction.md` exists, its chosen direction is the declared concept and no framework replaces it with one of its own. The taste pass never scores and never gates.
+- Direct comes before the frameworks and is optional. When `ade_docs/direction.md` exists, every framework reads it: its chosen direction is the declared concept, its kind decides how Style works, and its five checks are reported in every review. No framework replaces it with one of its own. The taste pass never scores and never gates.
 - Framework order is fixed: Build → Style → Move → Write. The only sanctioned back-edge is Style's Structural Change Request to Build.
-- Gates: each framework passes at 40/50; audits report /200 combined. Autonomous mode (`--auto`) obeys every gate.
-- Style targets Metaphor Fidelity Ladder level ≥ 3; levels 0–1 cap the metaphor score.
+- Reviews, not scores (changed in 0.4.0; it was a 40/50 gate and a /200 audit). Every auditor and `/ade:review` returns findings (blocker, defect, opportunity) with an evidence class, two judgements that never offset (creative integrity, professional craft) and a status (Ready within inspected scope, Needs revision, Blocked, Unverified). The gate between frameworks is no open blocker. No totals, no averages. Autonomous mode (`--auto`) obeys every gate.
+- Look first. Auditors capture renders at 1440 and 390 px before reading code, and read code only to locate a repair. With no capture the review says `source-inspected only` and cannot return Ready.
+- A place is one of seven kinds of concept (place, instrument, material, grammar, data, type, quiet). Metaphor discovery runs only for a place. Style targets Fidelity Ladder level ≥ 3 for every kind; levels 0–1 are a defect.
 - Sound is opt-in, off by default, never the sole feedback channel, gated by the Product Portrait.
 - Move plants an easter egg when the Product Portrait or project law calls for one; otherwise it records the absence as a decision. Every run logs to `ade_docs/` and captures evidence to `ade_docs/evidence/`.
-- Techniques are a menu, not a checklist. No auditor scores a design down for the absence of a gradient, texture, animation, sound, metaphor or easter egg when the declared concept does not call for it (`skills/shared/technique-neutrality.md`).
+- Techniques are a menu, not a checklist. No auditor raises a finding for the absence of a gradient, texture, animation, sound, metaphor or easter egg when the declared concept does not call for it (`skills/shared/technique-neutrality.md`).

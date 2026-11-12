@@ -9,10 +9,11 @@ This plugin provides design engineering frameworks for Claude Code. See AGENTS.m
 | `/ade:setup` | Post-install readiness check (stack, evidence capture, history) — run this first |
 | `/ade:direct` | Taste first: the owner's thought, feeling and mark become one direction with five checks |
 | `/ade:build` | UI structure audit + repair (accessibility, hierarchy, emphasis) |
-| `/ade:style` | Atmosphere transformation (generic → inhabited place) |
-| `/ade:move` | Interactivity injection (feedback, discovery, physics, easter eggs) |
+| `/ade:style` | Concept and atmosphere (a place, or another kind from the direction note) |
+| `/ade:move` | Interactivity injection (feedback, discovery, physics, easter eggs where required) |
 | `/ade:write` | Apply intentional communication style to UI copy |
-| `/ade:audit` | Full Build + Style + Move + Write evaluation with combined report |
+| `/ade:review` | Full Build + Style + Move + Write review: render first, findings, two judgements, a status |
+| `/ade:audit` | Old name for `/ade:review`, kept for 0.4.x |
 | `/ade:compound` | End-to-end transformation from generic to specialized |
 
 ## Framework Ordering
